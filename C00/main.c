@@ -12,16 +12,7 @@
 
 #include <unistd.h>
 
-void	ft_print_alphabet(void);
-
-void	ft_print_alphabet(void)
+int	main(void)
 {
-	char	letter;
-
-	letter = 'a';
-	while (letter <= 'z')
-	{
-		ft_putchar(letter);
-		letter++;
-	}
+	ft_is_negative(-11);
 }

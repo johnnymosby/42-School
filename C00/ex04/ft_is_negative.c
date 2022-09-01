@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 14:44:58 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/01 14:50:36 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/01 17:26:32 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/01 17:26:32 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_alphabet(void);
-
-void	ft_print_alphabet(void)
+void	ft_is_negative(int n)
 {
-	char	letter;
-
-	letter = 'a';
-	while (letter <= 'z')
+	if (n < 0)
 	{
-		ft_putchar(letter);
-		letter++;
+		ft_putchar('N');
+	}
+	else
+	{
+		ft_putchar('P');
 	}
 }
