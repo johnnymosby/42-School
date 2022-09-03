@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 17:26:32 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/01 17:26:32 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/03 18:10:14 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/03 18:10:14 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void	ft_print_comb(void);
+void	ft_print_comb2(void);
 
-void	ft_print_comb(void)
+void	ft_print_comb2(void)
 {
 	char	number1;
 	char	number2;

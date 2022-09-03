@@ -14,5 +14,6 @@
 
 int	main(void)
 {
-	ft_is_negative(-11);
+	ft_print_comb2();
+	return (0);
 }
