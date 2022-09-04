@@ -15,8 +15,7 @@ add_executable(42_School
 	   C00/ex07/ft_putnbr.c
 	   C00/ex08/ft_print_combn.c)
 
-#[[
-add_executable(42_School
-	Rush00/main.c
-	Rush00/ft_putchar.c
-	Rush00/rush03.c)]]
+#add_executable(42_School
+#	Rush00/main.c
+#	Rush00/ft_putchar.c
+#	Rush00/rush03.c)

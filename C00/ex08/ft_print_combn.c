@@ -12,7 +12,7 @@
 
 int		pow_n_base10(int n);
 int		n_ones(int n);
-int		check(int n);
+int		check(int num, int n);
 int		n_nonzeros(int num);
 void	ft_print_combn(int n);
 
@@ -44,11 +44,11 @@ int	n_ones(int n)
 	return (num_ones);
 }
 
-int	check(int n)
+int	check(int num, int n)
 {
-	if ((n % 10) > ((n / 10) % 10))
+	if ((num % 10) > (((num + pow_n_base10(n)) / 10) % 10))
 	{
-		check(n / 10);
+		check(num / 10, n);
 	}
 	else
 	{
@@ -79,7 +79,7 @@ void	ft_print_combn(int n)
 	while (++num <= pow_n_base10(n))
 	{
 		counter = 0;
-		if (check(num) == 0)
+		if (check(num, n) == 0)
 		{
 			if (num < pow_n_base10(n - 1))
 			{
