@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 18:10:14 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/03 18:10:14 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/04 12:21:10 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/04 13:02:05 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+void	ft_putnbr(int nb);
 
-void	ft_print_comb2(void);
-
-void	ft_print_comb2(void)
+void	ft_putnbr(int nb)
 {
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb *= -1;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		ft_putchar(nb + '0');
+	}
 }

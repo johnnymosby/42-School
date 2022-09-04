@@ -11,7 +11,9 @@ add_executable(42_School
        C00/ex03/ft_print_numbers.c
        C00/ex04/ft_is_negative.c
        C00/ex05/ft_print_comb.c
-       C00/ex06/ft_print_comb2.c)
+       C00/ex06/ft_print_comb2.c
+	   C00/ex07/ft_putnbr.c
+	   C00/ex08/ft_print_combn.c)
 
 #[[
 add_executable(42_School

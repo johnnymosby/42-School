@@ -14,6 +14,9 @@
 
 int	main(void)
 {
-	ft_print_comb2();
+	ft_print_combn(3);
+//	ft_putnbr(pown(10));
+	ft_putnbr(n_ones(5));
+	ft_putnbr(n_nonzeros(1));
 	return (0);
 }
