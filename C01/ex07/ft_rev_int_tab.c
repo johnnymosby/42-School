@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 15:20:37 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/05 14:10:53 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/06 13:10:13 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/06 13:10:13 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+void	ft_rev_int_tab(int *tab, int size);
 
-void	ft_putchar(char c);
-void	ft_print_reverse_alphabet(void);
-
-void	ft_putchar(char c)
+void	ft_rev_int_tab(int *tab, int size)
 {
-	write(1, &c, 1);
-}
+	int	temp;
+	int	counter;
 
-void	ft_print_reverse_alphabet(void)
-{
-	char	letter;
-
-	letter = 'z';
-	while (letter >= 'a')
+	counter = -1;
+	while (++counter < size / 2)
 	{
-		ft_putchar(letter);
-		letter--;
+		temp = *(tab + counter);
+		*(tab + counter) = *(tab + size - 1 - counter);
+		*(tab + size - 1 - counter) = temp;
 	}
 }

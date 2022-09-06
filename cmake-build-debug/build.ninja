@@ -49,65 +49,11 @@ cmake_ninja_workdir = /nfs/homes/rbasyrov/CLionProjects/42-School/cmake-build-de
 
 build cmake_object_order_depends_target_42_School: phony || CMakeFiles/42_School.dir
 
-build CMakeFiles/42_School.dir/C00/main.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/main.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/main.c.o.d
+build CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C01/ex00/ft_ft.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o.d
   FLAGS = -g -std=gnu11
   OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00
-
-build CMakeFiles/42_School.dir/C00/ex00/ft_putchar.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex00/ft_putchar.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex00/ft_putchar.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex00
-
-build CMakeFiles/42_School.dir/C00/ex01/ft_print_alphabet.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex01/ft_print_alphabet.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex01/ft_print_alphabet.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex01
-
-build CMakeFiles/42_School.dir/C00/ex02/ft_print_reverse_alphabet.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex02/ft_print_reverse_alphabet.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex02/ft_print_reverse_alphabet.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex02
-
-build CMakeFiles/42_School.dir/C00/ex03/ft_print_numbers.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex03/ft_print_numbers.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex03/ft_print_numbers.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex03
-
-build CMakeFiles/42_School.dir/C00/ex04/ft_is_negative.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex04/ft_is_negative.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex04/ft_is_negative.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex04
-
-build CMakeFiles/42_School.dir/C00/ex05/ft_print_comb.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex05/ft_print_comb.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex05/ft_print_comb.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex05
-
-build CMakeFiles/42_School.dir/C00/ex06/ft_print_comb2.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex06/ft_print_comb2.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex06/ft_print_comb2.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex06
-
-build CMakeFiles/42_School.dir/C00/ex07/ft_putnbr.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex07/ft_putnbr.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex07/ft_putnbr.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex07
-
-build CMakeFiles/42_School.dir/C00/ex08/ft_print_combn.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C00/ex08/ft_print_combn.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C00/ex08/ft_print_combn.c.o.d
-  FLAGS = -g -std=gnu11
-  OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C00/ex08
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C01/ex00
 
 
 # =============================================================================
@@ -117,7 +63,7 @@ build CMakeFiles/42_School.dir/C00/ex08/ft_print_combn.c.o: C_COMPILER__42_Schoo
 #############################################
 # Link the executable 42_School
 
-build 42_School: C_EXECUTABLE_LINKER__42_School_Debug CMakeFiles/42_School.dir/C00/main.c.o CMakeFiles/42_School.dir/C00/ex00/ft_putchar.c.o CMakeFiles/42_School.dir/C00/ex01/ft_print_alphabet.c.o CMakeFiles/42_School.dir/C00/ex02/ft_print_reverse_alphabet.c.o CMakeFiles/42_School.dir/C00/ex03/ft_print_numbers.c.o CMakeFiles/42_School.dir/C00/ex04/ft_is_negative.c.o CMakeFiles/42_School.dir/C00/ex05/ft_print_comb.c.o CMakeFiles/42_School.dir/C00/ex06/ft_print_comb2.c.o CMakeFiles/42_School.dir/C00/ex07/ft_putnbr.c.o CMakeFiles/42_School.dir/C00/ex08/ft_print_combn.c.o
+build 42_School: C_EXECUTABLE_LINKER__42_School_Debug CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/42_School.dir
   POST_BUILD = :

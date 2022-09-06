@@ -6,11 +6,19 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 12:21:10 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/04 13:02:05 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:45:05 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
+void	ft_putchar(char c);
 void	ft_putnbr(int nb);
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 void	ft_putnbr(int nb)
 {

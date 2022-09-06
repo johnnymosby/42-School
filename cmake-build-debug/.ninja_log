@@ -1,16 +1,17 @@
 # ninja log v5
 1	24	1662305089299077949	CMakeFiles/42_School.dir/Rush00/rush03.c.o	2e613a4eb5456b77
-2	67	1662307940672944747	CMakeFiles/42_School.dir/C00/ex04/ft_is_negative.c.o	f0bb60df70fa4d68
-1	28	1662307950448875366	CMakeFiles/42_School.dir/C00/main.c.o	653effee7946e092
-2	57	1662307940672944747	CMakeFiles/42_School.dir/C00/ex06/ft_print_comb2.c.o	b6f554319ea732a
-3	70	1662307940672944747	CMakeFiles/42_School.dir/C00/ex08/ft_print_combn.c.o	1301e04a99c60e71
-5	102	1662307995628554949	build.ninja	242d61c482b71bd2
-2	68	1662307940672944747	CMakeFiles/42_School.dir/C00/ex07/ft_putnbr.c.o	bd78c56eaef1ff2c
-29	64	1662307950484875111	42_School	fdad533ce9e12d2b
+4	71	1662379151278028517	CMakeFiles/42_School.dir/C00/ex04/ft_is_negative.c.o	f0bb60df70fa4d68
+0	20	1662384843890855452	CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o	8d055d85e0aac36e
+5	36	1662380521233534662	CMakeFiles/42_School.dir/C00/main.c.o	653effee7946e092
+5	43	1662380521237534637	CMakeFiles/42_School.dir/C00/ex06/ft_print_comb2.c.o	b6f554319ea732a
+1	30	1662375786838937275	CMakeFiles/42_School.dir/C00/ex08/ft_print_combn.c.o	1301e04a99c60e71
+3	153	1662384844630850862	build.ninja	242d61c482b71bd2
+5	41	1662380521233534662	CMakeFiles/42_School.dir/C00/ex07/ft_putnbr.c.o	bd78c56eaef1ff2c
+32	74	1662375816818750984	42_School	fdad533ce9e12d2b
 1	30	1662304683853321021	CMakeFiles/42_School.dir/Rush00/ft_putchar.c.o	9f29974c8143a2bd
 2	55	1662307940672944747	CMakeFiles/42_School.dir/C00/ex00/ft_putchar.c.o	bd56180d974adc04
-2	65	1662307940672944747	CMakeFiles/42_School.dir/C00/ex03/ft_print_numbers.c.o	da4c0f764750b27f
+4	68	1662379151278028517	CMakeFiles/42_School.dir/C00/ex03/ft_print_numbers.c.o	da4c0f764750b27f
 1	26	1662304866452311130	CMakeFiles/42_School.dir/Rush00/main.c.o	1288a2aacfaf8b1b
-2	63	1662307940668944776	CMakeFiles/42_School.dir/C00/ex01/ft_print_alphabet.c.o	6a7470b716b9743f
-2	61	1662307940672944747	CMakeFiles/42_School.dir/C00/ex02/ft_print_reverse_alphabet.c.o	d0e29ae8366d5874
+4	57	1662379151274028542	CMakeFiles/42_School.dir/C00/ex01/ft_print_alphabet.c.o	6a7470b716b9743f
+4	64	1662379151274028542	CMakeFiles/42_School.dir/C00/ex02/ft_print_reverse_alphabet.c.o	d0e29ae8366d5874
 2	52	1662307940668944776	CMakeFiles/42_School.dir/C00/ex05/ft_print_comb.c.o	2336456c150d0434

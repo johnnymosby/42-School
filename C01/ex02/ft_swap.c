@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 15:20:37 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/05 14:10:53 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/06 13:08:24 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/06 13:08:24 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-void	ft_putchar(char c);
-void	ft_print_reverse_alphabet(void);
+void	ft_swap(int *a, int *b);
 
-void	ft_putchar(char c)
+void	ft_swap(int *a, int *b)
 {
-	write(1, &c, 1);
-}
+	int	point;
 
-void	ft_print_reverse_alphabet(void)
-{
-	char	letter;
-
-	letter = 'z';
-	while (letter >= 'a')
-	{
-		ft_putchar(letter);
-		letter--;
-	}
+	point = *a;
+	*a = *b;
+	*b = point;
 }
