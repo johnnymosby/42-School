@@ -14,7 +14,13 @@ char	*ft_strcpy(char *dest, char *src);
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	while (*dest++ = *src++)
-		;
-	return(*dest)
+	int	n;
+
+	n = 0;
+	while (dest + n)
+	{
+		*(dest + n) = *(src + n);
+		n++;
+	}
+	return (dest);
 }
