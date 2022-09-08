@@ -14,13 +14,13 @@ char	*ft_strcpy(char *dest, char *src);
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int	n;
+	int	counter;
 
-	n = 0;
-	while (dest + n)
+	counter = 0;
+	while (src[counter])
 	{
-		*(dest + n) = *(src + n);
-		n++;
+		dest[counter] = src[counter];
+		counter++;
 	}
 	return (dest);
 }

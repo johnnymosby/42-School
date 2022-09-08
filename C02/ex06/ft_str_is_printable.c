@@ -19,15 +19,11 @@ int	ft_str_is_printable(char *str)
 	counter = 0;
 	while (str[counter])
 	{
-		if (!(str[counter] > 31 && str[counter] < 128))
+		if (!((str[counter] > 31) && (str[counter] < 127)))
 		{
-			return (1);
+			return (0);
 		}
 		counter++;
 	}
-	if (counter == 0)
-	{
-		return (1);
-	}
-	return (0);
+	return (1);
 }

@@ -21,13 +21,9 @@ int	ft_str_is_lowercase(char *str)
 	{
 		if (!(str[counter] > 96 && str[counter] < 123))
 		{
-			return (1);
+			return (0);
 		}
 		counter++;
 	}
-	if (counter == 0)
-	{
-		return (1);
-	}
-	return (0);
+	return (1);
 }

@@ -15,11 +15,11 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	n;
 
 	n = 0;
-	while (*(dest + n) && n < (size - 1))
+	while (dest[n] && n < (size - 1))
 	{
-		*(dest + n) = *(src + n);
+		dest[n] = src[n];
 		n++;
 	}
-	*(dest + n) = '\0';
+	dest[n] = '\0';
 	return (n);
 }

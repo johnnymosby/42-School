@@ -23,13 +23,9 @@ int	ft_str_is_alpha(char *str)
 		value = str[counter];
 		if (!((value > 64 && value < 91) || (value > 96 && value < 123)))
 		{
-			return (1);
+			return (0);
 		}
 		counter++;
 	}
-	if (counter == 0)
-	{
-		return (1);
-	}
-	return (0);
+	return (1);
 }
