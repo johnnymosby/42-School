@@ -19,7 +19,7 @@ int	ft_str_is_numeric(char *str)
 	counter = 0;
 	while (str[counter])
 	{
-		if (!(str[counter] > 47 && str[counter] < 58))
+		if (!(str[counter] >= '0' && str[counter] <= '9'))
 		{
 			return (0);
 		}

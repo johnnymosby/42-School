@@ -21,7 +21,7 @@ int	ft_str_is_alpha(char *str)
 	while (str[counter])
 	{
 		value = str[counter];
-		if (!((value > 64 && value < 91) || (value > 96 && value < 123)))
+		if (!((value >= 'a' && value <= 'z') || (value >= 'A' && value <= 'Z')))
 		{
 			return (0);
 		}
