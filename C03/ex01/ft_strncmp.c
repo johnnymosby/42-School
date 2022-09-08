@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 int	ft_strlen(char *str)
 {
-	int	n;
+	unsigned n;
 
 	n = 0;
 	while (*(str + n) != '\0')
@@ -22,14 +22,15 @@ int	ft_strlen(char *str)
 	return (n);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int i;
+	unsigned i;
 
 	i = 0;
-	if (ft_strlen(s1) != ft_strlen(s2))
-		return (ft_strlen(s1) - ft_strlen(s2));
-	while (s1[i])
+	if (n >= ft_strlen(s1) && n >= ft_strlen(s2))
+		if (ft_strlen(s1) != ft_strlen(s2))
+			return (ft_strlen(s1) - ft_strlen(s2));
+	while (s1[i] && i < n)
 	{
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
