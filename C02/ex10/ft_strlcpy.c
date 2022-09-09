@@ -21,5 +21,9 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		n++;
 	}
 	dest[n] = '\0';
+	while (src[n])
+	{
+		n++;
+	}
 	return (n);
 }
