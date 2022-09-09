@@ -12,7 +12,7 @@
 
 int	ft_strlen(char *str)
 {
-	unsigned n;
+	unsigned int	n;
 
 	n = 0;
 	while (*(str + n) != '\0')
@@ -24,7 +24,7 @@ int	ft_strlen(char *str)
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned i;
+	unsigned int	i;
 
 	i = 0;
 	if (n >= ft_strlen(s1) && n >= ft_strlen(s2))
