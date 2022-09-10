@@ -15,7 +15,8 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	n;
 
 	n = 0;
-	while (dest[n] && n < (size - 1))
+	size -= 1;
+	while (src[n] && n < size)
 	{
 		dest[n] = src[n];
 		n++;
