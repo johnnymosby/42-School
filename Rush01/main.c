@@ -66,25 +66,65 @@ void	update_imp(int x, int y, char v, char m[4][4][4])
 	i = 0;
 	while (i < 4)
 	{
-		m[iv][i][iv] = v;
-		m[i][iv][iv] = v;
+		m[x][i][iv] = v;
+		m[i][y][iv] = v;
 		i++;
 	}
 }
 
-void	left_to_right(int x, int y, char v, char map[4][4], char imp[4][4][4])
+void	left_to_right(int x, char map[4][4], char imp[4][4][4])
 {
 	int	j;
 
 	j = 0;
 	while (j < 4)
 	{
-		map[][] = int_to_char(j);
+		map[x][j] = int_to_char(j);
+		update_imp(x, j, int_to_char(j), imp);
 		j++;
 	}
 }
 
-void	check_1s(int x, int y, char v, char map[4][4], char imp[4][4][4])
+void	right_to_left(int x, char map[4][4], char imp[4][4][4])
+{
+	int	j;
+
+	j = 0;
+	while (j < 4)
+	{
+		map[x][j] = int_to_char(3 - j);
+		update_imp(x, j, int_to_char(3 - j), imp);
+		j++;
+	}
+}
+
+void	up_to_down(int y, char map[4][4], char imp[4][4][4])
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		map[i][y] = int_to_char(i);
+		update_imp(i, y, int_to_char(i), imp);
+		i++;
+	}
+}
+
+void	down_to_up(int y, char map[4][4], char imp[4][4][4])
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		map[i][y] = int_to_char(3 - i);
+		update_imp(i, y, int_to_char(3 - i), imp);
+		i++;
+	}
+}
+
+void	check_1s(char input[4][4], char map[4][4], char imp[4][4][4])
 {
 	int	i;
 	int	j;
@@ -95,9 +135,19 @@ void	check_1s(int x, int y, char v, char map[4][4], char imp[4][4][4])
 	{
 		while (j < 4)
 		{
-			if (m[i][j] == '1')
-				if
+			if (input[i][j] == '4')
+				if (i == 0)
+					up_to_down(j, map, imp);
+				else if (i == 1)
+					down_to_up(j, map, imp);
+				else if (i == 2)
+					left_to_right(j, map, imp);
+				else if (i == 3)
+					right_to_left(j, map, imp);
+			j++;
 		}
+		j = 0;
+		i++;
 	}
 }
 
@@ -117,16 +167,26 @@ int	main(void)
 	{
 		for (int j = 0; j < 4; j++)
 		{
+			map[i][j] = 'n';
+		}
+	}
+
+
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
 			for (int z = 0; z < 4; z++)
 			{
 				imp[i][j][z] = 'n';
 			}
 		}
 	}
-
-	value = '3';
+	check_1s(input, map, imp);
 	print_matrix(input);
-	update_imp(3, 2, value, imp);
+	print_matrix(map);
+
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++)
