@@ -22,20 +22,17 @@ int	ft_strlen(char *str)
 	return (n);
 }
 
-int	ft_strstr(char *str, char *to_find)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
 	int	j;
 	int	loc;
-	int	size;
-	int zhopa;
+	int	zhopa;
 
-	i = 0;
-	j = 0;
-	loc = 0;
-	size = ft_strlen(to_find);
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
+		j = 0;
 		if (str[i] == to_find[j])
 		{
 			loc = i;
@@ -47,12 +44,9 @@ int	ft_strstr(char *str, char *to_find)
 				j++;
 			}
 			zhopa = 0;
-			if (size == j)
-				return (loc);
-			loc = 0;
-			j = 0;
+			if (ft_strlen(to_find) == j)
+				return (str + loc);
 		}
-		i++;
 	}
-	return (-1);
+	return (0);
 }
