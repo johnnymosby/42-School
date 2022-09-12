@@ -49,11 +49,107 @@ cmake_ninja_workdir = /nfs/homes/rbasyrov/CLionProjects/42-School/cmake-build-de
 
 build cmake_object_order_depends_target_42_School: phony || CMakeFiles/42_School.dir
 
-build CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/C01/ex00/ft_ft.c || cmake_object_order_depends_target_42_School
-  DEP_FILE = CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o.d
+build CMakeFiles/42_School.dir/Rush01/main.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/main.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/main.c.o.d
   FLAGS = -g -std=gnu11
   OBJECT_DIR = CMakeFiles/42_School.dir
-  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/C01/ex00
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/check_array.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/check_array.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/check_array.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/check_columns.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/check_columns.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/check_columns.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/check_matrix.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/check_matrix.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/check_matrix.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/conversion.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/conversion.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/conversion.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/down_to_up.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/down_to_up.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/down_to_up.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/ft_check_input.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/ft_check_input.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/ft_check_input.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/ft_putchar.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/ft_putchar.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/ft_putchar.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/ft_putnbr.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/ft_putnbr.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/ft_putnbr.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/ft_putstr.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/ft_putstr.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/ft_putstr.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/ft_rush.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/ft_rush.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/ft_rush.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/ft_strlen.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/ft_strlen.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/ft_strlen.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/left_to_right.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/left_to_right.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/left_to_right.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/print_matrix.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/print_matrix.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/print_matrix.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/right_to_left.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/right_to_left.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/right_to_left.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/up_to_down.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/up_to_down.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/up_to_down.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
+
+build CMakeFiles/42_School.dir/Rush01/update_row.c.o: C_COMPILER__42_School_Debug /nfs/homes/rbasyrov/CLionProjects/42-School/Rush01/update_row.c || cmake_object_order_depends_target_42_School
+  DEP_FILE = CMakeFiles/42_School.dir/Rush01/update_row.c.o.d
+  FLAGS = -g -std=gnu11
+  OBJECT_DIR = CMakeFiles/42_School.dir
+  OBJECT_FILE_DIR = CMakeFiles/42_School.dir/Rush01
 
 
 # =============================================================================
@@ -63,7 +159,7 @@ build CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o: C_COMPILER__42_School_Debug /
 #############################################
 # Link the executable 42_School
 
-build 42_School: C_EXECUTABLE_LINKER__42_School_Debug CMakeFiles/42_School.dir/C01/ex00/ft_ft.c.o
+build 42_School: C_EXECUTABLE_LINKER__42_School_Debug CMakeFiles/42_School.dir/Rush01/main.c.o CMakeFiles/42_School.dir/Rush01/check_array.c.o CMakeFiles/42_School.dir/Rush01/check_columns.c.o CMakeFiles/42_School.dir/Rush01/check_matrix.c.o CMakeFiles/42_School.dir/Rush01/conversion.c.o CMakeFiles/42_School.dir/Rush01/down_to_up.c.o CMakeFiles/42_School.dir/Rush01/ft_check_input.c.o CMakeFiles/42_School.dir/Rush01/ft_putchar.c.o CMakeFiles/42_School.dir/Rush01/ft_putnbr.c.o CMakeFiles/42_School.dir/Rush01/ft_putstr.c.o CMakeFiles/42_School.dir/Rush01/ft_rush.c.o CMakeFiles/42_School.dir/Rush01/ft_strlen.c.o CMakeFiles/42_School.dir/Rush01/left_to_right.c.o CMakeFiles/42_School.dir/Rush01/print_matrix.c.o CMakeFiles/42_School.dir/Rush01/right_to_left.c.o CMakeFiles/42_School.dir/Rush01/up_to_down.c.o CMakeFiles/42_School.dir/Rush01/update_row.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/42_School.dir
   POST_BUILD = :

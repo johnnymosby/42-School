@@ -10,22 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strstr(char *str, char *to_find)
+int	ft_strlen(char *str)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	n;
+
+	n = 0;
+	while (*(str + n) != '\0')
+	{
+		n++;
+	}
+	return (n);
+}
+
+int	ft_strstr(char *str, char *to_find)
+{
+	int	i;
+	int	j;
+	int	loc;
+	int	size;
+	int zhopa;
 
 	i = 0;
 	j = 0;
-	while (dest[i])
+	loc = 0;
+	size = ft_strlen(to_find);
+	while (str[i])
 	{
+		if (str[i] == to_find[j])
+		{
+			loc = i;
+			while (str[i] && to_find[j] && zhopa != 1)
+			{
+				if (str[i] != to_find[j])
+					zhopa = 1;
+				i++;
+				j++;
+			}
+			zhopa = 0;
+			if (size == j)
+				return (loc);
+			loc = 0;
+			j = 0;
+		}
 		i++;
 	}
-	while (src[j] && j < nb)
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = '\0';
-	return (dest);
+	return (-1);
 }
