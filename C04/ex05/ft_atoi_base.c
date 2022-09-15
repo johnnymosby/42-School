@@ -22,31 +22,27 @@ int	ft_strlen(char *str)
 	return (n);
 }
 
-int	ft_distinct_no_sign(char *str)
+int	what_base(char *base)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (base[i])
 	{
+		if (!('a' <= base[i] && base[i] <= 'z' || 'A' <= base[i]
+				&& base[i] <= 'Z' || '0' <= base[i] && base[i] <= '9'))
+			return (0);
 		j = 1;
-		while (str[i + j] != '\0')
+		while (base[i + j] != '\0')
 		{
-			if (str[i] == str[i + j])
+			if (base[i] == base[i + j])
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '+' || str[i] == '-')
-			return (0);
-		i++;
-	}
-	return (1);
+	return (i);
 }
 
 int	convert_char(char *str, char to_find, int loc)
@@ -111,7 +107,7 @@ int	ft_atoi_base(char *str, char *base)
 			n *= -1;
 		i++;
 	}
-	if ((ft_strlen(base) > 1) && (ft_distinct_no_sign(base) == 1))
+	if ((ft_strlen(base) > 1) && (what_base(base) > 0))
 	{
 		nbr = convert_str(str + i, base);
 		return (nbr * n);

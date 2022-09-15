@@ -12,94 +12,87 @@
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+void	ft_putchar(char c)
 {
-	int	n;
-
-	n = 0;
-	while (*(str + n) != '\0')
-	{
-		n++;
-	}
-	return (n);
+	write(1, &c, 1);
 }
 
-int	ft_distinct(char *str)
+int	what_base(char *base)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (base[i])
 	{
+		if (!('a' <= base[i] && base[i] <= 'z' || 'A' <= base[i]
+				&& base[i] <= 'Z' || '0' <= base[i] && base[i] <= '9'))
+			return (0);
 		j = 1;
-		while (str[i + j] != '\0')
+		while (base[i + j] != '\0')
 		{
-			if (str[i] == str[i + j])
+			if (base[i] == base[i + j])
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (i);
 }
 
-int	ft_no_sign(char *str)
+void	ft_putnbr_base_small(int nbr, char *base)
 {
+	int	p[32];
 	int	i;
+	int	b;
 
-	i = 0;
-	while (str[i] != '\0')
+	b = what_base(base);
+	ft_putchar('-');
+	if ((2147483647 % b + 1) % b == 0)
 	{
-		if (str[i] == '+' || str[i] == '-')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	convert(int nbr, char *base, char *p)
-{
-	int	j;
-
-	j = 0;
-	if (nbr >= ft_strlen(base))
-	{
-		while (p[j] != '\0')
-			j++;
-		p[j] = base[nbr % ft_strlen(base)];
-		p[j + 1] = '\0';
-		convert(nbr / ft_strlen(base), base, p);
+		p[0] = 0;
+		nbr = 2147483647 / b + 1;
 	}
 	else
 	{
-		while (p[j] != '\0')
-			j++;
-		p[j] = base[nbr];
-		p[j + 1] = '\0';
+		p[0] = 48 % b;
+		nbr = 2147483647 / b;
 	}
+	i = 1;
+	while (nbr > 0)
+	{
+		p[i] = nbr % b;
+		nbr /= b;
+		i++;
+	}
+	while (i > 0)
+		ft_putchar(base[p[--i]]);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	char	p[16];
-	int		i;
+	int	p[32];
+	int	i;
 
-	p[0] = '\0';
-	if ((ft_strlen(base) > 1) && (ft_distinct(base) == 1)
-		&& (ft_no_sign(base) == 1))
+	i = 0;
+	if (what_base(base) != 0)
 	{
-		if (nbr < 0)
+		if (nbr == -2147483648)
+			ft_putnbr_base_small(nbr, base);
+		else if (nbr < 0)
 		{
-			write(1, "-", 1);
+			ft_putchar('-');
 			nbr *= -1;
 		}
-		convert(nbr, base, p);
-	}
-	i = 0;
-	while (ft_strlen(p) - i != -1)
-	{
-		write(1, p + ft_strlen(p) - i - 1, 1);
-		i++;
+		if (nbr == 0)
+			ft_putchar('0');
+		while (nbr > 0)
+		{
+			p[i] = nbr % what_base(base);
+			nbr /= what_base(base);
+			i++;
+		}
+		while (i > 0)
+			ft_putchar(base[p[--i]]);
 	}
 }
