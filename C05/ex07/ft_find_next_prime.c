@@ -14,30 +14,36 @@ int	ft_is_prime(int nb)
 {
 	int	i;
 
-	i = 2;
-	if (nb < 2)
+	if (nb == 2 || nb == 3)
+		return (1);
+	if (nb < 2 || nb % 2 == 0 || nb % 3 == 0)
 		return (0);
+	i = 5;
 	while (i * i <= nb && i <= 46340)
 	{
-		if (nb % i == 0)
-			return (i);
-		i++;
+		if (nb % i == 0 || nb % (i + 2) == 0)
+			return (0);
+		i += 6;
 	}
 	return (1);
 }
 
 int	ft_find_next_prime(int nb)
 {
-	int	i;
-
-	i = 2;
-	if (nb < 2)
+	if (nb <= 2)
 		return (2);
-	while (i <= 2147483647)
+	if (nb == 3)
+		return (3);
+	if (nb <= 5)
+		return (5);
+	nb = nb / 6 * 6 + (5 - nb % 6) % 6;
+	while (nb <= 46340)
 	{
-		if ((i >= nb) && (ft_is_prime(i) == 1))
-			return (i);
-		i++;
+		if (ft_is_prime(nb) == 1)
+			return (nb);
+		if (ft_is_prime(nb + 2) == 1)
+			return (nb + 2);
+		nb += 6;
 	}
-	return (i);
+	return (nb);
 }

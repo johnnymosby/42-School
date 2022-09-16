@@ -14,14 +14,16 @@ int	ft_is_prime(int nb)
 {
 	int	i;
 
-	i = 2;
-	if (nb < 2)
+	if (nb == 2 || nb == 3)
+		return (1);
+	if (nb < 2 || nb % 2 == 0 || nb % 3 == 0)
 		return (0);
+	i = 5;
 	while (i * i <= nb && i <= 46340)
 	{
-		if (nb % i == 0)
-			return (i);
-		i++;
+		if (nb % i == 0 || nb % (i + 2) == 0)
+			return (0);
+		i += 6;
 	}
 	return (1);
 }
