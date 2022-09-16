@@ -30,8 +30,8 @@ int	what_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (!('a' <= base[i] && base[i] <= 'z' || 'A' <= base[i]
-				&& base[i] <= 'Z' || '0' <= base[i] && base[i] <= '9'))
+		if (!(('a' <= base[i] && base[i] <= 'z') || ('A' <= base[i]
+					&& base[i] <= 'Z') || ('0' <= base[i] && base[i] <= '9')))
 			return (0);
 		j = 1;
 		while (base[i + j] != '\0')

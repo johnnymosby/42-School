@@ -10,20 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_is_prime(int nb)
+{
+	int	i;
+
+	i = 2;
+	if (nb < 2)
+		return (0);
+	while (i * i <= nb && i <= 46340)
+	{
+		if (nb % i == 0)
+			return (i);
+		i++;
+	}
+	return (1);
+}
+
 int	ft_find_next_prime(int nb)
 {
 	int	i;
-	int	j;
 
 	i = 2;
-	j = 0;
 	if (nb < 2)
 		return (2);
-	while (i * i <= nb)
+	while (i <= 2147483647)
 	{
-		if (nb % i != 0)
-			j = nb;
+		if ((i >= nb) && (ft_is_prime(i) == 1))
+			return (i);
 		i++;
 	}
-	return (j);
+	return (i);
 }
