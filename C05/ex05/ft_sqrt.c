@@ -51,7 +51,7 @@ int	ft_sqrt(int nb)
 	i = ft_iterative_power(10, (len - 1) / 2);
 	if (len >= 3)
 	{
-		j = ft_iterative_power(10, len - 1);
+		j = ft_iterative_power(10, len - 2);
 		if (nb / j < 5)
 			i = i * 2 + i / 5;
 	}

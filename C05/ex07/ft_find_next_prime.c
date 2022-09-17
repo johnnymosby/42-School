@@ -36,8 +36,15 @@ int	ft_find_next_prime(int nb)
 		return (3);
 	if (nb <= 5)
 		return (5);
-	nb = nb / 6 * 6 + (5 - nb % 6) % 6;
-	while (nb <= 46340)
+	if (ft_is_prime(nb) == 1)
+		return (nb);
+	if (nb / 6 * 6 + 1 >= nb)
+	{
+		if (ft_is_prime(nb / 6 * 6 + 1) == 1)
+			return (nb / 6 * 6 + 1);
+	}
+	nb = nb / 6 * 6 + 5;
+	while (nb <= 2147483647)
 	{
 		if (ft_is_prime(nb) == 1)
 			return (nb);
