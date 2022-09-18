@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 20:57:16 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/17 20:57:18 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/18 15:36:54 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/18 15:36:56 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
+#ifndef FT_STRS_TO_TAB
+# define FT_STRS_TO_TAB
 
-typedef struct s_point	t_point;
-struct s_point
+typedef struct s_stock_str	t_stock_str;
+struct s_stock_str
 {
-	int	x;
-	int	y;
+	int		size;
+	char	*str;
+	char	*copy;
 };
 
 #endif
