@@ -52,15 +52,16 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	{
 		tab[i].size = ft_strlen(av[i]);
 		tab[i].str = av[i];
-		t_stock_str.copy = (char *)malloc(sizeof(char) * (ac + 1));
-		if (t_stock_str.copy == (void *) 0)
+		tab[i].copy = (char *)malloc(sizeof(char) * (tab[i].size + 1));
+		if (tab[i].copy == (void *) 0)
 			return ((void *) 0);
 		j = 0;
 		while (j < tab[i].size)
 		{
 			tab[i].copy[j] = av[i][j];
+			j++;
 		}
-		av[i][j] = '\0';
+		tab[i].copy[j] = '\0';
 		i++;
 	}
 	tab[i].str = 0;
