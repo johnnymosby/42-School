@@ -10,4 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(value) (value < 0 ? (-1) * value: value)
+#ifndef FT_ABS_H
+# define FT_ABS_H
+# define ABS(number) ((number < 0) ? -number : number)
+#endif
