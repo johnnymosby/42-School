@@ -31,4 +31,3 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	dest[i + j] = '\0';
 	return (i + j + 1);
 }
-cNcPrHfwfSoUMsxjEFSxwiAWNaBjXxEvxJEuAgraWzFRZrzJgQPWxnV

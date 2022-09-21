@@ -24,7 +24,7 @@ int	ft_strlen(char *str)
 	return (n);
 }
 
-void	ft_strcat(char *dest, char *src)
+void	ft_strcat(char *dest, char *src, char yes)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -40,7 +40,8 @@ void	ft_strcat(char *dest, char *src)
 		dest[i + j] = src[j];
 		j++;
 	}
-	dest[i + j] = '\0';
+	if (yes == 'y')
+		dest[i + j] = '\0';
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -59,9 +60,9 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = -1;
 	while (++i < size)
 	{
-		ft_strcat(ret, strs[i]);
+		ft_strcat(ret, strs[i], 'y');
 		if (i + 1 < size)
-			ft_strcat(ret, sep);
+			ft_strcat(ret, sep, 'n');
 	}
 	return (ret);
 }
