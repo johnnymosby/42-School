@@ -24,7 +24,7 @@ int	ft_strlen(char *str)
 	return (n);
 }
 
-void	ft_strcat(char *dest, char *src, char yes)
+void	ft_strcat(char *dest, char *src)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -40,8 +40,6 @@ void	ft_strcat(char *dest, char *src, char yes)
 		dest[i + j] = src[j];
 		j++;
 	}
-	if (yes == 'y')
-		dest[i + j] = '\0';
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -50,19 +48,22 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	int		length;
 
+	if (size == 0)
+		return ((char *) malloc(sizeof(char)));
 	i = -1;
 	length = (size - 1) * ft_strlen(sep);
 	while (++i < size)
 		length += ft_strlen(strs[i]);
 	ret = malloc(sizeof(char) * (length + 1));
 	if (ret == (void *) 0)
-		return ((void *) 0);
+		return (0);
 	i = -1;
 	while (++i < size)
 	{
-		ft_strcat(ret, strs[i], 'y');
+		ft_strcat(ret, strs[i]);
 		if (i + 1 < size)
-			ft_strcat(ret, sep, 'n');
+			ft_strcat(ret, sep);
 	}
+	ret[length] = '\0';
 	return (ret);
 }

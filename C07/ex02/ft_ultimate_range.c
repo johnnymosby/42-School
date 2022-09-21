@@ -15,21 +15,26 @@
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
+	int	*t;
 
 	if (min >= max)
 	{
 		*range = 0;
 		return (0);
 	}
-	*range = malloc(sizeof(int) * (max - min));
-	if (*range == (void *) 0)
+	t = malloc(sizeof(int) * (max - min));
+	if (t == (void *) 0)
+	{
+		*range = 0;
 		return (-1);
+	}
 	i = 0;
 	while (min < max)
 	{
-		*(*range + i) = min;
+		t[i] = min;
 		min++;
 		i++;
 	}
+	*range = t;
 	return (i);
 }
