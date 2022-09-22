@@ -1,5 +1,5 @@
-CC=gcc
-CFLAGS= -Wall -Wextra -Werror -c
+CC=cc
+CFLAGS= -Wall -Wextra -Werror
 NAME=libft.a
 SRS_DIR=:./srcs/
 SRS_FILES=ft_putchar.c \
@@ -19,14 +19,15 @@ ${NAME}: $(OBS)
 	$(ARRC) $(NAME) $(OBS)
 	$(RANLIB) $(NAME)
 
-$(SRS_DIR)%.o: $(SRS_DIR)%.c
-	$(CC) $(CFLAGS)
-
+$(SRS_DIR)%.o: $(SRS_DIR)%.c:
+	$(CC) $(CFLAGS) -c $< -o $@ $(HEADER)
 
 all: obj $(NAME)
 obj: $(SRCS)
 
-clean: $(RM) $(OBS_FILES)
-fclean: clean rm -f $(NAME)
+clean:
+	$(RM) $(OBS_FILES)
+fclean:
+	clean $(RM) $(NAME)
 re: fclean all
 
