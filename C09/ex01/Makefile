@@ -1,33 +1,23 @@
-CC=cc
-CFLAGS= -Wall -Wextra -Werror
 NAME=libft.a
-SRS_DIR=:./srcs/
-SRS_FILES=ft_putchar.c \
+DIR=:./srcs/
+SFILES=ft_putchar.c \
 				ft_swap.c \
 				ft_putstr.c \
 				ft_strlen.c \
 				ft_strcmp.c
-OBS_FILES=$(SRS_FILES:.c=.o)
-SRCS= $(addprefix $(SRS_DIR), $(SRS_FILES))
-OBS= $(addprefix $(SRS_DIR), $(OBS_FILES))
+OFILES=$(SFILES:.c=.o)
+SRCS= $(addprefix $(DIR), $(SRS_FILES))
+OBS= $(addprefix $(DIR), $(OBS_FILES))
 HEADER=-I includes/
-ARRC= ar rc
-RANLIB= ranlib
-RM= rm -f
 
-${NAME}: $(OBS)
-	$(ARRC) $(NAME) $(OBS)
-	$(RANLIB) $(NAME)
-
-$(SRS_DIR)%.o: $(SRS_DIR)%.c:
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEADER)
-
-all: obj $(NAME)
-obj: $(SRCS)
-
+all:
+	cc -Wall -Wextra -Werror -c $(SRCS) $(HEADER)
+	mv -t $(DIR) $(OFILES)
+	ar rc $(NAME) $(OBS)
+$(NAME): all
 clean:
-	$(RM) $(OBS_FILES)
-fclean:
-	clean $(RM) $(NAME)
+		rm -f $(OBS)
+fclean: clean
+		rm -f $(NAME)
 re: fclean all
 
