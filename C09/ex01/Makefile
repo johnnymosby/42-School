@@ -1,13 +1,13 @@
 NAME=libft.a
-DIR=:./srcs/
+DIR=srcs/
 SFILES=ft_putchar.c \
 				ft_swap.c \
 				ft_putstr.c \
 				ft_strlen.c \
 				ft_strcmp.c
 OFILES=$(SFILES:.c=.o)
-SRCS= $(addprefix $(DIR), $(SRS_FILES))
-OBS= $(addprefix $(DIR), $(OBS_FILES))
+SRCS= $(addprefix $(DIR), $(SFILES))
+OBS= $(addprefix $(DIR), $(OFILES))
 HEADER=-I includes/
 
 all:
