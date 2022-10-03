@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 12:51:41 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/08 13:36:13 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/03 17:40:27 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/03 17:40:28 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(char *str);
-
-int	ft_isalpha(char *str)
+int	ft_isprint(int c)
 {
-	int		counter;
-	char	value;
-
-	counter = 0;
-	while (str[counter])
-	{
-		value = str[counter];
-		if (!((value >= 'a' && value <= 'z') || (value >= 'A' && value <= 'Z')))
-		{
-			return (0);
-		}
-		counter++;
-	}
+	if (!((c > 31) && (c < 127)))
+		return (0);
 	return (1);
 }

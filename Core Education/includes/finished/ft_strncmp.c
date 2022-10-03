@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 12:07:02 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/14 12:07:14 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/03 17:55:11 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/03 17:55:12 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t size)
 {
-	int	i;
-	int	n;
-	int	number;
+	unsigned int	i;
 
 	i = 0;
-	n = 1;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n'
-		|| str[i] == '\r' || str[i] == '\t' || str[i] == '\v')
+	while ((s1[i] || s2[i]) && (i < size))
 	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	while (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			n *= -1;
-		i++;
-	}
-	while ('0' <= str[i] && str[i] <= '9')
-	{
-		number = number * 10 + (str[i] - '0');
-		i++;
-	}
-	return (n * number);
+	return (0);
 }

@@ -1,20 +1,3 @@
 # ninja log v5
-4	153	1662987433435393274	CMakeFiles/42_School.dir/Rush01/ft_putstr.c.o	8cc0068e4676cd8a
-3	112	1662987433439393250	CMakeFiles/42_School.dir/Rush01/conversion.c.o	15250f6e47fd8165
-3	153	1663019583280344700	build.ninja	242d61c482b71bd2
-118	168	1662987433511392807	CMakeFiles/42_School.dir/Rush01/update_row.c.o	5aec47e969f44a0e
-3	120	1662987433435393274	CMakeFiles/42_School.dir/Rush01/check_matrix.c.o	6d2398d8f478c8c6
-112	164	1662987433507392831	CMakeFiles/42_School.dir/Rush01/print_matrix.c.o	d8c70eb5e6d863e9
-3	114	1662987433435393274	CMakeFiles/42_School.dir/Rush01/check_array.c.o	d0b98c40ae6aecb0
-109	161	1662987433495392905	CMakeFiles/42_School.dir/Rush01/left_to_right.c.o	d63307c6a2d3ae7d
-106	159	1662987433487392954	CMakeFiles/42_School.dir/Rush01/up_to_down.c.o	117cf2857f421624
-4	126	1662987433439393250	CMakeFiles/42_School.dir/Rush01/ft_putchar.c.o	28428fb6bdd2263
-3	118	1662987433435393274	CMakeFiles/42_School.dir/Rush01/check_columns.c.o	fe26b3ebabe98c3a
-4	123	1662987433435393274	CMakeFiles/42_School.dir/Rush01/down_to_up.c.o	e8f2e1ddadd1d6ac
-4	140	1662987433435393274	CMakeFiles/42_School.dir/Rush01/ft_check_input.c.o	f058e95947d44a66
-4	105	1662987433435393274	CMakeFiles/42_School.dir/Rush01/ft_rush.c.o	893e31004f2a874a
+3	153	1664809322421069684	build.ninja	242d61c482b71bd2
 169	220	1662987433571392437	42_School	ba40ff8a1d6b425d
-4	156	1662987433435393274	CMakeFiles/42_School.dir/Rush01/ft_strlen.c.o	40767754c2d96498
-4	147	1662987433435393274	CMakeFiles/42_School.dir/Rush01/ft_putnbr.c.o	4ca4d63980a92918
-3	108	1662987433435393274	CMakeFiles/42_School.dir/Rush01/main.c.o	e1ce96e7e75a8bb
-115	166	1662987433507392831	CMakeFiles/42_School.dir/Rush01/right_to_left.c.o	991e2bd3f078f72d

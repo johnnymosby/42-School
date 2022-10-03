@@ -126,103 +126,103 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/main.c",
+			"path" : "C Piscine/Rush01/main.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/check_array.c",
+			"path" : "C Piscine/Rush01/check_array.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/check_columns.c",
+			"path" : "C Piscine/Rush01/check_columns.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/check_matrix.c",
+			"path" : "C Piscine/Rush01/check_matrix.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/conversion.c",
+			"path" : "C Piscine/Rush01/conversion.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/down_to_up.c",
+			"path" : "C Piscine/Rush01/down_to_up.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/ft_check_input.c",
+			"path" : "C Piscine/Rush01/ft_check_input.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/ft_putchar.c",
+			"path" : "C Piscine/Rush01/ft_putchar.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/ft_putnbr.c",
+			"path" : "C Piscine/Rush01/ft_putnbr.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/ft_putstr.c",
+			"path" : "C Piscine/Rush01/ft_putstr.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/ft_rush.c",
+			"path" : "C Piscine/Rush01/ft_rush.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/ft_strlen.c",
+			"path" : "C Piscine/Rush01/ft_strlen.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/left_to_right.c",
+			"path" : "C Piscine/Rush01/left_to_right.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/print_matrix.c",
+			"path" : "C Piscine/Rush01/print_matrix.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/right_to_left.c",
+			"path" : "C Piscine/Rush01/right_to_left.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/up_to_down.c",
+			"path" : "C Piscine/Rush01/up_to_down.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Rush01/update_row.c",
+			"path" : "C Piscine/Rush01/update_row.c",
 			"sourceGroupIndex" : 0
 		}
 	],

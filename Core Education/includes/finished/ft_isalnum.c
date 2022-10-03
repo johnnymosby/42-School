@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 12:51:41 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/09/08 13:36:13 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/03 17:31:38 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/03 17:31:42 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_isalnum(int c)
 {
-	int		counter;
-	char	value;
-
-	counter = 0;
-	while (str[counter])
-	{
-		value = str[counter];
-		if (!((value >= 'a' && value <= 'z') || (value >= 'A' && value <= 'Z')))
-		{
-			return (0);
-		}
-		counter++;
-	}
-	return (1);
+	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }
