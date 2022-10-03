@@ -4,23 +4,23 @@ project(42_School C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(42_School
-		Rush01/main.c
-		Rush01/check_array.c
-		Rush01/check_columns.c
-		Rush01/check_matrix.c
-		Rush01/conversion.c
-		Rush01/down_to_up.c
-		Rush01/ft_check_input.c
-		Rush01/ft_putchar.c
-		Rush01/ft_putnbr.c
-		Rush01/ft_putstr.c
-		Rush01/ft_rush.c
-		Rush01/ft_strlen.c
-		Rush01/left_to_right.c
-		Rush01/print_matrix.c
-		Rush01/right_to_left.c
-		Rush01/up_to_down.c
-		Rush01/update_row.c)
+		"C Piscine/Rush01/main.c"
+		"C Piscine/Rush01/check_array.c"
+		"C Piscine/Rush01/check_columns.c"
+		"C Piscine/Rush01/check_matrix.c"
+		"C Piscine/Rush01/conversion.c"
+		"C Piscine/Rush01/down_to_up.c"
+		"C Piscine/Rush01/ft_check_input.c"
+		"C Piscine/Rush01/ft_putchar.c"
+		"C Piscine/Rush01/ft_putnbr.c"
+		"C Piscine/Rush01/ft_putstr.c"
+		"C Piscine/Rush01/ft_rush.c"
+		"C Piscine/Rush01/ft_strlen.c"
+		"C Piscine/Rush01/left_to_right.c"
+		"C Piscine/Rush01/print_matrix.c"
+		"C Piscine/Rush01/right_to_left.c"
+		"C Piscine/Rush01/up_to_down.c"
+		"C Piscine/Rush01/update_row.c")
 
 #[[add_executable(42_School
        C00/main.c
