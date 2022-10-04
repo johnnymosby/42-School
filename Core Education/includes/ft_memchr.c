@@ -10,4 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void *memchr(const void *s, int c, size_t n)
+{
+	char *ss;
 
+	ss = (char *)s;
+	while (n > 0)
+	{
+		if (*ss == c)
+			return (ss);
+		n--;
+	}
+	return (0);
+}
