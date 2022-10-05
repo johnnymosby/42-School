@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:32:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/04 13:32:13 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/04 12:27:43 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/04 12:27:44 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *string, int c)
-{
-	char	*a;
-	char	*z;
+#include "libft.h"
 
-	a = (char *) string;
-	z = (char *) string;
-	while (*z)
-		z++;
-	while (a != z)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	d;
+	size_t	s;
+
+	d = 0;
+	while (dst[d] != '\0' && d < size)
+		d++;
+	i = 0;
+	while (src[i] != '\0' && d + i + 1 < size)
 	{
-		if (c == *z)
-			return (z);
-		z--;
+		dst[i + d] = src[i];
+		i++;
 	}
-	return (0);
+	if (d != size)
+		dst[i + d] = '\0';
+	s = 0;
+	while (src[s] != '\0')
+		s++;
+	return (d + s);
 }
