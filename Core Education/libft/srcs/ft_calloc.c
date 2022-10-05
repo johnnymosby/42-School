@@ -10,4 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void *calloc(size_t count, size_t size)
+{
+	unsigned char	*p;
+	size_t			i;
+
+	i = 0;
+	p = (unsigned char*)malloc(count * size);
+	while (i < size)
+	{
+		p[i] = 0;
+		i++;
+	}
+	return (p);
+}
