@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/04 13:42:38 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/04 13:42:56 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/04 13:42:57 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putnbr_fd(int n, int fd)
-{
+#include "libft.h"
 
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	counter;
+
+	counter = 0;
+	while (*(s + counter) != '\0')
+	{
+		write(fd, (s + counter), 1);
+		counter++;
+	}
 }
