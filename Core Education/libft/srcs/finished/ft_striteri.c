@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:43:54 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/04 13:43:55 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/04 13:43:34 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/04 13:43:36 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
+	unsigned int	i;
 
+	i = 0;
+	while (*s)
+	{
+		f(i, s);
+		s++;
+		i++;
+	}
 }
