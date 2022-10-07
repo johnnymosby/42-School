@@ -15,6 +15,12 @@
 # include "stdlib.h"
 # include "unistd.h"
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
 int		ft_atoi(const char *string);
 void	ft_bzero(void *block, size_t size);
 void	*ft_calloc(size_t count, size_t eltsize);
