@@ -84,16 +84,17 @@ char	**ft_split(char const *s, char c)
 	char	**ret;
 	char	cc[2];
 
+	if (!s)
+		return (0);
 	cc[0] = c;
 	cc[1] = '\0';
 	count = 0;
-	i = 0;
-	while (s[i])
+	i = -1;
+	while (s[++i])
 	{
 		if ((ft_find(s[i], cc) == 0 && ft_find(s[i + 1], cc) == 1)
 			|| (ft_find(s[i], cc) == 0 && s[i + 1] == '\0'))
 			count++;
-		i++;
 	}
 	ret = malloc(sizeof(char *) * (count + 1));
 	if (ret == 0)

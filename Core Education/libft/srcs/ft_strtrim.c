@@ -34,6 +34,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	len = 0;
+	if (!s1 || !set)
+		return (0);
 	while (ft_find(s1[i], set) == 1)
 		i++;
 	while (s1[i + len])
