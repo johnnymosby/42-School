@@ -15,29 +15,21 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*ret;
+	t_list	*temp;
 
 	if (!f || !lst || !del)
 		return (0);
-	ret = malloc(sizeof(t_list));
-	if (!ret)
-		return (0);
-	return (0);
-}
-
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	char			*ret;
-	unsigned int	i;
-
-	ret = malloc(ft_strlen(s) + 1);
-	if (!ret)
-		return (0);
-	i = 0;
-	while (s[i])
+	ret = 0;
+	while (lst)
 	{
-		ret[i] = f(i, s[i]);
-		i++;
+		temp = ft_lstnew((*f)(lst->content));
+		if (!temp)
+		{
+			ft_lstclear(&ret, del);
+			return (0);
+		}
+		ft_lstadd_back(&ret, temp);
+		lst = lst->next;
 	}
-	ret[i] = '\0';
 	return (ret);
 }

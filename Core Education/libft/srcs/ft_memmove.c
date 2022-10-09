@@ -18,6 +18,8 @@ void	*ft_memmove(void *to, const void *from, size_t size)
 	char		*t;
 	char		*f;
 
+	if (!to || !from)
+		return (0);
 	t = (char *)to;
 	f = (char *)from;
 	i = 0;

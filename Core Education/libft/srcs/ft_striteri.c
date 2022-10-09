@@ -9,11 +9,14 @@
 /*   Updated: 2022/10/04 13:43:36 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
 	i = 0;
+	if (!s || !f)
+		return ;
 	while (*s)
 	{
 		f(i, s);
