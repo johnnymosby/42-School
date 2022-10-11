@@ -10,39 +10,60 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-static void	ft_putchar(char c)
+static int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (1);
+}
+
+static int	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, str + i, 1);
+		i++;
+	}
+	return (i);
 }
 
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
 	int		i;
+	int 	c;
 
 	if (!fmt)
 		return (0);
 	va_start(ap, fmt);
 	i = 0;
+	c = 0;
 	while (fmt[i])
 	{
 		if (fmt[i] == '%')
 		{
 			i++;
 			if (fmt[i] == 'c')
-			{
-				ft_putchar(va_arg(ap, int));
-			}
+				c += ft_putchar(va_arg(ap, int));
+			else if (fmt[i] == 's')
+				c += ft_putstr(va_arg(ap, char *));
 		}
 		else
-			ft_putchar(fmt[i]);
+			c += ft_putchar(fmt[i]);
 		i++;
 	}
 	va_end(ap);
-	return (i);
+	return (c);
 }
+
+/*int main(void)
+{
+	ft_printf("%c", '2');
+}*/
 
 /*
 int	ft_printf(const char *fmt, ...)

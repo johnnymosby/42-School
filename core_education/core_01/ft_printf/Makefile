@@ -5,7 +5,7 @@ OFILES=$(SFILES:.c=.o)
 all:	$(NAME)
 
 $(NAME):
-		cc -Wall -Wextra -Werror -c $(SFILES) libftprintf.h
+		cc -Wall -Wextra -Werror -c $(SFILES) ft_printf.h
 		ar rc $(NAME) $(OFILES)
 clean:
 		rm -f $(OFILES)
