@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.2"
+					"fragment" : "-g"
 				},
 				{
 					"fragment" : "-std=gnu11"
@@ -126,103 +126,103 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/main.c",
+			"path" : "c_piscine/Rush01/main.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/check_array.c",
+			"path" : "c_piscine/Rush01/check_array.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/check_columns.c",
+			"path" : "c_piscine/Rush01/check_columns.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/check_matrix.c",
+			"path" : "c_piscine/Rush01/check_matrix.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/conversion.c",
+			"path" : "c_piscine/Rush01/conversion.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/down_to_up.c",
+			"path" : "c_piscine/Rush01/down_to_up.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/ft_check_input.c",
+			"path" : "c_piscine/Rush01/ft_check_input.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/ft_putchar.c",
+			"path" : "c_piscine/Rush01/ft_putchar.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/ft_putnbr.c",
+			"path" : "c_piscine/Rush01/ft_putnbr.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/ft_putstr.c",
+			"path" : "c_piscine/Rush01/ft_putstr.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/ft_rush.c",
+			"path" : "c_piscine/Rush01/ft_rush.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/ft_strlen.c",
+			"path" : "c_piscine/Rush01/ft_strlen.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/left_to_right.c",
+			"path" : "c_piscine/Rush01/left_to_right.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/print_matrix.c",
+			"path" : "c_piscine/Rush01/print_matrix.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/right_to_left.c",
+			"path" : "c_piscine/Rush01/right_to_left.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/up_to_down.c",
+			"path" : "c_piscine/Rush01/up_to_down.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "C Piscine/Rush01/update_row.c",
+			"path" : "c_piscine/Rush01/update_row.c",
 			"sourceGroupIndex" : 0
 		}
 	],
