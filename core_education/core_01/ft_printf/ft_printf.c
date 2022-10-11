@@ -31,6 +31,32 @@ static int	ft_putstr(char *str)
 	return (i);
 }
 
+static int	ft_putnbr(int nb)
+{
+	static int i;
+
+
+	i = 0;
+	if (nb == -2147483648)
+		return(ft_putstr("-2147483648"));
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		nb *= -1;
+	}
+	if (nb != -2147483648)
+	{
+		if (nb >= 10)
+		{
+			i += ft_putnbr(nb / 10);
+			i += ft_putnbr(nb % 10);
+		}
+		else
+			i += ft_putchar(nb + '0');
+	}
+	return (i);
+}
+
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
@@ -51,6 +77,8 @@ int	ft_printf(const char *fmt, ...)
 				c += ft_putchar(va_arg(ap, int));
 			else if (fmt[i] == 's')
 				c += ft_putstr(va_arg(ap, char *));
+			else if (fmt[i] == 'i')
+				c += ft_putnbr(va_arg(ap, int));
 		}
 		else
 			c += ft_putchar(fmt[i]);
