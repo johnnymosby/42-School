@@ -33,23 +33,22 @@ static int	ft_putstr(char *str)
 
 static int	ft_putnbr(int nb)
 {
-	static int i;
+	static int	i;
 
-
-	i = 0;
 	if (nb == -2147483648)
-		return(ft_putstr("-2147483648"));
+		return (ft_putstr("-2147483648"));
 	else if (nb < 0)
 	{
 		ft_putchar('-');
+		i += 1;
 		nb *= -1;
 	}
 	if (nb != -2147483648)
 	{
 		if (nb >= 10)
 		{
-			i += ft_putnbr(nb / 10);
-			i += ft_putnbr(nb % 10);
+			ft_putnbr(nb / 10);
+			ft_putnbr(nb % 10);
 		}
 		else
 			i += ft_putchar(nb + '0');
@@ -57,11 +56,26 @@ static int	ft_putnbr(int nb)
 	return (i);
 }
 
+static int	ft_putu(unsigned int nb)
+{
+	static int	i;
+
+	if (nb >= 10)
+	{
+		ft_putu(nb / 10);
+		ft_putu(nb % 10);
+	}
+	else
+		i += ft_putchar(nb + '0');
+	return (i);
+}
+
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
 	int		i;
-	int 	c;
+	int		c;
+	char	*s;
 
 	if (!fmt)
 		return (0);
@@ -76,9 +90,21 @@ int	ft_printf(const char *fmt, ...)
 			if (fmt[i] == 'c')
 				c += ft_putchar(va_arg(ap, int));
 			else if (fmt[i] == 's')
-				c += ft_putstr(va_arg(ap, char *));
-			else if (fmt[i] == 'i')
+			{
+				s = va_arg(ap, char *);
+				if (!s)
+				{
+					ft_putstr("error");
+					return (-1);
+				}
+				c += ft_putstr(s);
+			}
+			else if (fmt[i] == 'i' || fmt[i] == 'd')
 				c += ft_putnbr(va_arg(ap, int));
+			else if (fmt[i] == 'u')
+				c += ft_putu(va_arg(ap, unsigned int));
+			else if (fmt[i] == '%')
+				c += ft_putchar('%');
 		}
 		else
 			c += ft_putchar(fmt[i]);
