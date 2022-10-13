@@ -25,7 +25,7 @@ int	ft_distributor(va_list ap, char val)
 	else if (val == '%')
 		return (ft_putchar('%'));
 	else if (val == 'p')
-		return (ft_printf_p(ap, "0123456789abcdef"));
+		return (ft_printf_p(ap));
 /*	else if (val == 'X')
 		return (ft_putnbr_base(ap, "0123456789ABCDEF"));*/
 	else

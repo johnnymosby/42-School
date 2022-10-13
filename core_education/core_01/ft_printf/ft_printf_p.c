@@ -12,14 +12,16 @@
 
 #include "ft_printf.h"
 
-int	ft_printf_p(va_list ap, char *base)
+int	ft_printf_p(va_list ap)
 {
 	unsigned long int		nbr;
+	char					*base;
 	int						p[32];
 	int						i;
 	int						j;
 
 	i = 0;
+	base = "0123456789abcdef";
 	nbr = va_arg(ap, unsigned long int);
 	if (nbr == 0)
 		return (write(1, "(nil)", 5));
