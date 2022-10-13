@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include "stdio.h"
 static int	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -34,38 +34,58 @@ static int	ft_putstr(char *str)
 static int	ft_puti(va_list ap)
 {
 	int		i;
+	int		j;
 	int		nb;
-	char	*snb;
+	char	snb[16];
 
 	if (ap == NULL)
 		return (write(1, "(nil)", 5));
 	nb = va_arg(ap, int);
 	if (nb == -2147483648)
 		return (write(1, "-2147483648", 11));
-	snb = ft_itoa(nb);
-	i = 0;
-	while (snb[i])
-		i += ft_putchar(snb[i]);
-	free(snb);
-	return (i);
+	i = 1;
+	j = nb < 0;
+	if (nb < 0)
+		nb *= write(1, "-", 1) * -1;
+	while (nb > 9)
+	{
+		snb[i] = '0' + nb % 10;
+		nb /= 10;
+		i++;
+	}
+	snb[i] = '0' + nb;
+	j += i;
+	i++;
+	while (--i > 0)
+		ft_putchar(snb[i]);
+	return (j);
 }
 
-static int	ft_putu(va_list ap)git
+static int	ft_putu(va_list ap)
 {
 	int				i;
-	unsigned int	temp;
+	int				j;
+	unsigned int	nb;
+	char			*snb;
 
+	nb = va_arg(ap, unsigned int);
+	snb = malloc(10);
 	i = 0;
 	while (nb > 9)
 	{
-		temp = nb;
-		while (temp > 9)
-			temp /= 10;
-		i += ft_putchar(temp + '0');
-		nb %= 10;
+		snb[i] = '0' + nb % 10;
+		nb /= 10;
+		i++;
 	}
-	i += ft_putchar(nb + '0');
-	return (i);
+	snb[i] = '0' + nb;
+	j = i;
+	while (i > -1)
+	{
+		ft_putchar(snb[i]);
+		i--;
+	}
+	free(snb);
+	return (j + 1);
 }
 
 int	ft_distributor(va_list ap, char val)
@@ -78,16 +98,13 @@ int	ft_distributor(va_list ap, char val)
 	{
 		s = va_arg(ap, char *);
 		if (!s)
-		{
-			ft_putstr("error");
-			return (-1);
-		}
+			return (write(1, "(null)", 6));
 		return (ft_putstr(s));
 	}
 	else if (val == 'i' || val == 'd')
 		return (ft_puti(ap));
 	else if (val == 'u')
-		return (ft_putu(va_arg(ap, unsigned int)));
+		return (ft_putu(ap));
 	else if (val == '%')
 		return (ft_putchar('%'));
 	else
@@ -122,7 +139,7 @@ int	ft_printf(const char *fmt, ...)
 
 /*int main(void)
 {
-	ft_printf("%c", '2');
+	ft_printf("%i\n", 2147483647);
 }*/
 
 /*
