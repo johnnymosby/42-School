@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 15:33:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/11 15:33:47 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/04 13:41:10 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/04 13:41:12 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	*ft_calloc(int count, int size)
+{
+	void	*t;
+	int		z;
 
-int		ft_printf(const char *fmt, ...);
-
-void	ft_bzero(void *block, int size);
-void	*ft_calloc(int count, int size);
-char	*ft_itoa(int n);
-
-#endif
+	z = count * size;
+	if (count != 0 && z / count != size)
+	{
+		return (0);
+	}
+	t = malloc(count * size);
+	if (!t)
+		return (0);
+	ft_bzero(t, count * size);
+	return (t);
+}

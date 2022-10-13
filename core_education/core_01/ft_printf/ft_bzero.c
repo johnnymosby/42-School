@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 15:33:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/11 15:33:47 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/04 13:41:03 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/04 13:41:04 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+void	ft_bzero(void *block, int size)
+{
+	unsigned char	*b;
 
-int		ft_printf(const char *fmt, ...);
-
-void	ft_bzero(void *block, int size);
-void	*ft_calloc(int count, int size);
-char	*ft_itoa(int n);
-
-#endif
+	b = block;
+	while (size > 0)
+	{
+		*b = 0;
+		b++;
+		size--;
+	}
+}
