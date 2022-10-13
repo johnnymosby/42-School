@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "stdio.h"
+#include <limits.h>
 
 int	ft_distributor(va_list ap, char val)
 {
@@ -26,8 +28,8 @@ int	ft_distributor(va_list ap, char val)
 		return (ft_putchar('%'));
 	else if (val == 'p')
 		return (ft_printf_p(ap));
-/*	else if (val == 'X')
-		return (ft_putnbr_base(ap, "0123456789ABCDEF"));*/
+	else if (val == 'x')
+		return (ft_printf_x(ap));
 	else
 		return (0);
 }
@@ -58,11 +60,10 @@ int	ft_printf(const char *fmt, ...)
 	return (c);
 }
 
-/*int main(void)
+/*
+int	main(void)
 {
-	int	*p;
-	int a = 1;
-	p = &a;
-	ft_printf(" %p %p ", 0, 0);
-	printf("%p\n", p);
-}*/
+	ft_printf("%x\n", LONG_MIN);
+	printf("%i\n", printf("%x\n", ULONG_MAX));
+}
+*/
