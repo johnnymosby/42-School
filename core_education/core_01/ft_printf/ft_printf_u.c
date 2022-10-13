@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 13:41:10 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/04 13:41:12 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/13 18:34:21 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/13 18:34:23 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	*ft_calloc(int count, int size)
+int	ft_printf_u(va_list ap)
 {
-	void	*t;
-	int		z;
+	int				i;
+	int				j;
+	unsigned int	nb;
+	char			*snb;
 
-	z = count * size;
-	if (count != 0 && z / count != size)
+	nb = va_arg(ap, unsigned int);
+	snb = malloc(10);
+	i = 0;
+	while (nb > 9)
 	{
-		return (0);
+		snb[i] = '0' + nb % 10;
+		nb /= 10;
+		i++;
 	}
-	t = malloc(count * size);
-	if (!t)
-		return (0);
-	ft_bzero(t, count * size);
-	return (t);
+	snb[i] = '0' + nb;
+	j = i;
+	while (i > -1)
+	{
+		ft_putchar(snb[i]);
+		i--;
+	}
+	free(snb);
+	return (j + 1);
 }

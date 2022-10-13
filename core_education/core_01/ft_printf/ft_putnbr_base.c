@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 15:33:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/11 15:33:47 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/14 13:03:14 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/14 13:03:19 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_printf_p(va_list ap, char *base)
+{
+	unsigned long int		nbr;
+	int						p[32];
+	int						i;
+	int						j;
 
-int		ft_putchar(char c);
-int		ft_putstr(char *str);
-
-int		ft_printf(const char *fmt, ...);
-
-int		ft_printf_i(va_list ap);
-int		ft_printf_p(va_list ap, char *base);
-int		ft_printf_s(va_list ap);
-int		ft_printf_u(va_list ap);
-
-#endif
+	i = 0;
+	nbr = va_arg(ap, unsigned long int);
+	if (nbr == 0)
+		return (write(1, "(nil)", 5));
+	while (nbr > 0)
+	{
+		p[i] = nbr % 16;
+		nbr /= 16;
+		i++;
+	}
+	j = i + write(1, "0x", 2);
+	while (i > 0)
+		ft_putchar(base[p[--i]]);
+	return (j);
+}
