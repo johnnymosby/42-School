@@ -61,8 +61,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(ap);
 	return (c);
 }
-
-int	main(void)
-{
-	ft_printf("%5%");
-}
