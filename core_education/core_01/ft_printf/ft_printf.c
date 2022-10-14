@@ -30,6 +30,8 @@ int	ft_distributor(va_list ap, char val)
 		return (ft_printf_p(ap));
 	else if (val == 'x')
 		return (ft_printf_x(ap));
+	else if (val == 'X')
+		return (ft_printf_xbig(ap));
 	else
 		return (0);
 }

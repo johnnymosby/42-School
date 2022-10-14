@@ -28,5 +28,6 @@ int		ft_printf_p(va_list ap);
 int		ft_printf_s(va_list ap);
 int		ft_printf_u(va_list ap);
 int		ft_printf_x(va_list ap);
+int		ft_printf_xbig(va_list ap);
 
 #endif
