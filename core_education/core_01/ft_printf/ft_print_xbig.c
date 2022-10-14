@@ -15,14 +15,14 @@
 int	ft_printf_xbig(va_list ap)
 {
 	long long int		nbr;
-	char			*base;
-	int				p[64];
-	int				i;
-	int				j;
+	char				*base;
+	int					p[64];
+	int					i;
+	int					j;
 
 	i = 0;
 	base = ft_strcreate("0123456789ABCDEF");
-	nbr = va_arg(ap, long long int);
+	nbr = (unsigned int)va_arg(ap, int);
 	if (nbr == 0)
 		free(base);
 	if (nbr == 0)

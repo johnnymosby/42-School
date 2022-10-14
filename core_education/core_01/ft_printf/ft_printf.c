@@ -62,10 +62,7 @@ int	ft_printf(const char *fmt, ...)
 	return (c);
 }
 
-/*
 int	main(void)
 {
-	ft_printf("%x\n", LONG_MIN);
-	printf("%i\n", printf("%x\n", ULONG_MAX));
+	ft_printf("%5%");
 }
-*/
