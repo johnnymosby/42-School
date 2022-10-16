@@ -15,16 +15,22 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int	nchar_read(int fd, char *buf)
+int	read_line(int fd, char *buf)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	while (j)
+	while (i < BUFFER_SIZE)
 	{
 		j = read(fd, buf + i, 1);
+		if (j == -1)
+			return (-1);
+		if (!j)
+			return (i);
+		if (*(buf + i) == '\n')
+			return (i + 1);
 		i++;
 	}
 	return (i);
@@ -32,67 +38,62 @@ int	nchar_read(int fd, char *buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*buf;
-	static int	start;
-	static int	nchar;
+	char		*buf;
 	char		*ret;
 	int			j;
-	int 		i;
+	int			i;
 
-	if (nchar == 0)
-	{
-		buf = malloc(BUFFER_SIZE);
-		if (!buf)
-		{
-			free(buf);
-			return (0);
-		}
-		nchar = nchar_read(fd, buf);
-	}
-	if (nchar < 1)
+	buf = malloc(BUFFER_SIZE);
+	if (!buf)
+		return (buf);
+	i = read_line(fd, buf);
+	if (i == -1)
+		return (0);
+	j = 0;
+	ret = malloc(i + 1);
+	if (!ret)
 	{
 		free(buf);
 		return (0);
 	}
-	j = 0;
-	while ((start + j) <= nchar && (start + j) <= BUFFER_SIZE)
+/*	printf("=%i=\n", j);*/
+	while (j < i && j < BUFFER_SIZE)
 	{
-		if (buf[start + j] == '\n')
+		ret[j] = buf[j];
+		if (ret[j] == '\n')
 		{
 			j++;
 			break ;
 		}
 		j++;
 	}
-	if (!j)
-	{
-		free(buf);
-		return (0);
-	}
-	ret = malloc(j + 1);
-	if (!ret)
-	{
-		free(buf);
-		return (0);
-	}
 	ret[j] = '\0';
-	i = j;
-	while (--j >= 0)
-		ret[j] = buf[start + j];
-	start = start + i;
-/*	if (start == BUFFER_SIZE - 1)
-		free(buf);*/
+	free(buf);
 	return (ret);
 }
-
+/*
 int	main(void)
 {
 	int		fd;
+	char	*test;
 
 	fd = open("test", O_RDWR);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);
+	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);	test = get_next_line(fd);
+	printf("%s?", test);
+	free(test);
 	close(fd);
 }
+*/

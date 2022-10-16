@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*get_next_line(int fd);
+char		*get_next_line(int fd);
+
+char		*ft_strdup(char *src);
 
 #endif
