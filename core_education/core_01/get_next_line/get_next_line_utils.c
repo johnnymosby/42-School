@@ -22,7 +22,7 @@ static int	ft_stringlen(char *str)
 	return (n);
 }
 
-static char	*ft_stringcpy(char *dest, char *src)
+char	*ft_stringcpy(char *dest, char *src)
 {
 	int	counter;
 

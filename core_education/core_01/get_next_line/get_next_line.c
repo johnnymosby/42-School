@@ -45,24 +45,26 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (0);
 	k = 1;
-	ret = 0;
+	ret = NULL;
+    buf = malloc(BUFFER_SIZE + 1);
 	while (k > 0)
 	{
-		buf = malloc(BUFFER_SIZE + 1);
 		if (!buf)
 			return (0);
 		k = read_line(fd, buf);
 		buf[k] = '\0';
-		if (ret == 0)
-			ret = ft_strdup(buf);
-		else
+		if (ret == NULL)
 		{
-			ret = ft_strjoin(ret, buf);
+			ret = malloc(BUFFER_SIZE + 1);
+			ft_stringcpy(ret, buf);
 		}
+		else
+			ret = ft_strjoin(ret, buf);
 		if (ft_strchr(ret, '\n'))
 			break ;
-		free(buf);
 	}
+	free(buf);
+	buf = NULL;
 	if (k == 0 && ret == 0)
 		return (0);
 	if (k == -1)
@@ -119,6 +121,7 @@ int	main(void)
 	test = get_next_line(fd);
 	printf("%s?", test);
 	free(test);
+	test = NULL;
 	close(fd);
 }
 
