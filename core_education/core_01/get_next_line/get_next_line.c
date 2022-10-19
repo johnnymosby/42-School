@@ -29,7 +29,7 @@ int	read_line(int fd, char *buf)
 			return (-1);
 		if (!j)
 			return (i);
-		if (*(buf + i) == '\n')
+		if (buf[i] == '\n')
 			return (i + 1);
 		i++;
 	}
@@ -45,7 +45,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return(0);
-	buf = malloc(BUFFER_SIZE);
+	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (buf);
 	i = read_line(fd, buf);
@@ -59,7 +59,7 @@ char	*get_next_line(int fd)
 		return (0);
 	}
 /*	printf("=%i=\n", j);*/
-	while (j < i && j < BUFFER_SIZE)
+	while (j <= i && j < (BUFFER_SIZE + 1))
 	{
 		ret[j] = buf[j];
 		if (ret[j] == '\n')
@@ -70,6 +70,12 @@ char	*get_next_line(int fd)
 		j++;
 	}
 	ret[j] = '\0';
+	if (ret[0] == '\0' || i == 0)
+	{
+		free(buf);
+		free(ret);
+		return (0);
+	}
 	free(buf);
 	return (ret);
 }
