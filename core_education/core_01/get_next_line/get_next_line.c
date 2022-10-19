@@ -44,11 +44,16 @@ char	*get_next_line(int fd)
 	int			i;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return(0);
+		return (0);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (buf);
 	i = read_line(fd, buf);
+	if (i == 0)
+	{
+		free(buf);
+		return (0);
+	}
 	if (i == -1)
 		return (0);
 	j = 0;
@@ -59,7 +64,7 @@ char	*get_next_line(int fd)
 		return (0);
 	}
 /*	printf("=%i=\n", j);*/
-	while (j <= i && j < (BUFFER_SIZE + 1))
+	while (j < i)
 	{
 		ret[j] = buf[j];
 		if (ret[j] == '\n')
@@ -70,12 +75,6 @@ char	*get_next_line(int fd)
 		j++;
 	}
 	ret[j] = '\0';
-	if (ret[0] == '\0' || i == 0)
-	{
-		free(buf);
-		free(ret);
-		return (0);
-	}
 	free(buf);
 	return (ret);
 }
@@ -85,7 +84,7 @@ int	main(void)
 	int		fd;
 	char	*test;
 
-	fd = open("test", O_RDWR);
+	fd = open("41_no_nl", O_RDWR);
 	test = get_next_line(fd);
 	printf("%s?", test);
 	free(test);
