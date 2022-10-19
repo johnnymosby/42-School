@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int	read_line(int fd, char *buf)
+static int	read_line(int fd, char *buf)
 {
 	int	i;
 	int	j;
@@ -37,6 +37,40 @@ int	read_line(int fd, char *buf)
 }
 
 char	*get_next_line(int fd)
+{
+	char		*buf;
+	char		*ret;
+	int			k;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (0);
+	k = 1;
+	ret = 0;
+	while (k > 0)
+	{
+		buf = malloc(BUFFER_SIZE + 1);
+		if (!buf)
+			return (0);
+		k = read_line(fd, buf);
+		buf[k] = '\0';
+		if (ret == 0)
+			ret = ft_strdup(buf);
+		else
+		{
+			ret = ft_strjoin(ret, buf);
+			free(buf);
+		}
+		if (ft_strchr(ret, '\n'))
+			break ;
+		free(buf);
+	}
+	if (k == 0 && ret == 0)
+		return (0);
+	if (k == -1)
+		return (0);
+	return (ret);
+}
+/*char	*get_next_line(int fd)
 {
 	char		*buf;
 	char		*ret;
@@ -63,7 +97,6 @@ char	*get_next_line(int fd)
 		free(buf);
 		return (0);
 	}
-/*	printf("=%i=\n", j);*/
 	while (j < i)
 	{
 		ret[j] = buf[j];
@@ -77,7 +110,7 @@ char	*get_next_line(int fd)
 	ret[j] = '\0';
 	free(buf);
 	return (ret);
-}
+}*/
 /*
 int	main(void)
 {
@@ -86,19 +119,6 @@ int	main(void)
 
 	fd = open("41_no_nl", O_RDWR);
 	test = get_next_line(fd);
-	printf("%s?", test);
-	free(test);
-	test = get_next_line(fd);
-	printf("%s?", test);
-	free(test);	test = get_next_line(fd);
-	printf("%s?", test);
-	free(test);	test = get_next_line(fd);
-	printf("%s?", test);
-	free(test);	test = get_next_line(fd);
-	printf("%s?", test);
-	free(test);	test = get_next_line(fd);
-	printf("%s?", test);
-	free(test);	test = get_next_line(fd);
 	printf("%s?", test);
 	free(test);
 	close(fd);

@@ -45,3 +45,50 @@ char	*ft_strdup(char *src)
 		return ((void *) 0);
 	return (ft_stringcpy(ret, src));
 }
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*p;
+	int		i;
+	int		j;
+
+	if (!s1 || !s2)
+		return (0);
+	p = malloc(ft_stringlen(s1) + ft_stringlen(s2) + 1);
+	if (!p)
+		return (0);
+	i = 0;
+	j = 0;
+	while (s1[i])
+	{
+		p[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		p[i + j] = s2[j];
+		j++;
+	}
+	p[i + j] = '\0';
+	return (p);
+}
+
+char	*ft_strchr(const char *string, int c)
+{
+	int	i;
+
+	i = 0;
+	if (c == 0)
+	{
+		while (string[i])
+			i++;
+		return ((char *)string + i);
+	}
+	while (string[i])
+	{
+		if ((const char) c == string[i])
+			return ((char *)string + i);
+		i++;
+	}
+	return (0);
+}

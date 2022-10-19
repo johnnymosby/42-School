@@ -16,8 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char		*get_next_line(int fd);
+char	*get_next_line(int fd);
 
-char		*ft_strdup(char *src);
-
+char	*ft_strdup(char *src);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(const char *string, int c);
 #endif
