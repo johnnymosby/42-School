@@ -45,14 +45,13 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (0);
-	k = 1;
 	ret = NULL;
     buf = malloc(BUFFER_SIZE + 1);
+	k = read_line(fd, buf);
 	while (k > 0)
 	{
 		if (!buf)
 			return (0);
-		k = read_line(fd, buf);
 		buf[k] = '\0';
 		if (ret == NULL)
 		{
@@ -66,6 +65,7 @@ char	*get_next_line(int fd)
 		}
 		if (ft_strchr(ret, '\n'))
 			break ;
+		k = read_line(fd, buf);
 	}
 	free(buf);
 	buf = NULL;
