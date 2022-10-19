@@ -40,6 +40,7 @@ char	*get_next_line(int fd)
 {
 	char		*buf;
 	char		*ret;
+	char		*temp;
 	int			k;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
@@ -55,11 +56,14 @@ char	*get_next_line(int fd)
 		buf[k] = '\0';
 		if (ret == NULL)
 		{
-			ret = malloc(BUFFER_SIZE + 1);
-			ft_stringcpy(ret, buf);
+			ret = ft_strdup(buf);
 		}
 		else
-			ret = ft_strjoin(ret, buf);
+		{
+			temp = ft_strjoin(ret, buf);
+			free(ret);
+			ret = temp;
+		}
 		if (ft_strchr(ret, '\n'))
 			break ;
 	}
@@ -111,7 +115,7 @@ char	*get_next_line(int fd)
 	ret[j] = '\0';
 	free(buf);
 	return (ret);
-}*/
+}*//*
 int	main(void)
 {
 	int		fd;
@@ -123,7 +127,7 @@ int	main(void)
 	free(test);
 	test = NULL;
 	close(fd);
-}
+}*/
 
 /*
  * gcc -o executable -std=c11 -Wall -ggdb3 *.c *.h -D BUFFER_SIZE=1
