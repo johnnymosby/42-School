@@ -58,7 +58,6 @@ char	*get_next_line(int fd)
 		else
 		{
 			ret = ft_strjoin(ret, buf);
-			free(buf);
 		}
 		if (ft_strchr(ret, '\n'))
 			break ;
@@ -111,7 +110,6 @@ char	*get_next_line(int fd)
 	free(buf);
 	return (ret);
 }*/
-/*
 int	main(void)
 {
 	int		fd;
@@ -123,4 +121,11 @@ int	main(void)
 	free(test);
 	close(fd);
 }
-*/
+
+/*
+ * gcc -o executable -std=c11 -Wall -ggdb3 *.c *.h -D BUFFER_SIZE=1
+ * */
+
+/*
+ * valgrind -q --leak-check=full ./executable
+ * */

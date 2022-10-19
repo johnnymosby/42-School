@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/nfs/homes/rbasyrov/CLionProjects/42-School/cmake-build-debug",
-		"source" : "/nfs/homes/rbasyrov/CLionProjects/42-School"
+		"build" : "/home/timbyxty/42-School/cmake-build-debug",
+		"source" : "/home/timbyxty/42-School"
 	},
 	"version" : 
 	{
