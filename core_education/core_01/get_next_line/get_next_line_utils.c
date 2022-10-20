@@ -22,28 +22,22 @@ static int	ft_stringlen(char *str)
 	return (n);
 }
 
-char	*ft_stringcpy(char *dest, char *src)
-{
-	int	counter;
-
-	counter = 0;
-	while (src[counter])
-	{
-		dest[counter] = src[counter];
-		counter++;
-	}
-	dest[counter] = '\0';
-	return (dest);
-}
-
 char	*ft_strdup(char *src)
 {
 	char	*ret;
+	int		i;
 
 	ret = malloc(sizeof(char) * (ft_stringlen(src) + 1));
 	if (ret == (void *) 0)
 		return ((void *) 0);
-	return (ft_stringcpy(ret, src));
+	i = 0;
+	while (src[i])
+	{
+		ret[i] = src[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -89,4 +83,32 @@ char	*ft_strchr(const char *string, int c)
 		i++;
 	}
 	return (0);
+}
+
+int	read_line(int fd, char *buf)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 1;
+	while (i < BUFFER_SIZE)
+	{
+		j = read(fd, buf + i, 1);
+		if (j == -1)
+			return (-1);
+		if (!j)
+		{
+			buf[i] = '\0';
+			return (i);
+		}
+		if (buf[i] == '\n')
+		{
+			buf[i + 1] = '\0';
+			return (i + 1);
+		}
+		i++;
+	}
+	buf[i] = '\0';
+	return (i);
 }
