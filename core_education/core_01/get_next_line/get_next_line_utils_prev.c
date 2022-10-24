@@ -85,4 +85,30 @@ char	*ft_strchr(const char *string, int c)
 	return (0);
 }
 
+int	read_line(int fd, char *buf)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 1;
+	while (i < BUFFER_SIZE)
+	{
+		j = read(fd, buf + i, 1);
+		if (j == -1)
+			return (-1);
+		if (!j)
+		{
+			buf[i] = '\0';
+			return (i);
+		}
+		if (buf[i] == '\n')
+		{
+			buf[i + 1] = '\0';
+			return (i + 1);
+		}
+		i++;
+	}
+	buf[i] = '\0';
+	return (i);
+}

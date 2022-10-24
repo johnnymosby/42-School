@@ -1,10 +1,10 @@
-/home/timbyxty/.cache/JetBrains/RemoteDev/dist/68305831d57ea_CLion-2022.2.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/timbyxty/42-School -B /home/timbyxty/42-School/cmake-build-debug
--- The C compiler identification is GNU 11.2.0
+"/Users/johnnymosby/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/johnnymosby/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja -S /Users/johnnymosby/CLionProjects/42-School -B /Users/johnnymosby/CLionProjects/42-School/cmake-build-debug
+-- The C compiler identification is AppleClang 13.1.6.13160021
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/timbyxty/42-School/cmake-build-debug
+-- Build files have been written to: /Users/johnnymosby/CLionProjects/42-School/cmake-build-debug
