@@ -12,12 +12,12 @@
 
 #include "get_next_line.h"
 
-int	ft_stringlen(char *str)
+static int	ft_stringlen(char *str)
 {
 	int	n;
 
 	n = 0;
-	while (str[n])
+	while (*(str + n) != '\0')
 		n++;
 	return (n);
 }
@@ -45,12 +45,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*p;
 	int		i;
 	int		j;
-/*
+
 	if (!s1 || !s2)
-	{
-		free(s1);
 		return (0);
-	}*/
 	p = malloc(ft_stringlen(s1) + ft_stringlen(s2) + 1);
 	if (!p)
 	{
@@ -73,8 +70,6 @@ char	*ft_strchr(const char *string, int c)
 	int	i;
 
 	i = 0;
-	if (!string)
-		return (0);
 	if (c == 0)
 	{
 		while (string[i])
@@ -89,3 +84,5 @@ char	*ft_strchr(const char *string, int c)
 	}
 	return (0);
 }
+
+

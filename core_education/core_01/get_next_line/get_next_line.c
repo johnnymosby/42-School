@@ -14,152 +14,162 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-static char	*ft_strcpy(char *dest, char *src)
+char	*read_until_nl_or_o(int fd, char *save)
 {
-	int counter;
+	int		nchar;
+	char	*buf;
 
-	counter = 0;
-	while (src[counter])
-	{
-		dest[counter] = src[counter];
-		counter++;
-	}
-	dest[counter] = '\0';
-	return (dest);
-}
-
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	n;
-
-	n = 0;
-	size -= 1;
-	while (src[n] && n < size)
-	{
-		dest[n] = src[n];
-		n++;
-	}
-	dest[n] = '\0';
-	return (n);
-}
-
-void	ft_bzero(void *block, size_t size)
-{
-	unsigned char	*b;
-
-	b = block;
-	while (size > 0)
-	{
-		*b = 0;
-		b++;
-		size--;
-	}
-}
-
-char *init_temp(int size, char *buf)
-{
-	char *r;
-
-	r = malloc(size + 1);
-	if (!r)
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
 		return (0);
-	r[size + 1] = '\0';
-	while (size >= 0)
+	nchar = 1;
+	while (nchar != 0 && ft_strchr(save, '\n') == 0)
 	{
-		r[size] = buf[size];
-		size--;
-	}
-	return (r);
-}
-
-void	*ft_memmove(void *to, const void *from, int size)
-{
-	int		i;
-	char		*t;
-	char		*f;
-
-	if (!to || !from)
-		return (0);
-	t = (char *)to;
-	f = (char *)from;
-	i = 0;
-	if (to < from)
-	{
-		while (i < size)
+		nchar = read(fd, buf, BUFFER_SIZE);
+		if (nchar == -1)
 		{
-			t[i] = f[i];
-			i++;
-		}
-	}
-	else
-	{
-		while (size-- > 0)
-			t[size] = f[size];
-	}
-	return (to);
-}
-
-int	read_line(int fd, char *save, char *ret)
-{
-	char *buf;
-	int	 n_chars;
-	char *newline;
-	char *temp;
-
-	n_chars = 1;
-	while (n_chars && newline)
-	{
-		buf = malloc(BUFFER_SIZE + 1);
-		if (!buf)
+			free(buf);
 			return (0);
-		if (save[0])
-		{
-			buf = ft_strcpy(buf, save);
-			ft_bzero(save, BUFFER_SIZE + 1);
 		}
-		else
-		{
-			ft_bzero(buf, BUFFER_SIZE + 1);
-			n_chars = read(fd, buf, BUFFER_SIZE);
-		}
-		newline = ft_strchr(buf, '\n');
-		if (newline)
-		{
-			save = ft_strcpy(save, newline + 1);
-			temp = init_temp(newline - buf, buf);
-			/* handle error with malloc*/
-			ret = ft_strjoin(ret, temp);
-			free(temp);
-		}
-		else
-			ret = ft_strjoin(ret, buf);
+		buf[nchar] = '\0';
+		save = ft_strjoin(save, buf);
 	}
 	free(buf);
-	return (1);
+	return (save);
 }
+
+char	*crop_left(char *save)
+{
+	int		i;
+	char	*left;
+
+	i = 0;
+	if (!save[0])
+		return (0);
+	while (save[i] && save[i] != '\n')
+		i++;
+	left = malloc(i + 2);
+	if (!left)
+		return (0);
+	i = 0;
+	while (save[i] && save[i] != '\n')
+	{
+		left[i] = save[i];
+		i++;
+	}
+	if (save[i] == '\n')
+	{
+		left[i] = save[i];
+		i++;
+	}
+	left[i] = '\0';
+	return (left);
+}
+
+char	*crop_right(char *save)
+{
+	int		i;
+	char	*right;
+
+	i = 0;
+	if (!save[0])
+	{
+		free(save);
+		return (0);
+	}
+	while (save[i])
+	{
+		if (save[i] == '\n')
+		{
+			i++;
+			break ;
+		}
+		i++;
+	}
+	if (save[i] == 0)
+	{
+		free(save);
+		return (0);
+	}
+	right = malloc(ft_stringlen(save) - i + 2);
+	if (!right)
+	{
+		free (save);
+		return (0);
+	}
+	right = ft_strdup(save + i);
+	free(save);
+	return (right);
+}
+
+/*char	*crop_right(char *save)
+{
+	int		i;
+	int		j;
+	char	*right;
+
+	i = 0;
+	if (!save[0])
+	{
+		free(save);
+		return (0);
+	}
+	while (save[i] && save[i] != '\n')
+		i++;
+	right = malloc(ft_stringlen(save) - i + 1);
+	if (!right)
+	{
+		free (save);
+		return (0);
+	}
+	j = 0;
+	i++;
+	while (save[i])
+		right[j++] = save[i++];
+	right[j] = '\0';
+	free (save);
+	return (right);
+}*/
 
 char	*get_next_line(int fd)
 {
 	static char	*save;
 	char		*ret;
-	int 		n;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (0);
-	ret = 0;
-	n = read_line(fd, save, ret);
-	if (!n)
+	if (!save)
+	{
+		save = malloc(1);
+		if (!save)
+			return (0);
+		save[0] = '\0';
+	}
+	save = read_until_nl_or_o(fd, save);
+	if (!save)
 		return (0);
+	if (!ft_strchr(save, '\n'))
+	{
+		ret = crop_left(save);
+		free(save);
+		return (ret);
+	}
+	ret = crop_left(save);
+	save = crop_right(save);
 	return (ret);
 }
-
-int main(void)
+/*int main(void)
 {
-	int fd = open("multiple_line_no_nl", O_RDWR);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-}
+	int	fd = open("nl", O_RDWR);
+	char *str;
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
+	free(str);
+	close(fd);
+}*/
