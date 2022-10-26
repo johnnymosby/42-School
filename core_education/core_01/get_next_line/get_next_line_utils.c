@@ -27,9 +27,9 @@ char	*ft_strdup(char *src)
 	char	*ret;
 	int		i;
 
-	ret = malloc(sizeof(char) * (ft_stringlen(src) + 1));
-	if (ret == (void *) 0)
-		return ((void *) 0);
+	ret = malloc(ft_stringlen(src) + 1);
+	if (!ret)
+		return (0);
 	i = 0;
 	while (src[i])
 	{
@@ -45,18 +45,19 @@ char	*ft_strjoin(char *s1, char *s2)
 	char	*p;
 	int		i;
 	int		j;
-/*
-	if (!s1 || !s2)
+
+	if (!s1)
 	{
-		free(s1);
-		return (0);
-	}*/
+		s1 = malloc(1);
+		if (!s1)
+			return (0);
+		s1[0] = '\0';
+	}
 	p = malloc(ft_stringlen(s1) + ft_stringlen(s2) + 1);
 	if (!p)
-	{
 		free(s1);
+	if (!p)
 		return (0);
-	}
 	i = -1;
 	j = -1;
 	while (s1[++i])
@@ -75,7 +76,7 @@ char	*ft_strchr(const char *string, int c)
 	i = 0;
 	if (!string)
 		return (0);
-	if (c == 0)
+	if (!c)
 	{
 		while (string[i])
 			i++;

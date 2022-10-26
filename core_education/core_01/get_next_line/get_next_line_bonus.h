@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+#ifndef	BUFFER_SIZE
+# define BUFFER_SIZE = 42
+#endif
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -21,9 +25,6 @@ char	*get_next_line(int fd);
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *string, int c);
-int		read_line(int fd, char *buf);
+int		ft_stringlen(char *str);
 #endif
 
-#ifndef	BUFFER_SIZE
-# define BUFFER_SIZE = 42
-#endif

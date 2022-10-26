@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_until_nl_or_o(int fd, char *save)
 {
@@ -85,15 +85,15 @@ char	*crop_right(char *save)
 
 char	*get_next_line(int fd)
 {
-	static char	*save;
+	static char	*save[2048];
 	char		*ret;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd > 2048)
 		return (0);
-	save = read_until_nl_or_o(fd, save);
-	if (!save)
+	save[fd] = read_until_nl_or_o(fd, save[fd]);
+	if (!save[fd])
 		return (0);
-	ret = crop_left(save);
-	save = crop_right(save);
+	ret = crop_left(save[fd]);
+	save[fd] = crop_right(save[fd]);
 	return (ret);
 }
