@@ -1,6 +1,7 @@
-NAME=fractol
-SFILES=*.c
-OFILES=$(SFILES:.c=.o)
+NAME	=	fractol
+SRC		=	*.c
+OBJ		=	$(SFILES:.c=.o)
+INC		=	inc/
 
 all:	$(NAME)
 
@@ -12,3 +13,7 @@ clean:
 fclean: clean
 		rm -f $(NAME)
 re: fclean all
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+
+.PHONY : all, clean, fclean, re

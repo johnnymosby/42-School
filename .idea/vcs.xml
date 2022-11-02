@@ -7,6 +7,9 @@
     <mapping directory="$PROJECT_DIR$/core_education/core_01/ft_printf/tester" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/core_education/core_01/get_next_line/gnl_station" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/core_education/core_01/get_next_line/tester" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/core_education/core_02/fractol/lib/minilibx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/core_education/core_02/fractol/lib/mlibx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/core_education/core_02/fractol/minilibx-linux" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/docker/valgrind_42" vcs="Git" />
   </component>
 </project>
