@@ -1,19 +1,19 @@
 NAME	=	fractol
 SRC		=	*.c
-OBJ		=	$(SFILES:.c=.o)
+OBJ		=	$(SRC:.c=.o)
 INC		=	inc/
 
 all:	$(NAME)
 
-$(NAME):
-		cc -Wall -Wextra -Werror -c $(SFILES) ft_printf.h
-		ar rc $(NAME) $(OFILES)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
 clean:
 		rm -f $(OFILES)
 fclean: clean
 		rm -f $(NAME)
 re: fclean all
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 .PHONY : all, clean, fclean, re
