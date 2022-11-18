@@ -43,7 +43,7 @@ clean:
 
 fclean:		clean
 			rm -f $(NAME)
-			make fclean -C $(LIBFT)
+			make fclean -C ./lib/libft/
 
 re:			fclean all
 
