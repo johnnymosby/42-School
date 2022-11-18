@@ -1,19 +1,50 @@
 NAME	=	fractol
-SRC		=	*.c
-OBJ		=	$(SFILES:.c=.o)
-INC		=	inc/
 
-all:	$(NAME)
+LIBFT	=	./lib/libft/libft.a
 
-$(NAME):
-		cc -Wall -Wextra -Werror -c $(SFILES) ft_printf.h
-		ar rc $(NAME) $(OFILES)
+SRC_DIR	=	./src/
+
+INC		=	./inc
+
+SRC		=	./src/fractol.c
+
+OBJ		=	$(SRC:.c=.o)
+
+UNAME	=	$(shell uname -s)
+
+CC		=	cc
+
+CFLAGS	=	-Wall -Wextra -Werror -Wno-deprecated
+
+ifeq ($(UNAME), Darwin)
+		MLX		=	./lib/mlx_osx
+		OFLAGS	= 	$(CFLAGS) -L $(MLX) -l mlx -framework OpenGl -framework Appkit
+endif
+
+ifeq ($(UNAME), Linux)
+		MLX		=	./lib/mlx_linux
+		OFLAGS	= 	$(CFLAGS) -L $(MLX) -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+endif
+
+all:		$(NAME)
+
+$(NAME):	$(OBJ)
+			make -C ./lib/libft/
+			make -C $(MLX)
+			$(CC) $(OBJ) $(OFLAGS) $(LIBFT) -o $(NAME)
+
+.c.o:
+			cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./inc
+
 clean:
-		rm -f $(OFILES)
-fclean: clean
-		rm -f $(NAME)
-re: fclean all
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+			rm -f $(OBJ)
+			make clean -C ./lib/libft/
+			make clean -C $(MLX)
 
-.PHONY : all, clean, fclean, re
+fclean:		clean
+			rm -f $(NAME)
+			make fclean -C $(LIBFT)
+
+re:			fclean all
+
+.PHONY:		all, clean, fclean, re
