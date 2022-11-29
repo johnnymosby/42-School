@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/11/29 01:36:13 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:44:28 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "../lib/libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-# define MAX_N_ITERATION = 250
-# define FR_WIDTH = 1280
-# define FR_HEIGHT = 720
+# define MAX_N_ITERATION 250
+# define FR_WIDTH 1280
+# define FR_HEIGHT 720
 
 typedef struct s_image_fr {
 	void	*img;
@@ -28,7 +28,11 @@ typedef struct s_image_fr {
 	int		line_length;
 	int		endian;
 	void	*mlx;
+	void	*mlx_win;
 	char	*usr_choice;
+	int		if_to_render;
+	int		width;
+	int		height;
 }	t_image_fr;
 
 void	new_mlx_pixel_put(t_image_fr *data, int x, int y, int color)
