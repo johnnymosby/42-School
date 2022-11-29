@@ -14,7 +14,7 @@ UNAME	=	$(shell uname -s)
 
 CC		=	cc
 
-CFLAGS	=	-Wall -Wextra -Werror -Wno-deprecated
+CFLAGS	=	-Wall -Wextra -Werror
 
 ifeq ($(UNAME), Darwin)
 		MLX		=	./lib/mlx_osx
