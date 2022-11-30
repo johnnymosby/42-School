@@ -6,17 +6,26 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/11/29 16:12:57 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:34:46 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
+#ifdef __APPLE__
 # include "../lib/mlx_osx/mlx.h"
-# include "../lib/mlx_osx/mlx.h"
+#endif
+
+#ifdef __linux__
+# include "../lib/mlx_linux/mlx.h"
+#endif
+
 # include "../lib/libft/libft.h"
+# include "../inc/mlx_keys.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 # define MAX_N_ITERATION 250
 # define FR_WIDTH 1280
 # define FR_HEIGHT 720
@@ -37,6 +46,7 @@ typedef struct s_image_fr {
 	int		height;
 	int		x;
 	int		y;
+	double	zoom;
 	int		what_image;
 }	t_image_fr;
 

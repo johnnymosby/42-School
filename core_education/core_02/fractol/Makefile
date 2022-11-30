@@ -39,7 +39,8 @@ $(NAME):	$(OBJ)
 clean:
 			rm -f $(OBJ)
 			make clean -C ./lib/libft/
-			make clean -C $(MLX)
+			make clean -C ./lib/mlx_linux
+			make clean -C ./lib/mlx_osx
 
 fclean:		clean
 			rm -f $(NAME)
