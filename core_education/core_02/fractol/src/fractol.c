@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:12:33 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/11/30 17:47:25 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:48:30 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,15 @@ void	draw_mandelbrot(t_image_fr *fr)
 		j = 0;
 		while (j < fr->height)
 		{
-			if ((fabs(fmod((i- fr->width / 2 - fr->x) * fr->zoom, 100.0)) < 50.0 && fabs(fmod((j - fr->height / 2 - fr->y) * fr->zoom , 100.0)) < 50.0)
-				|| (fabs(fmod((i - fr->width / 2 - fr->x) * fr->zoom, 100.0)) >= 50.0 && fabs(fmod((j - fr->height / 2 - fr->y) * fr->zoom, 100.0)) >= 50.0))
+			if ((fabs(fmod((i - fr->x) * fr->zoom, 100.0)) < 50.0 && fabs(fmod((j -  fr->y) * fr->zoom , 100.0)) < 50.0)
+				|| (fabs(fmod((i - fr->x) * fr->zoom, 100.0)) >= 50.0 && fabs(fmod((j - fr->y) * fr->zoom, 100.0)) >= 50.0))
+			{
 				new_mlx_pixel_put(fr, i, j, 0x00FAFA6E);
+			}
 			else
+			{
 				new_mlx_pixel_put(fr, i, j, 0x00089F8F);
+			}
 			j++;
 		}
 		i++;
@@ -103,14 +107,10 @@ int	zoom_image(int keycode, int x, int y, t_image_fr *fr)
 {
 	if (keycode == KEY_ZOOM_IN)
 	{
-		fr->x += (fr->width / 2 - x);
-		fr->y += (fr->height / 2 - y);
 		fr->zoom /= 1.1;
 	}
 	else if (keycode == KEY_ZOOM_OUT)
 	{
-		fr->x += (fr->width / 2 - x);
-		fr->y += (fr->height / 2 - y);
 		fr->zoom *= 1.1;
 	}
 	return (0);
@@ -141,19 +141,25 @@ int	pressed_key(int button, t_image_fr *fr)
 
 int mouse_hook(int button, int x, int y, t_image_fr *fr)
 {
+	printf("x: %i\n", fr->x);
+	printf("y: %i\n", fr->y);
 	if (button == 1)
 	{
-		fr->x = +x;
-		fr->y = +y;
+		fr->x += fr->width / 2 - x;
+		fr->y += fr->height / 2 - y;
 		fr->if_to_render = 0;
 		render_image(fr);
 	}
 	else if (button == KEY_ZOOM_IN || button == KEY_ZOOM_OUT)
 	{
+		fr->x += fr->width / 2 - x;
+		fr->y += fr->height / 2 - y;
 		fr->if_to_render = 0;
 		zoom_image(button, fr->x, fr->y, fr);
 		render_image(fr);
 	}
+	printf("x: %i\n", fr->x);
+	printf("y: %i\n\n", fr->y);
 	return (0);
 }
 
