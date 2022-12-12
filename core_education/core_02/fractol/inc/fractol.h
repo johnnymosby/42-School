@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/05 14:20:13 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:03:06 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,25 @@ typedef struct s_image_fr {
 	int		height;
 	int		x;
 	int		y;
+	int		prev_x;
+	int		prev_y;
+	int		x_zoom;
+	int		y_zoom;
+	// int		x_centre;
+	// int		y_centre;
 	double	zoom;
 	int		what_image;
 }	t_image_fr;
 
-void	new_mlx_pixel_put(t_image_fr *data, int x, int y, int color)
-{
-	char	*dst;
-
-	if (data->what_image == 0)
-		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	else
-		dst = data->addr2 + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *) dst = color;
-}
+void	check_input(int argc, char *argv[]);
+void	draw_mandelbrot(t_image_fr *fr);
+int		exit_fractol(t_image_fr *fr);
+void	exit_with_message(t_image_fr *fr, char *message);
+void	init_t_image_fr(t_image_fr	*fr, char *choice_fr);
+int		mouse_hook(int button, int x, int y, t_image_fr *fr);
+void	new_mlx_pixel_put(t_image_fr *data, int x, int y, int color);
+int		pressed_key(int button, t_image_fr *fr);
+int		render_image(t_image_fr *fr);
+int		zoom_image(int keycode, t_image_fr *fr);
 
 #endif

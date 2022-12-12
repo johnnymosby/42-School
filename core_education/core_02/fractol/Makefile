@@ -6,7 +6,8 @@ SRC_DIR	=	./src/
 
 INC		=	./inc
 
-SRC		=	./src/fractol.c
+SRC		=	./src/draw.c ./src/error_handling.c ./src/fractol.c ./src/handle_win.c ./src/hook.c \
+			./src/init_fractal.c ./src/render.c
 
 OBJ		=	$(SRC:.c=.o)
 
@@ -39,8 +40,7 @@ $(NAME):	$(OBJ)
 clean:
 			rm -f $(OBJ)
 			make clean -C ./lib/libft/
-			make clean -C ./lib/mlx_linux
-			make clean -C ./lib/mlx_osx
+			make clean -C $(MLX)
 
 fclean:		clean
 			rm -f $(NAME)
