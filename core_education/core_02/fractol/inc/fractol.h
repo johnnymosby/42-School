@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/12 11:03:06 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:26:32 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ typedef struct s_image_fr {
 	int		if_to_render;
 	int		width;
 	int		height;
-	int		x;
-	int		y;
-	int		prev_x;
-	int		prev_y;
-	int		x_zoom;
-	int		y_zoom;
-	// int		x_centre;
-	// int		y_centre;
+	double	x;
+	double	y;
+	double	x_offset;
+	double	y_offset;
+	double	max_x;
+	double	min_x;
+	double	max_y;
+	double	min_y;
 	double	zoom;
 	int		what_image;
 }	t_image_fr;
@@ -66,6 +66,6 @@ int		mouse_hook(int button, int x, int y, t_image_fr *fr);
 void	new_mlx_pixel_put(t_image_fr *data, int x, int y, int color);
 int		pressed_key(int button, t_image_fr *fr);
 int		render_image(t_image_fr *fr);
-int		zoom_image(int keycode, t_image_fr *fr);
+int		zoom_image(int keycode, int x, int y, t_image_fr *fr);
 
 #endif
