@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:03:21 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 18:04:51 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:21:54 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	draw_mandelbrot(t_image_fr *fr)
 		j = 0;
 		while (j < fr->height)
 		{
-			x = (4 * (double)i / fr->width - fr->x) * fr->zoom + fr->x_offset;
-			y = (4 * (double)j / fr->width - fr->y) * fr->zoom + fr->y_offset;
+			x = 2 * (((double)i - fr->width / 2) / fr->width) * fr->zoom + fr->x_offset;
+			y = 2 * (((double)j - fr->height / 2) / fr->width) * fr->zoom + fr->y_offset;
 			if ((fabs(fmod(x, 0.1)) < 0.05 && fabs(fmod(y, 0.1)) < 0.05)
 				|| (fabs(fmod(x, 0.1)) >= 0.05 && fabs(fmod(y, 0.1)) >= 0.05))
 			{

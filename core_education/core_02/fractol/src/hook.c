@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 18:10:42 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:27:46 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,23 @@ int	zoom_image(int keycode, int x, int y, t_image_fr *fr)
 	w = (fr->max_x - fr->min_x) * fr->zoom;
 	h = (fr->max_y - fr->min_y) * fr->zoom; */
 
-	old_x = (4 * fabs(x - (double)fr->width) / fr->width - fr->x) * fr->zoom;
-	old_y = (4 * fabs(y - (double)fr->height) / fr->width - fr->y) * fr->zoom;
+	old_x = 2 * (((double)x - fr->width / 2) / fr->width) * fr->zoom;
+	old_y = 2 * (((double)y - fr->height / 2) / fr->width) * fr->zoom;
 	if (keycode == KEY_ZOOM_IN)
 	{
 		fr->zoom /= 1.1;
-		new_x = (4 * fabs(x - (double)fr->width) / fr->width - fr->x) * fr->zoom;
-		new_y = (4 * fabs(y - (double)fr->height) / fr->width - fr->y) * fr->zoom;
-		fr->x_offset += ((x - (double)fr->width) / fr->width) * (old_x - new_x);
-		fr->y_offset += ((y - (double)fr->height) / fr->height) * (old_y - new_y);
+		new_x = 2 * (((double)x - fr->width / 2) / fr->width) * fr->zoom;
+		new_y = 2 * (((double)y - fr->height / 2) / fr->width) * fr->zoom;
+		fr->x_offset += (old_x - new_x);
+		fr->y_offset += (old_y - new_y);
 	}
 	else if (keycode == KEY_ZOOM_OUT)
 	{
 		fr->zoom *= 1.1;
-		new_x = (4 * fabs(x - (double)fr->width) / fr->width - fr->x) * fr->zoom;
-		new_y = (4 * fabs(y - (double)fr->height) / fr->width - fr->y) * fr->zoom;
-		fr->x_offset += ((x - (double)fr->width) / fr->width) * (old_x - new_x);
-		fr->y_offset += ((y - (double)fr->height) / fr->height) * (old_y - new_y);
+		new_x = 2 * (((double)x - fr->width / 2) / fr->width) * fr->zoom;
+		new_y = 2 * (((double)y - fr->height / 2) / fr->width) * fr->zoom;
+		fr->x_offset += (old_x - new_x);
+		fr->y_offset += (old_y - new_y);
 	}
 	return (0);
 }
