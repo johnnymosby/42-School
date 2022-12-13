@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 16:26:32 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:07:30 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ typedef struct s_image_fr {
 }	t_image_fr;
 
 void	check_input(int argc, char *argv[]);
-void	draw_mandelbrot(t_image_fr *fr);
+void	draw(t_image_fr *fr);
+int		draw_mandelbrot(double x, double y);
 int		exit_fractol(t_image_fr *fr);
 void	exit_with_message(t_image_fr *fr, char *message);
 void	init_t_image_fr(t_image_fr	*fr, char *choice_fr);
@@ -66,6 +67,7 @@ int		mouse_hook(int button, int x, int y, t_image_fr *fr);
 void	new_mlx_pixel_put(t_image_fr *data, int x, int y, int color);
 int		pressed_key(int button, t_image_fr *fr);
 int		render_image(t_image_fr *fr);
+void	shift_picture(int x, int y, t_image_fr *fr);
 int		zoom_image(int keycode, int x, int y, t_image_fr *fr);
 
 #endif

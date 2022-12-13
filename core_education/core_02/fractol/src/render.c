@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:37 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/12 11:15:55 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:08:24 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	render_image(t_image_fr *fr)
 	if (fr->if_to_render == 0)
 	{
 		if (ft_strcmp(fr->usr_choice, "mandelbrot") == 0)
-			draw_mandelbrot(fr);
+			draw(fr);
 		if (fr->what_image == 0)
 			mlx_put_image_to_window(fr->mlx, fr->mlx_win, fr->img, 0, 0);
 		else
