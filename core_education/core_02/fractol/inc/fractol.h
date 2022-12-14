@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 12:25:19 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 13:46:40 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdio.h>
-# define MAX_N_ITERATION 250
-# define FR_WIDTH 1280
-# define FR_HEIGHT 720
+# define MAX_N_ITERATION 100
+# define FR_WIDTH 640
+# define FR_HEIGHT 640
 
 typedef struct s_image_fr {
 	void	*img;
