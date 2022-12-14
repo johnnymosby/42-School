@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:03:21 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 22:56:31 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:46:18 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ void	draw(t_image_fr *fr)
 				* fr->zoom + fr->x_offset;
 			y = 2 * (((double)j - fr->height / 2) / fr->width)
 				* fr->zoom + fr->y_offset;
-			color = draw_mandelbrot(x, y);
+			if (ft_strcmp(fr->usr_choice, "mandelbrot") == 0)
+				color = draw_mandelbrot(x, y);
+			else if (ft_strcmp(fr->usr_choice, "julia") == 0)
+				color = draw_julia(fr, x, y);
+			else if (ft_strcmp(fr->usr_choice, "grid") == 0)
+				color = draw_grid(x, y);
 			new_mlx_pixel_put(fr, i, j, color);
 			j++;
 		}
@@ -70,14 +75,33 @@ int	draw_mandelbrot(double x0, double y0)
 		y2 = y * y;
 		i += 1;
 	}
+	return (choose_colour(i));
+/* 	if (i == MAX_N_ITERATION)
+		return (0x00000000);
+	else
+		return (0x00089F8F); */
+}
 
+int	draw_julia(t_image_fr *fr, double zx, double zy)
+{
+	double	xtemp;
+	int		i;
+
+	i = 0;
+	while (zx * zx + zy * zy < 1 && i < MAX_N_ITERATION)
+	{
+		xtemp = zx * zx - zy * zy;
+		zy = 2 * zx * zy + fr->cy;
+		zx = xtemp + fr->cx;
+		i += 1;
+	}
 	if (i == MAX_N_ITERATION)
 		return (0x00000000);
 	else
-		return (0x00089F8F);
+		return (choose_colour(i));
 }
 
-int choose_colour(int i)
+int	choose_colour(int i)
 {
 	double	t;
 	int		r;

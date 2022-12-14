@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 21:51:55 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:12:55 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 int	mouse_hook(int keycode, int x, int y, t_image_fr *fr)
 {
-	if (keycode == 1)
+	if (keycode == 1 && ft_strcmp(fr->usr_choice, "julia") != 0)
 	{
 		shift_picture(x, y, fr);
+		fr->if_to_render = 0;
+		render_image(fr);
+	}
+	else if (keycode == 1 && ft_strcmp(fr->usr_choice, "julia") == 0)
+	{
+		fr->cx = 2 * (((double)x - fr->width / 2) / fr->width);
+		fr->cy = 2 * (((double)y - fr->height / 2) / fr->width);
 		fr->if_to_render = 0;
 		render_image(fr);
 	}

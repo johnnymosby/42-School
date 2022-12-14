@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:17:30 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 22:08:14 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:23:36 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	check_input(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	else if (ft_strcmp(argv[1], "mandelbrot") != 0
-		&& ft_strcmp(argv[1], "julia") != 0)
+		&& ft_strcmp(argv[1], "julia") != 0
+		&& ft_strcmp(argv[1], "grid") != 0)
 	{
 		ft_putstr_fd("Wrong argument [mandelbrot, julia]", STDERR_FILENO);
 		exit(EXIT_FAILURE);

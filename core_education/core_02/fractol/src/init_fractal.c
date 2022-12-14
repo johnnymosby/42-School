@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 22:08:52 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:47:07 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
 	fr->height = FR_HEIGHT;
 	fr->x = 2.0;
 	fr->y = 1.0;
+	fr->x = 0.0;
+	fr->y = 0.0;
 	fr->x_offset = 0.0;
 	fr->y_offset = 0.0;
 	fr->max_x = 2.0;
