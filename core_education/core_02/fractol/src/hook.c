@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 11:12:55 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:27:39 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	shift_picture(int x, int y, t_image_fr *fr)
 
 	w = (fr->max_x - fr->min_x) * fr->zoom;
 	h = (fr->max_y - fr->min_y) * fr->zoom;
-	shift_x = w * 0.25 * fabs((double)fr->width / 2 - x) / fr->width;
-	shift_y = h * 0.25 * fabs((double)fr->height / 2 - y) / fr->height;
-	fr->x_offset += shift_x * (x > (fr->width / 2) - x < (fr->width / 2));
-	fr->y_offset += shift_y * (y > (fr->height / 2) - y < (fr->height / 2));
+	shift_x = w * 0.25 * ((double)fr->width / 2 - x) / fr->width;
+	shift_y = h * 0.25 * ((double)fr->height / 2 - y) / fr->height;
+	fr->x_offset -= shift_x * (x > (fr->width / 2) - x < (fr->width / 2));
+	fr->y_offset -= shift_y * (y > (fr->height / 2) - y < (fr->height / 2));
 }
 
 int	zoom_image(int keycode, int x, int y, t_image_fr *fr)

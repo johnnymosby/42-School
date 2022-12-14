@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:03:21 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 12:05:26 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:22:31 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	draw(t_image_fr *fr)
 				color = draw_julia(fr, x, y);
 			else if (ft_strcmp(fr->usr_choice, "grid") == 0)
 				color = draw_grid(x, y);
+			else if (ft_strcmp(fr->usr_choice, "burningship") == 0)
+				color = draw_burningship(x, y);
 			new_mlx_pixel_put(fr, i, j, color);
 			j++;
 		}
@@ -96,6 +98,29 @@ int	draw_julia(t_image_fr *fr, double zx, double zy)
 		i += 1;
 	}
 	if (i == MAX_N_ITERATION)
+		return (0x00000000);
+	else
+		return (choose_colour(i));
+}
+
+int	draw_burningship(double x, double y)
+{
+	double	xtemp;
+	double	zx;
+	double	zy;
+	int		i;
+
+	i = 0;
+	zx = x;
+	zy = y;
+	while (zx * zx + zy * zy < 4 && i < 100)
+	{
+		xtemp = zx * zx - zy * zy + x;
+		zy = fabs(2 * zx * zy) + y;
+		zx = xtemp;
+		i += 1;
+	}
+	if (i == 100)
 		return (0x00000000);
 	else
 		return (choose_colour(i));

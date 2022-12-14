@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:17:30 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 11:23:36 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:21:46 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	check_input(int argc, char *argv[])
 	}
 	else if (ft_strcmp(argv[1], "mandelbrot") != 0
 		&& ft_strcmp(argv[1], "julia") != 0
-		&& ft_strcmp(argv[1], "grid") != 0)
+		&& ft_strcmp(argv[1], "grid") != 0
+		&& ft_strcmp(argv[1], "burningship") != 0)
 	{
 		ft_putstr_fd("Wrong argument [mandelbrot, julia]", STDERR_FILENO);
 		exit(EXIT_FAILURE);
