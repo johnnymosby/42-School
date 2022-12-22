@@ -6,7 +6,8 @@ SRC_DIR	=	./src/
 
 INC		=	./inc
 
-SRC		=	./src/draw.c ./src/error_handling.c ./src/fractol.c ./src/handle_win.c ./src/hook.c \
+SRC		=	./src/calculate_fractal.c ./src/handle_exception_err.c ./src/fractol.c \
+			./src/paint_fractal.c ./src/hook.c \
 			./src/init_fractal.c ./src/render.c
 
 OBJ		=	$(SRC:.c=.o)

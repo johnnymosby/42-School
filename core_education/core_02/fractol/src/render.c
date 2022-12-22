@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:37 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 01:01:18 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 15:48:27 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	render_image(t_image_fr *fr)
 		if (fr->to_calculate == 0)
 		{
 			fr->what_calculation = (fr->what_calculation + 1) % 2;
-			calculate(fr);
+			calculate_fractal(fr);
 			fr->to_calculate = 1;
 			fr->to_paint = 0;
 		}
 		if (fr->to_paint == 0)
 		{
-			paint(fr);
+			paint_fractal(fr);
 			fr->to_paint = 1;
 		}
 		if (fr->what_image == 0)
@@ -38,7 +38,7 @@ int	render_image(t_image_fr *fr)
 	return (fr->if_to_render);
 }
 
-void	paint(t_image_fr *fr)
+void	paint_fractal(t_image_fr *fr)
 {
 	int i;
 	int j;
