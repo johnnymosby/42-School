@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_keys.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:42:42 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/11/30 16:09:53 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:52:26 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define KEY_ESC 53
 # define KEY_ZOOM_IN 4
 # define KEY_ZOOM_OUT 5
+# define KEY_ONE 18
+# define KEY_TWO 19
 #endif
 
 #ifdef __linux__

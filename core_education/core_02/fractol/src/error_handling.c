@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:17:30 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 12:21:46 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/21 23:55:50 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void	exit_with_message(t_image_fr *fr, char *message)
 	mlx_destroy_image(fr->mlx, fr->img);
 	mlx_destroy_image(fr->mlx, fr->img2);
 	mlx_destroy_window(fr->mlx, fr->mlx_win);
+	if (fr->calculation != NULL)
+		free(fr->calculation);
+	if (fr->calculation_alt != NULL)
+		free(fr->calculation);
 	ft_putstr_fd(message, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

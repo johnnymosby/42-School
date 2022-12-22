@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 11:47:07 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 00:22:03 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
 	fr->mlx_win = mlx_new_window(fr->mlx, FR_WIDTH, FR_HEIGHT, "Fractol");
 	if (fr->mlx_win == NULL)
 		exit_with_message(fr, "Error: mlx_new_window() failed");
+	fr->calculation = malloc(sizeof(int) * FR_WIDTH * FR_HEIGHT);
+	fr->calculation_alt = malloc(sizeof(int) * FR_WIDTH * FR_HEIGHT);
+	if (fr->calculation == NULL || fr->calculation_alt == NULL)
+		exit_with_message(fr, "Error: malloc() failed");
 	fr->img = mlx_new_image(fr->mlx, FR_WIDTH, FR_HEIGHT);
 	fr->img2 = mlx_new_image(fr->mlx, FR_WIDTH, FR_HEIGHT);
 	if (fr->img == NULL || fr->img2 == NULL)
@@ -46,4 +50,8 @@ void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
 	fr->min_y = -1.0;
 	fr->what_image = 0;
 	fr->zoom = 1.0;
+	fr->what_palette = 0;
+	fr->what_calculation = 0;
+	fr->to_calculate = 0;
+	fr->to_paint = 0;
 }

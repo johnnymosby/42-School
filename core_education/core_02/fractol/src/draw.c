@@ -6,19 +6,18 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:03:21 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/14 13:38:47 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 01:00:36 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	draw(t_image_fr *fr)
+void	calculate(t_image_fr *fr)
 {
 	int		i;
 	int		j;
 	double	x;
 	double	y;
-	int		color;
 
 	i = 0;
 	while (i < fr->width)
@@ -31,18 +30,30 @@ void	draw(t_image_fr *fr)
 			y = 2 * (((double)j - fr->height / 2) / fr->width)
 				* fr->zoom + fr->y_offset;
 			if (ft_strcmp(fr->usr_choice, "mandelbrot") == 0)
-				color = draw_mandelbrot(x, y);
+				save_iteration(fr, draw_mandelbrot(x, y), i, j);
 			else if (ft_strcmp(fr->usr_choice, "julia") == 0)
-				color = draw_julia(fr, x, y);
+				save_iteration(fr, draw_julia(fr, x, y), i, j);
 			else if (ft_strcmp(fr->usr_choice, "grid") == 0)
-				color = draw_grid(x, y);
+				save_iteration(fr, draw_grid(x, y), i, j);
 			else if (ft_strcmp(fr->usr_choice, "burningship") == 0)
-				color = draw_burningship(x, y);
-			new_mlx_pixel_put(fr, i, j, color);
+				save_iteration(fr, draw_burningship(x, y), i, j);
 			j++;
 		}
 		i++;
 	}
+}
+
+void 	save_iteration(t_image_fr * fr, int iteration, int i, int j)
+{
+	if (fr->what_calculation == 0)
+	{
+		*(fr->calculation + j * FR_WIDTH + i) = iteration;
+	}
+	else
+	{
+		*(fr->calculation_alt + j * FR_WIDTH + i) = iteration;
+	}
+	//printf("%i\n", iteration);
 }
 
 int	draw_grid(double x, double y)
@@ -50,11 +61,11 @@ int	draw_grid(double x, double y)
 	if ((fabs(fmod(x, 0.1)) < 0.05 && fabs(fmod(y, 0.1)) < 0.05)
 		|| (fabs(fmod(x, 0.1)) >= 0.05 && fabs(fmod(y, 0.1)) >= 0.05))
 	{
-		return (0x00089F8F);
+		return (0);
 	}
 	else
 	{
-		return (0x00FAFA6E);
+		return (200);
 	}
 }
 
@@ -77,7 +88,7 @@ int	draw_mandelbrot(double x0, double y0)
 		y2 = y * y;
 		i += 1;
 	}
-	return (choose_colour(i));
+	return (i);
 /* 	if (i == MAX_N_ITERATION)
 		return (0x00000000);
 	else
@@ -97,10 +108,11 @@ int	draw_julia(t_image_fr *fr, double zx, double zy)
 		zx = xtemp + fr->cx;
 		i += 1;
 	}
+	//printf("%i\n", i);
 	if (i == MAX_N_ITERATION)
-		return (0x00000000);
+		return (0);
 	else
-		return (choose_colour(i));
+		return (i);
 }
 
 int	draw_burningship(double x, double y)
@@ -121,22 +133,38 @@ int	draw_burningship(double x, double y)
 		i += 1;
 	}
 	if (i == 100)
-		return (0x00000000);
+		return (0);
 	else
-		return (choose_colour(i));
+		return (i);
 }
 
-int	choose_colour(int i)
+int	choose_colour(t_image_fr *fr, int i, int j)
 {
 	double	t;
 	int		r;
 	int		g;
 	int		b;
+	int		iteration;
 
-	t = (double)i / MAX_N_ITERATION;
-	r = (int)(9 * (1 - t) * t * t * t * 255);
-	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	if (fr->what_calculation == 0)
+		iteration = (*(fr->calculation + j * FR_WIDTH + i));
+	else
+		iteration = (*(fr->calculation_alt + j * FR_WIDTH + i));
+	//printf("iteration = %i\n", iteration);
+	if (fr->what_palette == 0)
+	{
+		t = (double)iteration / MAX_N_ITERATION;
+		r = (int)(9 * (1 - t) * t * t * t * 255);
+		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+		b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	}
+	if (fr->what_palette == 1)
+	{
+		t = (double)iteration / MAX_N_ITERATION;
+		r = (int)(255 - 9 * (1 - t) * t * t * t * 255);
+		g = (int)(255 - 15 * (1 - t) * (1 - t) * t * t * 255);
+		b = (int)(255 - 8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	}
 	return (r << 16 | g << 8 | b);
 }
 
