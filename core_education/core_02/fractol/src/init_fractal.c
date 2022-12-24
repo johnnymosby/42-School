@@ -6,13 +6,13 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 00:22:03 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 16:57:46 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
 
-void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
+void	init_fr_memory_win(t_image_fr	*fr)
 {
 	fr->mlx = mlx_init();
 	if (fr->mlx == NULL)
@@ -34,14 +34,14 @@ void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
 			&fr->line_length, &fr->endian);
 	if (fr->addr == NULL || fr->addr2 == NULL)
 		exit_with_message(fr, "Error: mlx_get_data_addr() failed");
+}
+
+void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
+{
 	fr->usr_choice = choice_fr;
 	fr->if_to_render = 0;
 	fr->width = FR_WIDTH;
 	fr->height = FR_HEIGHT;
-	fr->x = 2.0;
-	fr->y = 1.0;
-	fr->x = 0.0;
-	fr->y = 0.0;
 	fr->x_offset = 0.0;
 	fr->y_offset = 0.0;
 	fr->max_x = 2.0;
@@ -49,7 +49,14 @@ void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
 	fr->min_x = -2.0;
 	fr->min_y = -1.0;
 	fr->what_image = 0;
-	fr->zoom = 1.0;
+	if (ft_strcmp(fr->usr_choice, "mandelbrot") == 0)
+		fr->zoom = 1.75;
+	else if (ft_strcmp(fr->usr_choice, "julia") == 0)
+		fr->zoom = 2.0;
+	else if (ft_strcmp(fr->usr_choice, "burningship") == 0)
+		fr->zoom = 2.0;
+	else
+		fr->zoom = 1.0;
 	fr->what_palette = 0;
 	fr->what_calculation = 0;
 	fr->to_calculate = 0;

@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:12:33 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/13 22:09:28 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 16:50:24 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char *argv[])
 	t_image_fr	fr;
 
 	check_input(argc, argv);
+	init_fr_memory_win(&fr);
 	init_t_image_fr(&fr, argv[1]);
 	mlx_loop_hook(fr.mlx, render_image, &fr);
 	mlx_key_hook(fr.mlx_win, pressed_key, &fr);

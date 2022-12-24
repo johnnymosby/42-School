@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 01:02:58 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:09:05 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,18 @@
 int	mouse_hook(int keycode, int x, int y, t_image_fr *fr)
 {
 	if (keycode == 1 && ft_strcmp(fr->usr_choice, "julia") != 0)
-	{
 		shift_picture(x, y, fr);
-		fr->if_to_render = 0;
-		fr->to_calculate = 0;
-		render_image(fr);
-	}
 	else if (keycode == 1 && ft_strcmp(fr->usr_choice, "julia") == 0)
 	{
 		fr->cx = 2 * (((double)x - fr->width / 2) / fr->width);
 		fr->cy = 2 * (((double)y - fr->height / 2) / fr->width);
-		fr->if_to_render = 0;
-		fr->to_calculate = 0;
-		render_image(fr);
 	}
-	else if (keycode == KEY_ZOOM_IN)
+	else if (keycode == KEY_ZOOM_IN || keycode == KEY_ZOOM_OUT)
+		zoom_image(keycode, x, y, fr);
+	if (keycode == 1 || keycode == KEY_ZOOM_IN || keycode == KEY_ZOOM_OUT)
 	{
 		fr->if_to_render = 0;
 		fr->to_calculate = 0;
-		zoom_image(keycode, x, y, fr);
-		render_image(fr);
-	}
-	else if (keycode == KEY_ZOOM_OUT)
-	{
-		fr->if_to_render = 0;
-		fr->to_calculate = 0;
-		zoom_image(keycode, x, y, fr);
 		render_image(fr);
 	}
 	return (0);
@@ -93,16 +79,12 @@ int	pressed_key(int button, t_image_fr *fr)
 {
 	if (button == KEY_ESC)
 		exit_fractol(fr);
-	else if (button == KEY_ONE)
-	{
+	if (button == KEY_ONE)
 		fr->what_palette = 0;
-		fr->if_to_render = 0;
-		fr->to_paint = 0;
-		render_image(fr);
-	}
 	else if (button == KEY_TWO)
-	{
 		fr->what_palette = 1;
+	if (button == KEY_ONE || button == KEY_TWO)
+	{
 		fr->if_to_render = 0;
 		fr->to_paint = 0;
 		render_image(fr);

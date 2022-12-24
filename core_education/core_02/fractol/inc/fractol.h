@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 16:38:27 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 16:50:04 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		calc_julia(t_image_fr *fr, double zx, double zy);
 int		calc_mandelbrot(double x0, double y0);
 int		exit_fractol(t_image_fr *fr);
 void	exit_with_message(t_image_fr *fr, char *message);
+void	init_fr_memory_win(t_image_fr	*fr);
 void	init_t_image_fr(t_image_fr	*fr, char *choice_fr);
 int		mouse_hook(int button, int x, int y, t_image_fr *fr);
 void	new_mlx_pixel_put(t_image_fr *data, int x, int y, int color);

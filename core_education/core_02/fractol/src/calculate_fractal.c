@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:03:21 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 16:36:03 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/22 17:03:16 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,3 @@ int	calc_burningship(double x, double y)
 	}
 	return (i);
 }
-
-

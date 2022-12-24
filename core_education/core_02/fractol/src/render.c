@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:37 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 15:48:27 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:19:37 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	render_image(t_image_fr *fr)
 
 void	paint_fractal(t_image_fr *fr)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = fr->width;
 	j = fr->height;
