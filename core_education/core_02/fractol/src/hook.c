@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 17:09:05 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:14:45 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,23 @@ void	shift_picture(int x, int y, t_image_fr *fr)
 	shift_y = h * 0.25 * ((double)fr->height / 2 - y) / fr->height;
 	fr->x_offset -= shift_x * (x > (fr->width / 2) - x < (fr->width / 2));
 	fr->y_offset -= shift_y * (y > (fr->height / 2) - y < (fr->height / 2));
+}
+
+void	shift_picture_with_keys(int button, t_image_fr *fr)
+{
+	double	w;
+	double	h;
+
+	w = (fr->max_x - fr->min_x) * fr->zoom;
+	h = (fr->max_y - fr->min_y) * fr->zoom;
+	if (button == KEY_LEFT)
+		fr->x_offset += -w * 0.1;
+	else if (button == KEY_RIGHT)
+		fr->x_offset += w * 0.1;
+	else if (button == KEY_UP)
+		fr->y_offset += -h * 0.1;
+	else if (button == KEY_DOWN)
+		fr->y_offset += h * 0.1;
 }
 
 int	zoom_image(int keycode, int x, int y, t_image_fr *fr)
@@ -87,6 +104,14 @@ int	pressed_key(int button, t_image_fr *fr)
 	{
 		fr->if_to_render = 0;
 		fr->to_paint = 0;
+		render_image(fr);
+	}
+	if (button == KEY_UP || button == KEY_DOWN || button == KEY_LEFT
+		|| button == KEY_RIGHT)
+	{
+		shift_picture_with_keys(button, fr);
+		fr->if_to_render = 0;
+		fr->to_calculate = 0;
 		render_image(fr);
 	}
 	return (0);
