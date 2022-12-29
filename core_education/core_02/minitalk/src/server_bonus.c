@@ -6,13 +6,13 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:23:20 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/29 19:47:56 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:14:32 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void receive_message(int pid, siginfo_t *info, void *context)
+void	receive_message(int pid, siginfo_t *info, void *context)
 {
 	static int					i = 0;
 	static pid_t				client_pid = 0;
@@ -39,7 +39,7 @@ void receive_message(int pid, siginfo_t *info, void *context)
 		byte_to_receive <<= 1;
 }
 
-int main(void)
+int	main(void)
 {
 	struct sigaction	sa;
 
