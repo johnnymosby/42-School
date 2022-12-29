@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/29 15:59:54 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:23:03 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include <stdio.h>
 # define MAX_N_ITERATION 100
 # define FR_WIDTH 640
 # define FR_HEIGHT 640

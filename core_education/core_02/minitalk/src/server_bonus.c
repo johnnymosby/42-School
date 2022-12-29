@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:23:20 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/25 14:28:40 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:47:56 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void receive_message(int pid, siginfo_t *info, void *context)
 {
-	static int		i = 0;
-	static pid_t	client_pid = 0;
-	static char		byte_to_receive = 0;
+	static int					i = 0;
+	static pid_t				client_pid = 0;
+	static unsigned char		byte_to_receive = 0;
 
 	(void)context;
 	if (client_pid == 0)
 		client_pid = info->si_pid;
-	byte_to_receive |= (pid == SIGUSR1);
+	byte_to_receive |= (pid == SIGUSR2);
 	if (++i == 8)
 	{
 		i = 0;
@@ -41,11 +41,12 @@ void receive_message(int pid, siginfo_t *info, void *context)
 
 int main(void)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
+
 	ft_putstr_fd("Server PID: ", 1);
 	ft_putnbr_fd(getpid(), 1);
 	ft_putchar_fd('\n', 1);
-	sa.sa_sigaction = &receive_message;
+	sa.sa_sigaction = receive_message;
 	sa.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
