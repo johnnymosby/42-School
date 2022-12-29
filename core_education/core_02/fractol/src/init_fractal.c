@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 16:57:46 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:04:12 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ void	init_t_image_fr(t_image_fr	*fr, char *choice_fr)
 	fr->what_calculation = 0;
 	fr->to_calculate = 0;
 	fr->to_paint = 0;
+	fr->what_julia = 2;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:15:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/27 17:14:45 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:02:57 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	mouse_hook(int keycode, int x, int y, t_image_fr *fr)
 	else if (keycode == 1 && ft_strcmp(fr->usr_choice, "julia") == 0)
 	{
 		fr->cx = 2 * (((double)x - fr->width / 2) / fr->width);
-		fr->cy = 2 * (((double)y - fr->height / 2) / fr->width);
+		fr->cy = -2 * (((double)y - fr->height / 2) / fr->width);
 	}
 	else if (keycode == KEY_ZOOM_IN || keycode == KEY_ZOOM_OUT)
 		zoom_image(keycode, x, y, fr);

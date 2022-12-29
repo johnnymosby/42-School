@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:03:21 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 17:03:16 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:59:44 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ int	calc_julia(t_image_fr *fr, double zx, double zy)
 	i = 0;
 	while (zx * zx + zy * zy < 2 && i < MAX_N_ITERATION)
 	{
+		if (fr->what_julia == 4)
+		{
+			xtemp = zx * zx - zy * zy;
+			zy = 2 * zx * zy;
+			zx = xtemp;
+		}
 		xtemp = zx * zx - zy * zy;
 		zy = 2 * zx * zy + fr->cy;
 		zx = xtemp + fr->cx;

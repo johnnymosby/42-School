@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:24:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/12/22 16:50:04 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:59:54 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_image_fr {
 	int		what_palette;
 	int		to_paint;
 	int		to_calculate;
+	int		what_julia;
 }	t_image_fr;
 
 void	check_input(int argc, char *argv[]);
