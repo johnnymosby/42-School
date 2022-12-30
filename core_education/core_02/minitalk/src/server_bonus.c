@@ -10,7 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
+
+void	send_bit(int bit, int pid)
+{
+	int	check_if_error;
+
+	if (bit == 0)
+	{
+		check_if_error = kill(pid, SIGUSR1);
+		if (check_if_error == -1)
+		{
+			ft_putstr_fd("Error sending signal.\n", 1);
+			exit(1);
+		}
+	}
+	else
+	{
+		check_if_error = kill(pid, SIGUSR2);
+		if (check_if_error == -1)
+		{
+			ft_putstr_fd("Error sending signal.\n", 1);
+			exit(1);
+		}
+	}
+	usleep(100);
+}
 
 void	receive_message(int pid, siginfo_t *info, void *context)
 {
@@ -27,12 +52,12 @@ void	receive_message(int pid, siginfo_t *info, void *context)
 		i = 0;
 		if (byte_to_receive == 0)
 		{
-			kill(client_pid, SIGUSR2);
+			send_bit(1, client_pid);
 			client_pid = 0;
 			return ;
 		}
 		ft_putchar_fd(byte_to_receive, 1);
-		kill(client_pid, SIGUSR1);
+		send_bit(0, client_pid);
 		byte_to_receive = 0;
 	}
 	else

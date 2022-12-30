@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	listen_to_server(int sig)
 {
@@ -23,6 +23,31 @@ void	listen_to_server(int sig)
 		exit(0);
 	}
 	n_characters++;
+}
+
+void	send_bit(int bit, int pid)
+{
+	int	check_if_error;
+
+	if (bit == 0)
+	{
+		check_if_error = kill(pid, SIGUSR1);
+		if (check_if_error == -1)
+		{
+			ft_putstr_fd("Error sending signal.\n", 1);
+			exit(1);
+		}
+	}
+	else
+	{
+		check_if_error = kill(pid, SIGUSR2);
+		if (check_if_error == -1)
+		{
+			ft_putstr_fd("Error sending signal.\n", 1);
+			exit(1);
+		}
+	}
+	usleep(100);
 }
 
 void	send_message(int pid, char *message)
@@ -38,16 +63,16 @@ void	send_message(int pid, char *message)
 		while (i--)
 		{
 			if (c >> i & 1)
-				kill(pid, SIGUSR2);
+				send_bit(1, pid);
 			else
-				kill(pid, SIGUSR1);
+				send_bit(0, pid);
 			usleep(100);
 		}
 	}
 	i = 8;
 	while (i--)
 	{
-		kill(pid, SIGUSR1);
+		send_bit(0, pid);
 		usleep(100);
 	}
 }
@@ -59,9 +84,9 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Wrong input\n", 1);
 		return (1);
 	}
-	ft_putstr_fd("n of sent:", 1);
+	ft_putstr_fd("n of sent:      ", 1);
 	ft_putnbr_fd(ft_strlen(argv[2]), 1);
-	ft_putstr_fd("n of received:", 1);
+	ft_putstr_fd("\nn of received:  ", 1);
 	signal(SIGUSR1, listen_to_server);
 	signal(SIGUSR2, listen_to_server);
 	send_message(ft_atoi(argv[1]), argv[2]);

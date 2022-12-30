@@ -38,7 +38,6 @@ bonus:		$(LIBFT)
 			$(CC) $(CFLAGS) $(SRC_DIR)client_bonus.c -I$(INC) $(LIBFT) -o $(CLIENT)
 			$(CC) $(CFLAGS) $(SRC_DIR)server_bonus.c -I$(INC) $(LIBFT) -o $(SERVER)
 
-re:
-			fclean all
+re:		fclean all
 
 PHONY:		all, clean, fclean, re

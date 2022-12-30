@@ -12,10 +12,10 @@
 
 #include "minitalk.h"
 
-t_byte	g_byte_to_receive;
-
 void	receive_bit(int bit, int *i)
 {
+	static t_byte	g_byte_to_receive;
+
 	if (*i == 1)
 		g_byte_to_receive.bit_0 = bit;
 	else if (*i == 2)
