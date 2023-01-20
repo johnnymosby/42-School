@@ -1,7 +1,8 @@
 {
     "cmake.configureOnOpen": false,
     "files.associations": {
-        "fractol.h": "c",
-        "stdlib.h": "c"
-    }
+		"fractol.h": "c",
+		"stdlib.h": "c",
+		"push_swap.h": "c"
+	}
 }
