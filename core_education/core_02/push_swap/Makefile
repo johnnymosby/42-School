@@ -2,11 +2,13 @@ NAME	=	push_swap
 
 LIBFT	=	./lib/libft/libft.a
 
+PRINTF	=	./lib/ft_printf/libftprintf.a
+
 SRC_DIR	=	./src/
 
 INC		=	./inc
 
-SRC		=	./src/push_swap.c
+SRC		=	./src/main.c ./src/handle_input.c
 
 OBJ		=	$(SRC:.c=.o)
 
@@ -18,7 +20,8 @@ all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			make -C ./lib/libft/
-			$(CC) $(OBJ) $(OFLAGS) $(LIBFT) -o $(NAME)
+			make -C ./lib/ft_printf/
+			$(CC) $(OBJ) $(OFLAGS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 .c.o:
 			cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./inc
@@ -26,10 +29,12 @@ $(NAME):	$(OBJ)
 clean:
 			rm -f $(OBJ)
 			make clean -C ./lib/libft/
+			make clean -C ./lib/ft_printf/
 
 fclean:		clean
 			rm -f $(NAME)
 			make fclean -C ./lib/libft/
+			make clean -C ./lib/ft_printf/
 
 re:			fclean all
 

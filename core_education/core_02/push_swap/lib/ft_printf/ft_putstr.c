@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/01/22 14:08:12 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/10/13 18:24:59 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/10/13 18:25:01 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-# include "../lib/libft/libft.h"
-# include "../lib/ft_printf/ft_printf.h"
-# include "unistd.h"
+int	ft_putstr(char *str)
+{
+	int	i;
 
-void	add_space_after_word(char *s);
-char	*collapse_arguments(int argc, char **argv);
-
-#endif
+	i = 0;
+	while (str[i])
+	{
+		write(1, str + i, 1);
+		i++;
+	}
+	return (i);
+}

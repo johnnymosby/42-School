@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strcreate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/01/22 14:08:12 by rbasyrov         ###   ########.fr       */
+/*   Created: 2022/09/06 16:59:40 by rbasyrov          #+#    #+#             */
+/*   Updated: 2022/09/06 16:59:40 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-# include "../lib/libft/libft.h"
-# include "../lib/ft_printf/ft_printf.h"
-# include "unistd.h"
+char	*ft_strcreate(char *src)
+{
+	int		i;
+	char	*dest;
 
-void	add_space_after_word(char *s);
-char	*collapse_arguments(int argc, char **argv);
-
-#endif
+	i = 0;
+	while (src[i])
+		i++;
+	dest = malloc(i + 1);
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

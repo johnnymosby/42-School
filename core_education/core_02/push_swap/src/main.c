@@ -3,38 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:39:47 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/01/05 12:06:59 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/01/22 14:35:31 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*collapse_input(int argc, char **argv)
+void	exit_if_not_numbers(char *s)
 {
-	int		len;
-	int		i;
-	char	*s;
+	int	i;
 
-	len = 0;
-	i = 1;
-	while (i != argc)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		len += ft_strlen(argv[i]);
+		if (!((s[i] >= '0' && s[i] <= '9')
+				|| s[i] == ' '
+				|| s[i] == '-'))
+		{
+			free(s);
+			ft_printf("Wrong input");
+			exit(EXIT_FAILURE);
+		}
+		if (s[i] == '-'
+			&& (!(s[i + 1] >= '0' && s[i + 1] <= '9')
+				|| !(i == 0 || s[i - 1] == ' ')))
+		{
+			free(s);
+			ft_printf("Wrong input [improperly placed '-']");
+			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
-	s = malloc(sizeof(char) * (len + 1));
-	if (s == NULL)
-		exit (EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv)
 {
-	char	*s;
+	char	*input;
 
 	if (argc < 2)
 		return (1);
-	s = collapse_input(argc, argv);
+	input = collapse_arguments(argc, argv);
+	exit_if_not_numbers(input);
+	ft_printf("%s", input);
 }
