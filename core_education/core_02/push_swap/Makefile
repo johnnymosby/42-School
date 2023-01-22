@@ -34,7 +34,7 @@ clean:
 fclean:		clean
 			rm -f $(NAME)
 			make fclean -C ./lib/libft/
-			make clean -C ./lib/ft_printf/
+			make fclean -C ./lib/ft_printf/
 
 re:			fclean all
 

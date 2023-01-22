@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:04:47 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/01/22 14:31:08 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/01/22 14:42:42 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,31 @@ char	*collapse_arguments(int argc, char **argv)
 			add_space_after_word(s);
 	}
 	return (s);
+}
+
+void	exit_if_not_numbers(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (!((s[i] >= '0' && s[i] <= '9')
+				|| s[i] == ' '
+				|| s[i] == '-'))
+		{
+			free(s);
+			ft_printf("Wrong input");
+			exit(EXIT_FAILURE);
+		}
+		if (s[i] == '-'
+			&& (!(s[i + 1] >= '0' && s[i + 1] <= '9')
+				|| !(i == 0 || s[i - 1] == ' ')))
+		{
+			free(s);
+			ft_printf("Wrong input [improperly placed '-']");
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
 }

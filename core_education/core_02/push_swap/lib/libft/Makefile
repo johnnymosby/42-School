@@ -15,6 +15,7 @@ all:
 $(NAME): all
 clean:
 		rm -f $(OFILES) $(OBONUS)
+		rm -f libft.h.gch
 fclean: clean
 		rm -f $(NAME)
 re: fclean all

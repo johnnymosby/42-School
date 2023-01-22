@@ -9,6 +9,7 @@ $(NAME):
 		ar rc $(NAME) $(OFILES)
 clean:
 		rm -f $(OFILES)
+		rm -f ft_printf.h.gch
 fclean: clean
 		rm -f $(NAME)
 re: fclean all
