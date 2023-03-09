@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 14:04:47 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/02/27 14:06:59 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/05 17:12:50 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,29 @@ void	add_space_after_word(char *s)
 		i++;
 	s[i] = ' ';
 	s[i + 1] = '\0';
+}
+
+void	clean_input(char *input)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (input[i] != '\0')
+	{
+		if (i == 0)
+			while (input[i] == ' ')
+				i++;
+		while (input[i] == '0' && input[i + 1] != ' ')
+			i++;
+		while (input[i] == ' ' && input[i + 1] == ' ')
+			i++;
+		input[j] = input[i];
+		i++;
+		j++;
+	}
+	input[j] = '\0';
 }
 
 char	*collapse_arguments(int argc, char **argv)
@@ -50,29 +73,31 @@ char	*collapse_arguments(int argc, char **argv)
 	return (s);
 }
 
-void	exit_if_not_numbers(char *s)
+int	return_next_number(char *input)
 {
-	int	i;
+	int		n_symbols;
+	int		i;
+	char	*number_in_text;
+	int		number;
 
+	n_symbols = 0;
 	i = 0;
-	while (s[i] != '\0')
+	while (!(input[i] == '\0' || (i > 0 && input[i - 1] == ' ')))
 	{
-		if (!((s[i] >= '0' && s[i] <= '9')
-				|| s[i] == ' '
-				|| s[i] == '-'))
-		{
-			free(s);
-			ft_printf("Wrong input");
-			exit(EXIT_FAILURE);
-		}
-		if (s[i] == '-'
-			&& (!(s[i + 1] >= '0' && s[i + 1] <= '9')
-				|| !(i == 0 || s[i - 1] == ' ')))
-		{
-			free(s);
-			ft_printf("Wrong input [improperly placed '-']");
-			exit(EXIT_FAILURE);
-		}
+		if (input[i] != ' ')
+			n_symbols++;
 		i++;
 	}
+	number_in_text = malloc(sizeof(int) * (n_symbols + 1));
+	exit_if_null(number_in_text == NULL, input);
+	i = 0;
+	while (i != n_symbols)
+	{
+		number_in_text[i] = input[i];
+		i++;
+	}
+	number_in_text[i] = '\0';
+	number = ft_atoi(number_in_text);
+	free(number_in_text);
+	return (number);
 }
