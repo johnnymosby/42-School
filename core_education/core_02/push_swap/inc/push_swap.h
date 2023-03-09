@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/09 12:46:51 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:05:38 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,20 @@ void	print_array(t_array *array);
 void	print_stack(t_stack *stack);
 
 t_stack	*create_stack(t_array *array);
+
+void	ft_sa(t_stack *stack_a);
+void	ft_sb(t_stack *stack_b);
+void	ft_ss(t_stack *stack_a, t_stack *stack_b);
+
+void	ft_pa(t_stack *stack_a, t_stack *stack_b);
+void	ft_pb(t_stack *stack_a, t_stack *stack_b);
+
+void	ft_ra(t_stack *stack_a);
+void	ft_rb(t_stack *stack_a);
+void	ft_rr(t_stack *stack_a, t_stack *stack_b);
+
+void	ft_rra(t_stack *stack_a);
+void	ft_rrb(t_stack *stack_a);
+void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
 
 #endif
