@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/11 16:07:04 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:08:55 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,6 @@
 # include "stdlib.h"
 # include "unistd.h"
 
-/* typedef struct s_stack_elem
-{
-	t_stack_elem	*next;
-	t_stack_elem	*previous;
-}	t_stack_elem;
-
-typedef struct s_stack
-{
-	t_stack_elem	*top;
-}	t_stack;
-
-t_stack	*transform_input_to_array(char *input, t_stack stack);
-void	initialise_stack(t_stack *stack, char *input); */
-
 typedef struct s_array
 {
 	int	*array;
@@ -42,6 +28,8 @@ typedef struct s_stack
 {
 	int	*array;
 	int	n_elems;
+	int	*to_leave;
+	int	n_to_leave;
 }	t_stack;
 
 void	transform_input_to_array(t_array *array, char *input);

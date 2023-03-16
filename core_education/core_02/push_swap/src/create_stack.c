@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:22:51 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/10 01:03:11 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/16 10:32:19 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_stack	*create_stack(t_array *array)
 	stack = malloc(sizeof(t_array));
 	stack->array = malloc(sizeof(int) * array->n_elems);
 	stack->n_elems = 0;
+	stack->n_to_leave = 0;
 	return (stack);
 }
 
