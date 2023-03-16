@@ -6,7 +6,7 @@
 /*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/09 16:05:38 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/11 16:07:04 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ void	clean_input(char *input);
 char	*collapse_arguments(int argc, char **argv);
 
 void	exit_if_not_numbers(char *s);
-void	sort_with_bubble_sort(t_array *array);
+void	sort_with_bubble_sort_array(t_array *array);
+void	sort_with_bubble_sort_indexes(t_array *array);
 
 void	print_array(t_array *array);
 void	print_stack(t_stack *stack);
 
-t_stack	*create_stack(t_array *array);
+t_stack	*create_stack_a(t_array *array);
+t_stack	*create_stack_b(t_array *array, t_stack *stack_a);
 
 void	ft_sa(t_stack *stack_a);
 void	ft_sb(t_stack *stack_b);

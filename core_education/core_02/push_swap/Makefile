@@ -10,7 +10,8 @@ INC		=	./inc
 
 SRC		=	./src/main.c ./src/handle_error.c ./src/handle_input.c \
 			./src/sort_with_bubble_sort.c ./src/initialise_array.c \
-			./src/swap.c ./src/push.c ./src/shift_up.c ./src/shift_down.c
+			./src/swap.c ./src/push.c ./src/shift_up.c ./src/shift_down.c \
+			./src/create_stack.c
 
 OBJ		=	$(SRC:.c=.o)
 
