@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/16 10:08:55 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:02:40 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct s_stack
 	int	*to_leave;
 	int	n_to_leave;
 }	t_stack;
+typedef struct s_long_seq
+{
+	int	*refs;
+	int	*top_vals;
+	int	last_pile;
+}	t_long_seq;
 
 void	transform_input_to_array(t_array *array, char *input);
 
@@ -68,5 +74,10 @@ void	ft_rr(t_stack *stack_a, t_stack *stack_b);
 void	ft_rra(t_stack *stack_a);
 void	ft_rrb(t_stack *stack_a);
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b);
+
+
+int		find_the_longest_subsequence(t_array *array,
+			t_stack *stack_a);
+void	push_swap(t_array *array, t_stack *stack_a);
 
 #endif
