@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:39:47 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/20 16:24:16 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:00:40 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	main(int argc, char **argv)
 	stack_b = create_stack_b(array, stack_a);
 	print_stack(stack_a);
 	print_stack(stack_b);
+	push_swap(array, stack_a, stack_b);
 	sort_with_bubble_sort_array(array);
 	ft_printf("\nafter sorting:\n");
 	print_array(array);
