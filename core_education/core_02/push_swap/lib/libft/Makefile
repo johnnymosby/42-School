@@ -9,16 +9,19 @@ BONUS=ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter
       ft_lstmap.c ft_lstnew.c ft_lstsize.c
 OBONUS=$(BONUS:.c=.o)
 
-all:
+all:	$(NAME)
+
+$(NAME): $(OFILES)
 		cc -Wall -Wextra -Werror -c $(SFILES) libft.h
 		ar rc $(NAME) $(OFILES)
-$(NAME): all
 clean:
 		rm -f $(OFILES) $(OBONUS)
 		rm -f libft.h.gch
 fclean: clean
 		rm -f $(NAME)
 re: fclean all
-bonus:
+bonus: $(OFILES) $(OBONUS)
+		cc -Wall -Wextra -Werror -c $(SFILES) libft.h
+		ar rc $(NAME) $(OFILES)
 		cc -Wall -Wextra -Werror -c $(BONUS) libft.h
 		ar rc $(NAME) $(OBONUS)

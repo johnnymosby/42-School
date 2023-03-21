@@ -8,10 +8,11 @@ SRC_DIR	=	./src/
 
 INC		=	./inc
 
-SRC		=	./src/main.c ./src/handle_error.c ./src/handle_input.c \
-			./src/sort_with_bubble_sort.c ./src/initialise_array.c \
-			./src/swap.c ./src/push.c ./src/shift_up.c ./src/shift_down.c \
-			./src/create_stack.c
+SRC		=	main.c initialise.c free.c exit.c parse_input.c \
+			transform.c ft_atoi_improved.c sort_with_bubble_sort.c\
+			\
+			print.c
+SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))
 
 OBJ		=	$(SRC:.c=.o)
 
@@ -21,10 +22,14 @@ CFLAGS	=	-Wall -Wextra -Werror
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) $(LIBFT) $(PRINTF)
+			$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(PRINTF) -o $(NAME)
+
+$(LIBFT):
 			make -C ./lib/libft/
+
+$(PRINTF):
 			make -C ./lib/ft_printf/
-			$(CC) $(OBJ) $(OFLAGS) $(LIBFT) $(PRINTF) -o $(NAME)
 
 .c.o:
 			cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./inc

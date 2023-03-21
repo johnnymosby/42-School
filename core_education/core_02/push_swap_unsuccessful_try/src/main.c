@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:39:47 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/17 14:00:40 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:48:46 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ int	main(int argc, char **argv)
 	print_array(array);
 	print_stack(stack_a);
 	print_stack(stack_b);
-	ft_printf("\n");
+	ft_printf("\n");.
 }

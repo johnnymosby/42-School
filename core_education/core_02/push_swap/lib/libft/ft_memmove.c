@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:41:48 by rbasyrov          #+#    #+#             */
-/*   Updated: 2022/10/04 13:41:50 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:19:17 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,4 @@ void	*ft_memmove(void *to, const void *from, size_t size)
 	}
 	return (to);
 }
+
