@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:46:13 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/21 15:27:35 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:57:18 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	exit_with_message(t_context *ct, char *message)
 		free_stack_a(ct);
 	if (ct->st_b != NULL)
 		free_stack_b(ct);
-	free_context(ct);
+	if (ct->cms != NULL)
+		free_commands(ct);
+	free(ct);
 	ft_printf("Error: %s\n", message);
 	exit(EXIT_FAILURE);
 }
@@ -37,7 +39,7 @@ void	clean_before_end(t_context *ct)
 		free_stack_a(ct);
 	if (ct->st_b != NULL)
 		free_stack_b(ct);
-	free_context(ct);
+	free(ct);
 	exit(EXIT_SUCCESS);
 }
 

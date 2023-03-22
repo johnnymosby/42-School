@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:05:51 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/21 14:59:41 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:34:21 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,17 @@ void	clean_input(char *input)
 		j++;
 	}
 	input[j] = '\0';
+}
+
+void	check_for_duplicates(t_array *arr, t_context *ct)
+{
+	int	i;
+
+	i = 1;
+	while (i != arr->n)
+	{
+		if (arr->nums[i] == arr->nums[i - 1])
+			exit_with_message(ct, "duplicates");
+		i++;
+	}
 }

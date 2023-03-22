@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:01:51 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/21 16:38:37 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:13:53 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	print_array(t_array *array)
 	int	i;
 
 	i = 0;
-	ft_printf("array->array: ");
+	ft_printf("arr->nums: ");
 	while (i != array->n)
 	{
 		ft_printf("%i ", array->nums[i]);
 		i++;
 	}
-	ft_printf("\narray->indexes: ");
+	ft_printf("\narr->inds: ");
 	i = 0;
 	while (i != array->n)
 	{
@@ -38,7 +38,7 @@ void	print_stack_a(t_stack_a *stack)
 	int	i;
 
 	i = 0;
-	ft_printf("stack->array: ");
+	ft_printf("stack_a->arr: ");
 	while (i != stack->n)
 	{
 		ft_printf("%i ", stack->arr[i]);
@@ -52,7 +52,7 @@ void	print_stack_b(t_stack_b *stack)
 	int	i;
 
 	i = 0;
-	ft_printf("stack->array: ");
+	ft_printf("stack_b->arr: ");
 	while (i != stack->n)
 	{
 		ft_printf("%i ", stack->arr[i]);
