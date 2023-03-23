@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:58:02 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 12:25:34 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:40:30 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_array(t_context *ct)
 	free(ct->arr);
 }
 
-void	free_stacks(t_context *ct)
+void	free_stack_a(t_context *ct)
 {
 	if (ct->st_a->arr != NULL)
 		free(ct->st_a->arr);

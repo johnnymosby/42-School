@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:46:13 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 13:57:18 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/23 14:40:48 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	clean_before_end(t_context *ct)
 		free_input(ct);
 	if (ct->arr != NULL)
 		free_array(ct);
-	if (ct->st_a != NULL)
-		free_stack_a(ct);
+	// if (ct->st_a != NULL)
+	// 	free_stack_a(ct);
 	if (ct->st_b != NULL)
 		free_stack_b(ct);
+	if (ct->cms != NULL)
+		free_commands(ct);
 	free(ct);
 	exit(EXIT_SUCCESS);
 }

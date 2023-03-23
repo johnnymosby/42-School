@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 13:57:01 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:15:44 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		increase_cms(t_commands *cms, t_context *ct);
 void		add_command(t_commands *cms, char *command, t_context *ct);
 int			change_command_to_number(char *command);
 char		*change_number_to_command(int num);
+void		move_and_save(char *command, t_context *ct);
 void		print_commands(t_commands *cms);
 
 void		ft_sa(t_stack_a *stack_a);
@@ -109,7 +110,9 @@ t_stack_a	*create_stack_a(t_array *array, t_context *ct);
 t_stack_b	*create_stack_b(t_array *array, t_context *ct);
 void		copy_input_to_stack_a(t_stack_a *stack_a, t_array *array);
 
-void		sort(t_stack_a *st_a, t_stack_b *st_b, t_commands *cms, t_context *ct);
+void		sort(t_stack_a *st_a, t_context *ct);
+void		sort_three_numbers(t_stack_a *st_a, t_context *ct);
+void		sort_less_than_four_numbers(t_stack_a *st_a, t_context *ct);
 
 void	clean_before_end(t_context *ct);
 

@@ -11,7 +11,8 @@ INC		=	./inc
 SRC		=	main.c initialise.c free.c exit.c parse_input.c \
 			transform.c ft_atoi_improved.c sort_with_bubble_sort.c\
 			create_stack.c swap.c push.c shift_up.c shift_down.c\
-			commands.c print_commands.c sort.c\
+			commands.c move_and_save.c print_commands.c sort.c\
+			sort_three_numbers.c \
 			print.c
 SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))
 

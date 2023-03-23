@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:00:54 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 13:58:50 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:45:12 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_stack_b	*create_stack_b(t_array *array, t_context *ct)
 	stack_b->arr = malloc(sizeof(int) * array->n);
 	if (stack_b->arr == NULL)
 		exit_with_message(ct, "malloc & stack_b->arr");
-	stack_b->n = array->n;
+	stack_b->n = 0;
 	return (stack_b);
 }
 
