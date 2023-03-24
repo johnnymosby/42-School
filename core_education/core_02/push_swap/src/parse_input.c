@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:05:51 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 10:34:21 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:40:17 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,31 @@ static void	add_space_after_word(char *s)
 		i++;
 	s[i] = ' ';
 	s[i + 1] = '\0';
+}
+
+static void	skip_zeroes(char *input)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (input[i] == '0' && (input[i + 1] != ' ' && input[i + 1] != '\0'))
+		i++;
+	input[j] = input[i];
+	i++;
+	j++;
+	while (input[i] != '\0')
+	{
+		if (input[i - 1] == ' ' && input[i] == '0')
+			while (input[i] == '0'
+				&& (input[i + 1] != ' ' && input[i + 1] != '\0'))
+				i++;
+		input[j] = input[i];
+		i++;
+		j++;
+	}
+	input[j] = '\0';
 }
 
 char	*collapse_arguments(int argc, char **argv, t_context *ct)
@@ -56,6 +81,7 @@ void	clean_input(char *input)
 	int	i;
 	int	j;
 
+	skip_zeroes(input);
 	i = 0;
 	j = 0;
 	while (input[i] != '\0')
@@ -63,8 +89,6 @@ void	clean_input(char *input)
 		if (i == 0)
 			while (input[i] == ' ')
 				i++;
-		while (input[i] == '0' && input[i + 1] != ' ')
-			i++;
 		while (input[i] == ' ' && input[i + 1] == ' ')
 			i++;
 		input[j] = input[i];

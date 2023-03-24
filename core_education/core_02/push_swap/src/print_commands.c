@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:13:48 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 13:53:18 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:30:06 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	print_commands(t_commands *cms)
 	{
 		if (i != (cms->n - 1))
 		{
-			if ((cms->ts[i] + cms->ts[i + 1]) == 1)
+			if ((cms->ts[i] == 0 && cms->ts[i + 1] == 1)
+				|| (cms->ts[i] == 1 && cms->ts[i + 1] == 0))
 				ft_printf("ss\n");
 			else if ((cms->ts[i] == 4 && cms->ts[i + 1] == 5)
 				|| (cms->ts[i] == 5 && cms->ts[i + 1] == 4))
@@ -60,6 +61,18 @@ void	print_commands(t_commands *cms)
 		}
 		else
 			ft_printf("%s\n", change_number_to_command(cms->ts[i]));
+		i++;
+	}
+}
+
+void	print_commands_simple(t_commands *cms)
+{
+	int	i;
+
+	i = 0;
+	while (i != cms->n)
+	{
+		ft_printf("%s\n", change_number_to_command(cms->ts[i]));
 		i++;
 	}
 }

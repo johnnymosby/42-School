@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:13:57 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 14:00:15 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:44:56 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	increase_cms(t_commands *cms, t_context *ct)
 	int	i;
 
 	size = (int)(1.5 * cms->max);
-	ret = malloc(sizeof(int) * size);
+	ret = ft_calloc(size, sizeof(int));
 	if (ret == NULL)
 		exit_with_message(ct, "malloc & increase of commands_list");
 	i = 0;
@@ -107,7 +107,6 @@ void	increase_cms(t_commands *cms, t_context *ct)
 	}
 	free(cms->ts);
 	cms->ts = ret;
-	cms->n = i + 1;
 	cms->max = size;
 }
 

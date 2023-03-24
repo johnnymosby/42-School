@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/23 12:15:44 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:50:25 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "stdlib.h"
 # include "unistd.h"
-# define SIZE_COMMANDS_LIST 128
+# define SIZE_COMMANDS_LIST 128			//must be > 1
 // nums for numbers
 // inds for indexes
 // n for the number of elements
@@ -120,4 +120,5 @@ void	clean_before_end(t_context *ct);
 void		print_array(t_array *array);
 void		print_stack_a(t_stack_a *stack);
 void		print_stack_b(t_stack_b *stack);
+void		print_commands_simple(t_commands *cms);
 #endif

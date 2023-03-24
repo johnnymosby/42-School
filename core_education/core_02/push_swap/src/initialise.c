@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:57:40 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 12:21:04 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:40:22 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_array	*init_array(char *inp, t_context *ct)
 
 	array = create_array(inp, ct);
 	transform_input_to_array(array, inp, ct);
-	check_for_duplicates(array, ct);
 	sort_with_bubble_sort_array(array);
+	check_for_duplicates(array, ct);
 	change_values_to_their_order(array);
 	sort_with_bubble_sort_indexes(array);
 	return (array);
