@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 15:37:42 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/21 16:40:13 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:12:46 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_array	*create_array(char *input, t_context *ct)
 		exit_with_message(ct, "malloc & array");
 	array->n = count_number_of_elements(input, ct);
 	array->nums = malloc(sizeof(int) * array->n);
-	if (array->nums== NULL)
+	if (array->nums == NULL)
 		exit_with_message(ct, "malloc & array->nums");
 	array->inds = malloc(sizeof(int) * array->n);
 	if (array->inds == NULL)

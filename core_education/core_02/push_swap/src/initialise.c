@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:57:40 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 12:40:22 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:14:15 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_array	*init_array(char *inp, t_context *ct)
 	return (array);
 }
 
-t_stack_a *init_stack_a(t_array *arr, t_context *ct)
+t_stack_a	*init_stack_a(t_array *arr, t_context *ct)
 {
 	t_stack_a	*st_a;
 

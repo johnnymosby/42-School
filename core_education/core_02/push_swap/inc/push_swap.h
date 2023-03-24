@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 20:46:04 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 13:50:25 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:31:40 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "stdlib.h"
 # include "unistd.h"
-# define SIZE_COMMANDS_LIST 128			//must be > 1
+# define SIZE_COMMANDS_LIST 12800			//must be > 1
 // nums for numbers
 // inds for indexes
 // n for the number of elements
@@ -110,11 +110,13 @@ t_stack_a	*create_stack_a(t_array *array, t_context *ct);
 t_stack_b	*create_stack_b(t_array *array, t_context *ct);
 void		copy_input_to_stack_a(t_stack_a *stack_a, t_array *array);
 
-void		sort(t_stack_a *st_a, t_context *ct);
+void		sort(t_stack_a *st_a, t_stack_b *st_b, t_context *ct);
 void		sort_three_numbers(t_stack_a *st_a, t_context *ct);
 void		sort_less_than_four_numbers(t_stack_a *st_a, t_context *ct);
 
-void	clean_before_end(t_context *ct);
+void		move_from_a_to_b(t_stack_a *st_a, t_context *ct);
+void		move_from_b_to_a(t_stack_a *st_a, t_stack_b *st_b, t_context *ct);
+void		clean_before_end(t_context *ct);
 
 // to delete:
 void		print_array(t_array *array);

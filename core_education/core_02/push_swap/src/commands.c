@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:13:57 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 13:44:56 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/24 20:13:20 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*change_number_to_command(int num)
 
 t_commands	*create_commands(t_context *ct)
 {
-	t_commands *cms;
+	t_commands	*cms;
 
 	cms = ft_calloc(1, sizeof(t_commands));
 	if (cms == NULL)
