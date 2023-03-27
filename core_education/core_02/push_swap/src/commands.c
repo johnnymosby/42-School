@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:13:57 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 20:13:20 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:13:53 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,16 @@ char	*change_number_to_command(int num)
 	return ("rrr");
 }
 
-t_commands	*create_commands(t_context *ct)
+void	create_commands(t_context *ct)
 {
-	t_commands	*cms;
-
-	cms = ft_calloc(1, sizeof(t_commands));
-	if (cms == NULL)
+	ct->cms = ft_calloc(1, sizeof(t_commands));
+	if (ct->cms == NULL)
 		exit_with_message(ct, "malloc & commands");
-	cms->ts = malloc(sizeof(int) * SIZE_COMMANDS_LIST);
-	if (cms->ts == NULL)
+	ct->cms->ts = malloc(sizeof(int) * SIZE_COMMANDS_LIST);
+	if (ct->cms->ts == NULL)
 		exit_with_message(ct, "malloc & commands");
-	cms->n = 0;
-	cms->max = SIZE_COMMANDS_LIST;
-	return (cms);
+	ct->cms->n = 0;
+	ct->cms->max = SIZE_COMMANDS_LIST;
 }
 
 // ret for array to return

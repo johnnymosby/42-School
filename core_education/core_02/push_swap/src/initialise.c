@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:57:40 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 20:14:15 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:15:12 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,18 @@ char	*parse_input(int argc, char **argv, t_context *ct)
 	return (input);
 }
 
-t_array	*init_array(char *inp, t_context *ct)
+void	init_array(char *inp, t_context *ct)
 {
-	t_array	*array;
-
-	array = create_array(inp, ct);
-	transform_input_to_array(array, inp, ct);
-	sort_with_bubble_sort_array(array);
-	check_for_duplicates(array, ct);
-	change_values_to_their_order(array);
-	sort_with_bubble_sort_indexes(array);
-	return (array);
+	create_array(inp, ct);
+	transform_input_to_array(ct->arr, inp, ct);
+	sort_with_bubble_sort_array(ct->arr);
+	check_for_duplicates(ct->arr, ct);
+	change_values_to_their_order(ct->arr);
+	sort_with_bubble_sort_indexes(ct->arr);
 }
 
-t_stack_a	*init_stack_a(t_array *arr, t_context *ct)
+void	init_stack_a(t_array *arr, t_context *ct)
 {
-	t_stack_a	*st_a;
-
-	st_a = create_stack_a(arr, ct);
-	copy_input_to_stack_a(st_a, arr);
-	return (st_a);
+	create_stack_a(arr, ct);
+	copy_input_to_stack_a(ct->st_a, arr);
 }

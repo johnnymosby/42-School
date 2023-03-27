@@ -6,39 +6,33 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:00:54 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/23 13:45:12 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:12:14 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_a	*create_stack_a(t_array *array, t_context *ct)
+void	create_stack_a(t_array *array, t_context *ct)
 {
-	t_stack_a	*stack_a;
-
-	stack_a = ft_calloc(1, sizeof(t_stack_a));
-	if (stack_a == NULL)
+	ct->st_a = ft_calloc(1, sizeof(t_stack_a));
+	if (ct->st_a == NULL)
 		exit_with_message(ct, "malloc & stack_a");
-	stack_a->arr = malloc(sizeof(int) * array->n);
-	if (stack_a->arr == NULL)
+	ct->st_a->arr = malloc(sizeof(int) * array->n);
+	if (ct->st_a->arr == NULL)
 		exit_with_message(ct, "malloc & stack_a->arr");
-	stack_a->n = array->n;
-	stack_a->d = 0;
-	return (stack_a);
+	ct->st_a->n = array->n;
+	ct->st_a->d = 0;
 }
 
-t_stack_b	*create_stack_b(t_array *array, t_context *ct)
+void	create_stack_b(t_array *array, t_context *ct)
 {
-	t_stack_b	*stack_b;
-
-	stack_b = ft_calloc(1, sizeof(t_stack_b));
-	if (stack_b == NULL)
+	ct->st_b = ft_calloc(1, sizeof(t_stack_b));
+	if (ct->st_b == NULL)
 		exit_with_message(ct, "malloc & stack_b");
-	stack_b->arr = malloc(sizeof(int) * array->n);
-	if (stack_b->arr == NULL)
+	ct->st_b->arr = malloc(sizeof(int) * array->n);
+	if (ct->st_b->arr == NULL)
 		exit_with_message(ct, "malloc & stack_b->arr");
-	stack_b->n = 0;
-	return (stack_b);
+	ct->st_b->n = 0;
 }
 
 void	copy_input_to_stack_a(t_stack_a *stack_a, t_array *array)

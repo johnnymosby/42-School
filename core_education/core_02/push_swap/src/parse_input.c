@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:05:51 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 12:40:17 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:29:34 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	skip_zeroes(char *input)
 	input[j] = input[i];
 	i++;
 	j++;
-	while (input[i] != '\0')
+	while (input[0] != '\0' && input[i] != '\0')
 	{
 		if (input[i - 1] == ' ' && input[i] == '0')
 			while (input[i] == '0'
@@ -45,7 +45,8 @@ static void	skip_zeroes(char *input)
 		i++;
 		j++;
 	}
-	input[j] = '\0';
+	if (input[0] != '\0')
+		input[j] = '\0';
 }
 
 char	*collapse_arguments(int argc, char **argv, t_context *ct)

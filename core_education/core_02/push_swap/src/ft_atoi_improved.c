@@ -6,14 +6,20 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:07:02 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/21 15:54:19 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:05:47 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	exit_within_atoi(char *str, t_context *ct)
+{
+	free(str);
+	exit_with_message(ct, "not integer");
+}
+
 //exit if the number is not int
-int	ft_atoi_improved(const char *string, t_context *ct)
+int	ft_atoi_improved(char *string, t_context *ct)
 {
 	int						i;
 	int						n;
@@ -35,7 +41,7 @@ int	ft_atoi_improved(const char *string, t_context *ct)
 	{
 		number = number * 10 + (string[i] - '0');
 		if (number > 2147483647)
-			exit_with_message(ct, "not integer");
+			exit_within_atoi(string, ct);
 		i++;
 	}
 	return (n * number);

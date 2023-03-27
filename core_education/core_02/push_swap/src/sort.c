@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:54:49 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 20:36:23 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:12:54 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	sort(t_stack_a *st_a, t_stack_b *st_b, t_context *ct)
 {
 	if (st_a->n < 4)
 		sort_less_than_four_numbers(st_a, ct);
+	else if (st_a->n < 6)
+		sort_less_than_six_numbers(st_a, st_b, ct);
 	else
 	{
 		move_from_a_to_b(st_a, ct);

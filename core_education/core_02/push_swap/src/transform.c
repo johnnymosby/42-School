@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 15:37:42 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/24 20:12:46 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:07:56 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,18 @@ static int	count_number_of_elements(char *input, t_context *ct)
 	return (n);
 }
 
-t_array	*create_array(char *input, t_context *ct)
+void	create_array(char *input, t_context *ct)
 {
-	t_array	*array;
-
-	array = ft_calloc(1, sizeof(t_array));
-	if (array == NULL)
+	ct->arr = ft_calloc(1, sizeof(t_array));
+	if (ct->arr == NULL)
 		exit_with_message(ct, "malloc & array");
-	array->n = count_number_of_elements(input, ct);
-	array->nums = malloc(sizeof(int) * array->n);
-	if (array->nums == NULL)
+	ct->arr->n = count_number_of_elements(input, ct);
+	ct->arr->nums = malloc(sizeof(int) * ct->arr->n);
+	if (ct->arr->nums == NULL)
 		exit_with_message(ct, "malloc & array->nums");
-	array->inds = malloc(sizeof(int) * array->n);
-	if (array->inds == NULL)
+	ct->arr->inds = malloc(sizeof(int) * ct->arr->n);
+	if (ct->arr->inds == NULL)
 		exit_with_message(ct, "malloc & array->inds");
-	return (array);
 }
 
 static int	return_next_number(char *input, t_context *ct)
@@ -65,12 +62,9 @@ static int	return_next_number(char *input, t_context *ct)
 	number_in_text = malloc(sizeof(int) * (n_symbols + 1));
 	if (number_in_text == NULL)
 		exit_with_message(ct, "malloc & number_in_text");
-	i = 0;
-	while (i != n_symbols)
-	{
+	i = -1;
+	while (++i < n_symbols)
 		number_in_text[i] = input[i];
-		i++;
-	}
 	number_in_text[i] = '\0';
 	number = ft_atoi_improved(number_in_text, ct);
 	free(number_in_text);

@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:38:03 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/03/22 10:50:50 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:52:59 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_r_up(int *arr, int n)
 
 	i = n;
 	temp = arr[i - 1];
-	while (i > 0)
+	while (i > 1)
 	{
 		arr[i - 1] = arr[i - 2];
 		i--;
