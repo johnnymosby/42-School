@@ -36,7 +36,7 @@ BNS_OBJ	=	$(BNS_SRC:.c=.o)
 
 CC		=	cc
 
-CFLAGS	=	-g -Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
 all:		$(NAME)
 
