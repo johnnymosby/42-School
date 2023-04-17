@@ -6,14 +6,14 @@ INC			=	philo.h
 
 SRC_DIR		=	./src
 
-SRC			=	main.c
+SRC			=	main.c initialise.c exit.c utils.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
 OBJ			=	$(SRC:.c=.o)
 
 CC			=	cc
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -pthread
 
 all:		$(NAME)
 

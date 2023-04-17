@@ -3,6 +3,9 @@
     "files.associations": {
 		"fractol.h": "c",
 		"stdlib.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"philo.h": "c",
+		"unistd.h": "c",
+		"time.h": "c"
 	}
 }
