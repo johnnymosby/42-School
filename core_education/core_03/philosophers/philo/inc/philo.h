@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/17 15:30:53 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:25:04 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_philosopher
 	int				n_eaten;
 	pthread_mutex_t	*lfork_ind;
 	pthread_mutex_t	*rfork_ind;
-	pthread_t		tid;
+	pthread_t		*tid;
 	pthread_mutex_t	*print_permit;
 	long long		start_time;
 	struct timeval	last_ate;
@@ -46,7 +46,10 @@ typedef struct s_context
 	int				n_to_eat;
 	t_philosopher	*philos;
 	pthread_mutex_t	*forks;
+	int				forks_exist;
+	int				failed_fork;
 	pthread_t		*tids;
+	int				failed_philo;
 	pthread_mutex_t	print_permit;
 	long long		start_time;
 	int				dead;
@@ -54,15 +57,27 @@ typedef struct s_context
 
 //main.c
 int			main(int argc, char **argv);
+void		join_threads(t_context *ct);
 
 //initialise.c
-t_context	*init_context(void);
-void		init_args(int argc, char **argv, t_context *ct);
+int			init_context(t_context **ct);
+int			init_args(int argc, char **argv, t_context *ct);
+int			create_forks(t_context *ct);
+int			create_philosophers(t_context *ct);
 
 //exit.c
-void		exit_with_message(t_context *ct, char *message);
+void		destroy_forks(t_context *ct);
+int			exit_with_message(t_context *ct, char *message);
+int			clean_exit(t_context *ct);
 
 //utils.c
 void		*ft_calloc(size_t count, size_t size);
 int			ft_atoi(const char *string);
+
+//exist.c
+void		*philosopher_exist(void *arg);
+void		philosopher_eat(t_philosopher *phi);
+
+//time.c
+long long	get_time_in_ms(void);
 #endif
