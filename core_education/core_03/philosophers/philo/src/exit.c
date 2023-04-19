@@ -6,11 +6,34 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:13:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/18 18:56:34 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:37:36 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	destroy_protections(t_context *ct)
+{
+	int	i;
+
+	i = 0;
+	if (ct->failed_protection >= 0)
+	{
+		while (i != ct->failed_protection && ct->protections_exist == 1)
+		{
+			pthread_mutex_destroy(&ct->protections[i]);
+			i++;
+		}
+	}
+	else
+	{
+		while (i != ct->n_philos && ct->protections_exist == 1)
+		{
+			pthread_mutex_destroy(&ct->protections[i]);
+			i++;
+		}
+	}
+}
 
 void	destroy_forks(t_context *ct)
 {
@@ -60,6 +83,11 @@ void	destroy_philosophers(t_context *ct)
 
 int	exit_with_message(t_context *ct, char *message)
 {
+	if (ct != NULL && ct->protections != NULL)
+	{
+		destroy_protections(ct);
+		free(ct->protections);
+	}
 	if (ct != NULL && ct->tids != NULL)
 	{
 		destroy_philosophers(ct);
@@ -80,6 +108,11 @@ int	exit_with_message(t_context *ct, char *message)
 
 int	clean_exit(t_context *ct)
 {
+	if (ct != NULL && ct->protections != NULL)
+	{
+		destroy_protections(ct);
+		free(ct->protections);
+	}
 	if (ct != NULL && ct->forks != NULL)
 	{
 		destroy_forks(ct);

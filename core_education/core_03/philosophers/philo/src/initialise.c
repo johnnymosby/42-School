@@ -6,11 +6,34 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:37:34 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/18 19:29:09 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:41:54 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	create_protections(t_context *ct)
+{
+	int	i;
+	int	fail;
+
+	ct->protections = ft_calloc(ct->n_philos, sizeof(pthread_mutex_t));
+	if (ct->protections == NULL)
+		exit_with_message(ct, "calloc failed for protections");
+	i = 0;
+	while (i != ct->n_philos)
+	{
+		fail = pthread_mutex_init(&ct->protections[i], NULL);
+		if (fail != 0)
+		{
+			ct->failed_protection = i;
+			return (exit_with_message(ct, "mutexes for protections failed"));
+		}
+		ct->protections_exist = 1;
+		i++;
+	}
+	return (0);
+}
 
 int	create_forks(t_context *ct)
 {
@@ -19,7 +42,7 @@ int	create_forks(t_context *ct)
 
 	ct->forks = ft_calloc(ct->n_philos, sizeof(pthread_mutex_t));
 	if (ct->forks == NULL)
-		exit_with_message(ct, "calloc failed");
+		exit_with_message(ct, "calloc failed for forks");
 	i = 0;
 	while (i != ct->n_philos)
 	{
@@ -27,7 +50,7 @@ int	create_forks(t_context *ct)
 		if (fail != 0)
 		{
 			ct->failed_fork = i;
-			return (exit_with_message(ct, "forks failed"));
+			return (exit_with_message(ct, "mutexes for forks failed"));
 		}
 		ct->forks_exist = 1;
 		i++;
@@ -35,7 +58,7 @@ int	create_forks(t_context *ct)
 	return (0);
 }
 
-static void	create_a_philosopher(t_philosopher *phi, int id, t_context *ct)
+static int	create_a_philosopher(t_philosopher *phi, int id, t_context *ct)
 {
 	phi->id = id + 1;
 	phi->time_to_die = ct->time_to_die;
@@ -43,14 +66,18 @@ static void	create_a_philosopher(t_philosopher *phi, int id, t_context *ct)
 	phi->time_to_sleep = ct->time_to_sleep;
 	phi->n_to_eat = ct->n_to_eat;
 	phi->n_eaten = 0;
+	phi->full = 0;
 	phi->lfork_ind = &ct->forks[id];
-	if (id == ct->n_philos - 1)
+	if (id == (ct->n_philos - 1))
 		phi->rfork_ind = &ct->forks[0];
 	else
 		phi->rfork_ind = &ct->forks[id + 1];
+	phi->dead = &ct->dead;
 	phi->tid = &ct->tids[id];
 	phi->print_permit = &ct->print_permit;
 	phi->start_time = ct->start_time;
+	phi->protection = &ct->protections[id];
+	return (0);
 }
 
 int	create_philosophers(t_context *ct)
@@ -68,7 +95,8 @@ int	create_philosophers(t_context *ct)
 	ct->start_time = get_time_in_ms();
 	while (i != ct->n_philos)
 	{
-		create_a_philosopher(&ct->philos[i], i, ct);
+		if (create_a_philosopher(&ct->philos[i], i, ct) == 1)
+			return (1);
 		fail = pthread_create(&ct->tids[i], NULL,
 				philosopher_exist, &ct->philos[i]);
 		if (fail != 0)
@@ -101,16 +129,12 @@ int	init_args(int argc, char **argv, t_context *ct)
 		if (ct->n_to_eat < 1)
 			return (exit_with_message(ct, "wrong number of times to eat"));
 	}
+	else
+		ct->n_to_eat = -1;
 	ct->failed_fork = -1;
 	ct->failed_philo = -1;
+	ct->failed_protection = -1;
 	ct->forks_exist = 0;
-	return (0);
-}
-
-int	init_context(t_context **ct)
-{
-	*ct = ft_calloc(1, sizeof(t_context));
-	if (*ct == NULL)
-		return (exit_with_message(NULL, "malloc & ct"));
+	ct->dead = 0;
 	return (0);
 }
