@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/19 17:00:40 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:21:24 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			main(int argc, char **argv);
 int			all_full(t_context *ct);
 int			init_context(t_context **ct);
 void		join_threads(t_context *ct);
-void			supervise(t_context *ct);
+void		supervise(t_context *ct);
 
 //initialise.c
 int			init_args(int argc, char **argv, t_context *ct);
