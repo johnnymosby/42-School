@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:44:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/19 17:00:34 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:32:00 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	all_full(t_context *ct)
 	{
 		if (ct->philos[i].full == 0)
 			return (0);
+		i++;
 	}
 	return (1);
 }
@@ -37,15 +38,18 @@ void	supervise(t_context *ct)
 {
 	int	i;
 
-	while (ct->dead == 0)
+	ct->all_full = all_full(ct);
+	while (ct->dead == 0 && ct->all_full == 0)
 	{
 		i = 0;
 		while (i < ct->n_philos)
 		{
+			check_death(&ct->philos[i]);
 			if (ct->dead == 1)
-				pthread_detach(ct->tids[i]);
+				break ;
 			i++;
 		}
+		ct->all_full = all_full(ct);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:37:34 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/19 16:41:54 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:20:21 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ static int	create_a_philosopher(t_philosopher *phi, int id, t_context *ct)
 	phi->time_to_eat = ct->time_to_eat;
 	phi->time_to_sleep = ct->time_to_sleep;
 	phi->n_to_eat = ct->n_to_eat;
-	phi->n_eaten = 0;
-	phi->full = 0;
+	phi->all_full = &ct->all_full;
 	phi->lfork_ind = &ct->forks[id];
 	if (id == (ct->n_philos - 1))
 		phi->rfork_ind = &ct->forks[0];
@@ -134,7 +133,5 @@ int	init_args(int argc, char **argv, t_context *ct)
 	ct->failed_fork = -1;
 	ct->failed_philo = -1;
 	ct->failed_protection = -1;
-	ct->forks_exist = 0;
-	ct->dead = 0;
 	return (0);
 }

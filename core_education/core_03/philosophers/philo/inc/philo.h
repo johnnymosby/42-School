@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbasyrov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/19 22:21:24 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:16:59 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philosopher
 	int				time_to_sleep;
 	int				n_to_eat;
 	int				n_eaten;
+	int				*all_full;
 	pthread_mutex_t	*lfork_ind;
 	pthread_mutex_t	*rfork_ind;
 	pthread_t		*tid;
@@ -46,6 +47,7 @@ typedef struct s_context
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				n_to_eat;
+	int				all_full;
 	t_philosopher	*philos;
 	pthread_mutex_t	*forks;
 	int				forks_exist;
