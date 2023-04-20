@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:44:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 12:32:00 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:18:36 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ int	all_full(t_context *ct)
 	}
 	return (1);
 }
+void	check_hunger(t_philosopher *phi)
+{
+	pthread_mutex_lock(phi->protection);
+	if (phi->n_eaten == phi->n_to_eat)
+		phi->full = 1;
+	pthread_mutex_unlock(phi->protection);
+}
 
 void	supervise(t_context *ct)
 {
@@ -47,38 +54,10 @@ void	supervise(t_context *ct)
 			check_death(&ct->philos[i]);
 			if (ct->dead == 1)
 				break ;
+			check_hunger(&ct->philos[i]);
 			i++;
 		}
 		ct->all_full = all_full(ct);
-	}
-}
-
-// int	supervise(t_context *ct)
-// {
-// 	int	i;
-
-// 	while (all_full(ct) == 0)
-// 	{
-// 		i = 0;
-// 		while (i < ct->n_philos && all_full(ct) == 0)
-// 		{
-// 			if (ct->dead == 1)
-// 				return (clean_exit(ct));
-// 			i++;
-// 		}
-// 	}
-// 	return (1);
-// }
-
-void	join_threads(t_context *ct)
-{
-	int	i;
-
-	i = 0;
-	while (i < ct->n_philos && ct->tids[i] != 0)
-	{
-		pthread_join(ct->tids[i], NULL);
-		i++;
 	}
 }
 
@@ -99,5 +78,6 @@ int	main(int argc, char **argv)
 	if (create_philosophers(ct) == 1)
 		return (1);
 	supervise(ct);
+	printf("SUPERVISE FINISHED\n");
 	return (clean_exit(ct));
 }

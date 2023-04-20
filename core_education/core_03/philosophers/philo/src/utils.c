@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:51:20 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 10:35:19 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:26:02 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,14 @@ int	ft_atoi(const char *string)
 	return (n * number);
 }
 
-void	print_action(t_philosopher *phi, char *message)
+int	print_action(t_philosopher *phi, char *message)
 {
 	pthread_mutex_lock(phi->print_permit);
-	printf("%lld %i %s\n", (get_time_in_ms() - phi->start_time),
-		phi->id, message);
+	if (*phi->dead == 0 && *phi->all_full == 0)
+		printf("%lld %i %s\n", (get_time_in_ms() - phi->start_time),
+			phi->id, message);
 	pthread_mutex_unlock(phi->print_permit);
+	return (1);
 }
 
 void	check_death(t_philosopher *phi)

@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 12:16:59 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:27:07 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_philosopher
 	int				protection_exists;
 	int				*dead;
 	int				full;
+	int				forks_were_taken;
+	int				left_fork;
+	int				right_fork;
 }	t_philosopher;
 
 typedef struct s_context
@@ -77,13 +80,14 @@ int			create_philosophers(t_context *ct);
 
 //exit.c
 void		destroy_forks(t_context *ct);
+void		destroy_philosophers(t_context *ct);
 int			exit_with_message(t_context *ct, char *message);
 int			clean_exit(t_context *ct);
 
 //utils.c
 void		*ft_calloc(size_t count, size_t size);
 int			ft_atoi(const char *string);
-void		print_action(t_philosopher *phi, char *message);
+int			print_action(t_philosopher *phi, char *message);
 void		check_death(t_philosopher *phi);
 
 //exist.c

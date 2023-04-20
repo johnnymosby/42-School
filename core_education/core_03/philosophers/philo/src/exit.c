@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:13:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/19 14:37:36 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:31:17 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	destroy_philosophers(t_context *ct)
 	{
 		while (i != ct->failed_philo && ct->tids[i] != 0)
 		{
+			printf("FAILED PHILO\n");
 			pthread_join(ct->tids[i], NULL);
 			i++;
 		}
@@ -75,10 +76,12 @@ void	destroy_philosophers(t_context *ct)
 	{
 		while (i != ct->n_philos && ct->tids[i] != 0)
 		{
+			printf("USUAL PHILO\n");
 			pthread_join(ct->tids[i], NULL);
 			i++;
 		}
 	}
+	ct->tids = NULL;
 }
 
 int	exit_with_message(t_context *ct, char *message)
@@ -87,16 +90,19 @@ int	exit_with_message(t_context *ct, char *message)
 	{
 		destroy_protections(ct);
 		free(ct->protections);
+		printf("PROTECTIONS ARE DESTROYED\n");
 	}
 	if (ct != NULL && ct->tids != NULL)
 	{
 		destroy_philosophers(ct);
 		free(ct->tids);
+		printf("PHILOSOPHERS ARE DESTROYED\n");
 	}
 	if (ct != NULL && ct->forks != NULL)
 	{
 		destroy_forks(ct);
 		free(ct->forks);
+		printf("FORKS ARE DESTROYED\n");
 	}
 	if (ct != NULL && ct->philos != 0)
 		free(ct->philos);
@@ -112,20 +118,24 @@ int	clean_exit(t_context *ct)
 	{
 		destroy_protections(ct);
 		free(ct->protections);
+		printf("PROTECTIONS ARE DESTROYED\n");
 	}
 	if (ct != NULL && ct->forks != NULL)
 	{
 		destroy_forks(ct);
 		free(ct->forks);
+		printf("FORKS ARE DESTROYED\n");
 	}
 	if (ct != NULL && ct->tids != NULL)
 	{
 		destroy_philosophers(ct);
 		free(ct->tids);
+		printf("PHILOSOPHERS ARE DESTROYED\n");
 	}
 	if (ct != NULL && ct->philos != 0)
 		free(ct->philos);
 	if (ct != NULL)
 		free(ct);
+	printf("CLEAN EXIT\n");
 	return (0);
 }
