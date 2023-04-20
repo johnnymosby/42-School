@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 17:55:49 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:27:07 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,25 @@
 typedef struct s_philosopher
 {
 	int				id;
-	int				n_philos;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				n_to_eat;
 	int				n_eaten;
+	int				*all_full;
 	pthread_mutex_t	*lfork_ind;
 	pthread_mutex_t	*rfork_ind;
-	pthread_mutex_t	*print_permit_mutex;
+	pthread_t		*tid;
+	pthread_mutex_t	*print_permit;
 	long long		start_time;
 	struct timeval	last_ate;
+	pthread_mutex_t	*protection;
+	int				protection_exists;
+	int				*dead;
 	int				full;
 	int				forks_were_taken;
 	int				left_fork;
 	int				right_fork;
-	pthread_mutex_t	*n_full_mutex;
-	int				*n_full;
-	pthread_mutex_t	*dead_mutex;
-	int				*dead;
 }	t_philosopher;
 
 typedef struct s_context
@@ -50,19 +50,19 @@ typedef struct s_context
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				n_to_eat;
+	int				all_full;
 	t_philosopher	*philos;
-	int				failed_philo;
 	pthread_mutex_t	*forks;
 	int				forks_exist;
 	int				failed_fork;
 	pthread_t		*tids;
-	pthread_mutex_t	print_permit_mutex;
-	int				print_permit;
-	pthread_mutex_t	n_full_mutex;
-	int				n_full;
-	pthread_mutex_t	dead_mutex;
-	int				dead;
+	int				failed_philo;
+	pthread_mutex_t	print_permit;
 	long long		start_time;
+	pthread_mutex_t	*protections;
+	int				failed_protection;
+	int				protections_exist;
+	int				dead;
 }	t_context;
 
 //main.c
@@ -74,7 +74,7 @@ void		supervise(t_context *ct);
 
 //initialise.c
 int			init_args(int argc, char **argv, t_context *ct);
-int			create_mutexes(t_context *ct);
+int			create_protections(t_context *ct);
 int			create_forks(t_context *ct);
 int			create_philosophers(t_context *ct);
 
@@ -92,7 +92,7 @@ void		check_death(t_philosopher *phi);
 
 //exist.c
 void		*philosopher_exist(void *arg);
-int			philosopher_eat(t_philosopher *phi);
+void		philosopher_eat(t_philosopher *phi);
 void		take_forks(t_philosopher *phi);
 
 //time.c

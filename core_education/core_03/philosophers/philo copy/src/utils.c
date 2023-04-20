@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:51:20 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 19:06:41 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:26:02 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,35 @@ int	ft_atoi(const char *string)
 
 int	print_action(t_philosopher *phi, char *message)
 {
-	pthread_mutex_lock(phi->n_full_mutex);
-	pthread_mutex_lock(phi->dead_mutex);
-	if (*phi->n_full < phi->n_philos && *phi->dead == 0)
-	{
-		pthread_mutex_unlock(phi->dead_mutex);
-		pthread_mutex_unlock(phi->n_full_mutex);
-		pthread_mutex_lock(phi->print_permit_mutex);
+	pthread_mutex_lock(phi->print_permit);
+	if (*phi->dead == 0 && *phi->all_full == 0)
 		printf("%lld %i %s\n", (get_time_in_ms() - phi->start_time),
 			phi->id, message);
-		pthread_mutex_unlock(phi->print_permit_mutex);
-	}
-	else
-	{
-		pthread_mutex_unlock(phi->dead_mutex);
-		pthread_mutex_unlock(phi->n_full_mutex);
-	}
+	pthread_mutex_unlock(phi->print_permit);
 	return (1);
 }
 
+void	check_death(t_philosopher *phi)
+{
+	pthread_mutex_lock(phi->protection);
+	if (phi->n_eaten == 0
+		&& phi->time_to_die < (get_time_in_ms() - phi->start_time))
+	{
+		if (*phi->dead == 0)
+		{
+			*phi->dead = 1;
+			print_action(phi, "died");
+		}
+	}
+	else if (phi->n_eaten > 0
+		&& phi->time_to_die < (get_time_in_ms()
+			- timeval_to_ms(phi->last_ate)))
+	{
+		if (*phi->dead == 0)
+		{
+			*phi->dead = 1;
+			print_action(phi, "died");
+		}
+	}
+	pthread_mutex_unlock(phi->protection);
+}
