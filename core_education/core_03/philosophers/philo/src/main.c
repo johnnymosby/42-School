@@ -6,11 +6,27 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:44:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 18:04:35 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:11:47 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	supervise(t_context *ct)
+{
+	int	i;
+
+	while (1)
+	{
+		i = 0;
+		while (i < ct->n_philos)
+		{
+			if (check_death(&ct->philos[i]) == 1)
+				return (1);
+		}
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -28,5 +44,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (create_philosophers(ct) == 1)
 		return (1);
+	supervise(ct);
 	return (clean_exit(ct));
 }

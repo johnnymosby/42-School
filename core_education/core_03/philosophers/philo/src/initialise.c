@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:37:34 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 18:10:51 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:52:05 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	create_mutexes(t_context *ct)
 	fail = pthread_mutex_init(&ct->n_full_mutex, NULL);
 	if (fail != 0)
 	{
-		ct->n_full = -1;
+		ct->n_full = -100;
 		return (exit_with_message(ct, "mutex for 'n_full' failed"));
 	}
 	return (0);
@@ -143,5 +143,6 @@ int	init_args(int argc, char **argv, t_context *ct)
 		ct->n_to_eat = -1;
 	ct->failed_fork = -1;
 	ct->failed_philo = -1;
+	ct->n_full = 0;
 	return (0);
 }

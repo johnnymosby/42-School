@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 13:39:33 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 19:16:32 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:48:52 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,37 @@ void	take_forks(t_philosopher *phi)
 	phi->forks_were_taken = 1;
 }
 
-void	check_death(t_philosopher *phi)
+int	check_death(t_philosopher *phi)
 {
+	int	ret;
+
+	ret = 0;
 	pthread_mutex_lock(phi->n_full_mutex);
 	pthread_mutex_lock(phi->dead_mutex);
-	if (phi->n_eaten == 0
-		&& phi->time_to_die < (get_time_in_ms() - phi->start_time))
+	if ((*phi->dead == 0) && ((phi->n_eaten == 0
+				&& phi->time_to_die < (get_time_in_ms() - phi->start_time))
+			|| (phi->n_eaten > 0
+				&& phi->time_to_die < (get_time_in_ms()
+					- timeval_to_ms(phi->last_ate)))))
 	{
 		*phi->dead = 1;
-		print_action(phi, "died");
+		if (*phi->n_full != phi->n_philos)
+		{
+			pthread_mutex_lock(phi->print_permit_mutex);
+			printf("%lld %i died\n", (get_time_in_ms() - phi->start_time),
+				phi->id);
+			pthread_mutex_unlock(phi->print_permit_mutex);
+		}
+		pthread_mutex_unlock(phi->dead_mutex);
+		pthread_mutex_unlock(phi->n_full_mutex);
+		ret = 1;
 	}
-	else if (phi->n_eaten > 0
-		&& phi->time_to_die < (get_time_in_ms()
-			- timeval_to_ms(phi->last_ate)))
+	else
 	{
-		*phi->dead = 1;
-		print_action(phi, "died");
+		pthread_mutex_unlock(phi->dead_mutex);
+		pthread_mutex_unlock(phi->n_full_mutex);
 	}
-	pthread_mutex_unlock(phi->dead_mutex);
-	pthread_mutex_unlock(phi->n_full_mutex);
+	return (ret);
 }
 
 void	start_eating(t_philosopher *phi)
@@ -85,7 +97,11 @@ void	start_eating(t_philosopher *phi)
 		print_action(phi, "is eating");
 		gettimeofday(&phi->last_ate, NULL);
 		usleep_in_intervals(phi->time_to_eat);
+		pthread_mutex_lock(phi->n_full_mutex);
+		pthread_mutex_lock(phi->dead_mutex);
 		phi->n_eaten = phi->n_eaten + 1;
+		pthread_mutex_unlock(phi->dead_mutex);
+		pthread_mutex_unlock(phi->n_full_mutex);
 		if (phi->n_eaten == phi->n_to_eat)
 		{
 			phi->full = 1;
@@ -170,6 +186,12 @@ void	*philosopher_exist(void *arg)
 	t_philosopher	*phi;
 
 	phi = (t_philosopher *)arg;
+	if (phi->n_philos == 1)
+	{
+		print_action(phi, "has taken a fork");
+		usleep_in_intervals(phi->time_to_die);
+		return (NULL);
+	}
 	pthread_mutex_lock(phi->n_full_mutex);
 	pthread_mutex_lock(phi->dead_mutex);
 	while (*phi->n_full < phi->n_philos && *phi->dead == 0)

@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:13:12 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 18:18:07 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:49:56 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	destroy_mutexes(t_context *ct)
 		pthread_mutex_destroy(&ct->print_permit_mutex);
 	if (ct->dead != -1)
 		pthread_mutex_destroy(&ct->dead_mutex);
-	if (ct->n_full != -1)
+	if (ct->n_full != -100)
 		pthread_mutex_destroy(&ct->n_full_mutex);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/20 17:55:49 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:11:16 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			main(int argc, char **argv);
 int			all_full(t_context *ct);
 int			init_context(t_context **ct);
 void		join_threads(t_context *ct);
-void		supervise(t_context *ct);
+int			supervise(t_context *ct);
 
 //initialise.c
 int			init_args(int argc, char **argv, t_context *ct);
@@ -88,7 +88,7 @@ int			clean_exit(t_context *ct);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_atoi(const char *string);
 int			print_action(t_philosopher *phi, char *message);
-void		check_death(t_philosopher *phi);
+int			check_death(t_philosopher *phi);
 
 //exist.c
 void		*philosopher_exist(void *arg);
