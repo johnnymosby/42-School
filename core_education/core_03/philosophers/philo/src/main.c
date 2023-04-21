@@ -6,11 +6,39 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:44:45 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/21 10:11:47 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:06:47 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	check_death(t_philosopher *phi)
+{
+	int	ret;
+
+	ret = 0;
+	lock_mutexes(phi);
+	if ((*phi->dead == 0) && ((phi->n_eaten == 0
+				&& phi->time_to_die < (get_time_in_ms() - phi->start_time))
+			|| (phi->n_eaten > 0
+				&& phi->time_to_die < (get_time_in_ms()
+					- timeval_to_ms(phi->last_ate)))))
+	{
+		*phi->dead = 1;
+		if (*phi->n_full < phi->n_philos)
+		{
+			pthread_mutex_lock(phi->print_permit_mutex);
+			printf("%lld %i died\n", (get_time_in_ms() - phi->start_time),
+				phi->id);
+			pthread_mutex_unlock(phi->print_permit_mutex);
+		}
+		unlock_mutexes(phi);
+		ret = 1;
+	}
+	else
+		unlock_mutexes(phi);
+	return (ret);
+}
 
 int	supervise(t_context *ct)
 {

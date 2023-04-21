@@ -6,7 +6,7 @@
 /*   By: rbasyrov <rbasyrov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:42:36 by rbasyrov          #+#    #+#             */
-/*   Updated: 2023/04/21 10:11:16 by rbasyrov         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:41:09 by rbasyrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,22 @@ typedef struct s_context
 
 //main.c
 int			main(int argc, char **argv);
-int			all_full(t_context *ct);
-int			init_context(t_context **ct);
-void		join_threads(t_context *ct);
+int			check_death(t_philosopher *phi);
 int			supervise(t_context *ct);
 
 //initialise.c
+int			init_context(t_context **ct);
 int			init_args(int argc, char **argv, t_context *ct);
+
+//create.c
 int			create_mutexes(t_context *ct);
 int			create_forks(t_context *ct);
 int			create_philosophers(t_context *ct);
 
 //exit.c
-void		destroy_forks(t_context *ct);
 void		destroy_philosophers(t_context *ct);
+void		destroy_forks(t_context *ct);
+void		destroy_mutexes(t_context *ct);
 int			exit_with_message(t_context *ct, char *message);
 int			clean_exit(t_context *ct);
 
@@ -88,12 +90,19 @@ int			clean_exit(t_context *ct);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_atoi(const char *string);
 int			print_action(t_philosopher *phi, char *message);
-int			check_death(t_philosopher *phi);
+void		lock_mutexes(t_philosopher *phi);
+void		unlock_mutexes(t_philosopher *phi);
 
 //exist.c
+void		start_eating(t_philosopher *phi);
+void		philosopher_eat(t_philosopher *phi);
+void		philosopher_sleep(t_philosopher *phi);
+void		philosopher_think(t_philosopher *phi);
 void		*philosopher_exist(void *arg);
-int			philosopher_eat(t_philosopher *phi);
+
+//exist_utils.c
 void		take_forks(t_philosopher *phi);
+void		drop_forks(t_philosopher *phi);
 
 //time.c
 long long	timeval_to_ms(struct timeval time);

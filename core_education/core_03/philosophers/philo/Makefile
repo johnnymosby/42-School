@@ -6,7 +6,7 @@ INC			=	philo.h
 
 SRC_DIR		=	./src
 
-SRC			=	main.c initialise.c exit.c utils.c exist.c time.c
+SRC			=	main.c initialise.c create.c exit.c utils.c exist.c exist_utils.c time.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
 OBJ			=	$(SRC:.c=.o)
