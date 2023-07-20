@@ -9,7 +9,8 @@ int main(int argc, char *argv[])
     return 1;
   if (open_files(infile, outfile, argv[1]) == false)
     return 1;
-  if (replace(infile, outfile, argv[2], argv[3]) == false)
-    return 1;
+  replace(infile, outfile, argv[2], argv[3]);
+  infile.close();
+  outfile.close();
   return 0;
 }

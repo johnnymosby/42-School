@@ -31,7 +31,7 @@ bool  open_files(std::ifstream &infile, std::ofstream &outfile, char const *file
   return true;
 }
 
-bool  replace(std::ifstream &infile, std::ofstream &outfile, char const *str1, char const *str2) {
+void  replace(std::ifstream &infile, std::ofstream &outfile, char const *str1, char const *str2) {
   std::string line;
   size_t word_position;
   std::string string1 = str1;
@@ -46,7 +46,7 @@ bool  replace(std::ifstream &infile, std::ofstream &outfile, char const *str1, c
       line = line.substr(word_position + str1_length);
       word_position = line.find(str1);
     }
-    outfile << line << '\n';
+    if (!infile.eof())
+      outfile << line << '\n';
   }
-  return true;
 }
