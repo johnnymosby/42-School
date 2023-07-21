@@ -1,8 +1,11 @@
 #ifndef HUMANB_HPP
 # define HUMANB_HPP
 
+# include <string>
+# include <iostream>
+
 # ifndef WEAPON
-# include "Weapon.hpp"
+# define WEAPON
 
 class Weapon
 {

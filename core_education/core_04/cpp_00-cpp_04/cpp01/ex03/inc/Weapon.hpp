@@ -5,7 +5,7 @@
 # include <iostream>
 
 # ifndef WEAPON
-# include "Weapon.hpp"
+# define WEAPON
 
 class Weapon
 {
