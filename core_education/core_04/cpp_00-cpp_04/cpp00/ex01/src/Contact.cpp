@@ -1,4 +1,5 @@
 #include "../inc/Contact.hpp"
+#include "../inc/utils.hpp"
 
 std::string   Contact::get_value(t_phonebook_field field)
 {
@@ -14,6 +15,8 @@ std::string   Contact::get_value(t_phonebook_field field)
       return this->phone_number;
     case  DARKEST_SECRET:
       return this->darkest_secret;
+    default:
+      return "";
   }
 }
 

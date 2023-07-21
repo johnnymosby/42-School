@@ -1,4 +1,5 @@
 #include "../inc/PhoneBook.hpp"
+#include "../inc/Contact.hpp"
 
 PhoneBook::PhoneBook()
 {
