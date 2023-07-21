@@ -4,6 +4,9 @@
 # include <string>
 # include <iostream>
 
+# ifndef WEAPON
+# include "Weapon.hpp"
+
 class Weapon
 {
   public:
@@ -14,5 +17,7 @@ class Weapon
   private:
     std::string type;
 };
+
+# endif
 
 #endif
