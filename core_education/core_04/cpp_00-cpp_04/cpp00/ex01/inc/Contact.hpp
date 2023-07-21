@@ -4,6 +4,8 @@
 # include <string>
 # include <iostream>
 
+# ifndef PHONEBOOK_FIELD
+# define PHONEBOOK_FIELD
 typedef enum  e_phonebook_field
 {
   FIRST_NAME,
@@ -12,7 +14,10 @@ typedef enum  e_phonebook_field
   PHONE_NUMBER,
   DARKEST_SECRET
 } t_phonebook_field;
+# endif
 
+# ifndef CONTACT
+# define CONTACT
 class Contact
 {
   private:
@@ -21,5 +26,6 @@ class Contact
     std::string   get_value(t_phonebook_field field);
     void          set_value(t_phonebook_field field, std::string value);
 };
+# endif
 
 #endif
