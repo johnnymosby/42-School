@@ -1,5 +1,5 @@
 NAME		=	losers
-CC			=	c++
+CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 SRC			=	main.cpp utils.cpp
@@ -14,10 +14,10 @@ OBJ		=	$(SRC:.cpp=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			$(CC) $(OBJ) $(FLAGS) -o $(NAME)
+			$(CXX) $(OBJ) $(FLAGS) -o $(NAME)
 
 .c.o:
-			$(CC) $(FLAGS) -c $< -o $(<:.c=.o) -I $(INC_DIR)
+			$(CXX) $(FLAGS) -c $< -o $(<:.c=.o) -I $(INC_DIR)
 
 clean:		
 			rm -f $(OBJ)
