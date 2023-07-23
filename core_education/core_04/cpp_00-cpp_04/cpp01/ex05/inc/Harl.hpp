@@ -8,7 +8,7 @@
 # define INFO "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n"
 # define WARNING "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month.\n"
 # define ERROR "This is unacceptable! I want to speak to the manager now.\n"
-# define OTHER "I do not even have words for this!\n"
+# define OTHER "Probably complaining about insignificant problems\n"
 
 class Harl
 {
