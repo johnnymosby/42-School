@@ -24,6 +24,6 @@ class Harl
 };
 
 typedef void (Harl::*HarlMemFn) (void);
-#define CALL_MEMBER_FN(object,ptrToMember)  ((object).*(ptrToMember))
+# define CALL_MEMBER_FN(object, ptrToMember) ((object)->*(ptrToMember))
 
 #endif

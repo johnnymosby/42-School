@@ -32,7 +32,7 @@ void  Harl::complain(std::string level)
 
   for (int i = 0; i < 4; i++) {
     if (level.compare(strs[i]) == 0) {
-      CALL_MEMBER_FN(this, foos[i]);
+      CALL_MEMBER_FN(this, foos[i]) ();
       return ;
     }
   }
