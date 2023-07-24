@@ -25,16 +25,25 @@ void  Harl::other(void)
   std::cout << OTHER;
 }
 
-void  Harl::complain(std::string level)
+void  Harl::complain(t_level level)
 {
-  HarlMemFn foos[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-  std::string strs[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+  HarlMemFn foos[] = {&Harl::debug, &Harl::info, &Harl::warning,
+                        &Harl::error, &Harl::other};
 
-  for (int i = 0; i < 4; i++) {
-    if (level.compare(strs[i]) == 0) {
-      CALL_MEMBER_FN(this, foos[i]) ();
+  switch (level)
+  {
+    case DEBUG_LEVEL:
+      CALL_MEMBER_FN(this, foos[DEBUG_LEVEL]) ();
+    case INFO_LEVEL:
+      CALL_MEMBER_FN(this, foos[INFO_LEVEL]) ();
+    case WARNING_LEVEL:
+      CALL_MEMBER_FN(this, foos[WARNING_LEVEL]) ();
+    case ERROR_LEVEL:
+      CALL_MEMBER_FN(this, foos[ERROR_LEVEL]) ();
       return ;
-    }
+    case OTHER_LEVEL:
+      CALL_MEMBER_FN(this, foos[OTHER_LEVEL]) ();
+      return ;
+    this
   }
-   Harl::other();
 }

@@ -4,16 +4,25 @@
 # include <iostream>
 # include <string>
 
-# define DEBUG "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n"
-# define INFO "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n"
-# define WARNING "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month.\n"
-# define ERROR "This is unacceptable! I want to speak to the manager now.\n"
-# define OTHER "Probably complaining about insignificant problems\n"
+# define DEBUG "[ DEBUG ]\nI love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!\n\n"
+# define INFO "[ INFO ]\nI cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n\n"
+# define WARNING "[ WARNING ]\nI think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month.\n\n"
+# define ERROR "[ ERROR ]\nThis is unacceptable! I want to speak to the manager now.\n\n"
+# define OTHER "[ Probably complaining about insignificant problems ]\n"
+
+typedef enum e_level
+{
+  DEBUG_LEVEL,
+  INFO_LEVEL,
+  WARNING_LEVEL,
+  ERROR_LEVEL,
+  OTHER_LEVEL
+}       t_level;
 
 class Harl
 {
   public:
-    void  complain(std::string level);
+    void  complain(t_level level);
 
   private:
     void debug(void);
