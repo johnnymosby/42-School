@@ -11,8 +11,8 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 			$(CXX) $(OBJ) $(FLAGS) -o $(NAME)
 
-.c.o:
-			$(CXX) $(FLAGS) -c $< -o $(<:.c=.o)
+.cpp.o:
+			$(CXX) $(FLAGS) -c $< -o $(<:.cpp=.o)
 
 clean:		
 			rm -f $(OBJ)
