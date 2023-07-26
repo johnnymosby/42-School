@@ -75,6 +75,13 @@
 			"concepts": "cpp",
 			"algorithm": "cpp",
 			"functional": "cpp",
-			"utility": "cpp"
+			"utility": "cpp",
+			"*.tcc": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"numeric": "cpp",
+			"random": "cpp",
+			"numbers": "cpp",
+			"ranges": "cpp"
 		}
 }
