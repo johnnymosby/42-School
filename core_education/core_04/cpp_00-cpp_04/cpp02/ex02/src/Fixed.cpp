@@ -8,6 +8,16 @@ Fixed::Fixed(): raw_bits(0) {
   std::cout << "Default constructor called\n";
 }
 
+Fixed::Fixed(const int val) {
+  std::cout << "Int constructor called\n";
+  this->raw_bits = val << 8;
+}
+
+Fixed::Fixed(const float val) {
+  std::cout << "Float constructor called\n";
+  this->raw_bits = roundf(val * (1 << this->kNFractionalBits));
+}
+
 Fixed::Fixed(const Fixed & src) {
   std::cout << "Copy constructor called\n";
   *this = src;
@@ -35,6 +45,10 @@ Fixed &       Fixed::operator=(Fixed const & other) {
   return *this;
 }
 
+std::ostream &operator<<(std::ostream &os, const Fixed & other) {
+  os << other.toFloat();
+  return os;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -43,6 +57,14 @@ Fixed &       Fixed::operator=(Fixed const & other) {
 void      Fixed::setRawBits(int const raw) {
   std::cout << "setRawBits member function called\n";
   this->raw_bits = raw;
+}
+
+float     Fixed::toFloat(void) const {
+  return float(this->raw_bits) / (1 << this->kNFractionalBits);
+}
+
+int       Fixed::toInt(void) const {
+  return this->raw_bits >> this->kNFractionalBits;
 }
 
 /*

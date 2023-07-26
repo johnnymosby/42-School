@@ -16,6 +16,12 @@ class Fixed
     ~Fixed();
 
     Fixed &       operator=(Fixed const & other);
+    bool          operator>(Fixed const & other);
+    bool          operator<(Fixed const & other);
+    bool          operator>=(Fixed const & other);
+    bool          operator<=(Fixed const & other);
+    bool          operator==(Fixed const & other);
+    bool          operator!=(Fixed const & other);
     int           getRawBits(void) const;
     void          setRawBits(int const raw);
 
