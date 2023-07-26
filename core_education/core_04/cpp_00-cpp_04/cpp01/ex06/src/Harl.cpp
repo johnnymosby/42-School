@@ -44,6 +44,5 @@ void  Harl::complain(t_level level)
     case OTHER_LEVEL:
       CALL_MEMBER_FN(this, foos[OTHER_LEVEL]) ();
       return ;
-    this
   }
 }

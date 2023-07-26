@@ -1,7 +1,7 @@
 #include "../inc/HumanA.hpp"
 #include "../inc/HumanB.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
   {
       Weapon club = Weapon("crude spiked club");

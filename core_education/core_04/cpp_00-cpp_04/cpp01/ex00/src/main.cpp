@@ -20,7 +20,7 @@ int main(void)
   Zombie  stack_1("zombie_on_stack_1");
   Zombie  stack_2("zombie_on_stack_2");
   Zombie  stack_3("zombie_on_stack_3");
-  Zombie  stack_4("zombie_on_stack_3");
+  Zombie  stack_4("zombie_on_stack_4");
 
   stack_0.announce();
   stack_1.announce();
