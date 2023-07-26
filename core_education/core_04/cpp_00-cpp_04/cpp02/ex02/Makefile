@@ -1,4 +1,4 @@
-NAME		=	fixed_improved
+NAME		=	fixed_now_we_are_talking
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98
 

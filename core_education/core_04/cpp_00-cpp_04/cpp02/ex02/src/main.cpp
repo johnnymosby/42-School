@@ -1,23 +1,32 @@
 #include "Fixed.hpp"
 
-int main(void) {
+int main( void ) {
+  Fixed a;
+  Fixed const b(Fixed(5.05f) * Fixed(2));
+  Fixed c(6.5f);
 
-  Fixed       a;
-  Fixed const b(10);
-  Fixed const c(42.42f);
-  Fixed const d(b);
-
-  a = Fixed(1234.4321f);
-
-  std::cout << "a is " << a << std::endl;
-  std::cout << "b is " << b << std::endl;
-  std::cout << "c is " << c << std::endl;
-  std::cout << "d is " << d << std::endl;
-
-  std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-  std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-  std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-  std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
+  std::cout << (c > a) << std::endl;
+  std::cout << (c < a) << std::endl;
+  std::cout << "a == " << a << std::endl;
+  std::cout << "b == " << a << std::endl;
+  std::cout << "c == " << c << std::endl;
+  std::cout << "a + c = " << a + c << std::endl;
+  std::cout << "a - c = " << a - c << std::endl;
+  std::cout << "a * c = " << c * Fixed(1.5f) << std::endl;
+  std::cout << "a / c = " << c / Fixed(1.5f) << std::endl;
+  std::cout << "1.0f / 3.0f = " << Fixed(1.0f) / Fixed(3.0f) << std::endl;
+  std::cout << "a: " << a << std::endl;
+  std::cout << "a++: " << a++ << std::endl;
+  std::cout << "a: " << a << std::endl;
+  std::cout << "++a: " << ++a << std::endl;
+  std::cout << "a: " << a << std::endl;
+  std::cout << "c: " << c << std::endl;
+  std::cout << "c++: " << c++ << std::endl;
+  std::cout << "c: " << c << std::endl;
+  std::cout << "++c: " << ++c << std::endl;
+  std::cout << "c: " << c << std::endl;
+  std::cout << "b: " << b << std::endl;
+  std::cout << "max(a, b):" << Fixed::max( a, b ) << std::endl;
+  std::cout << "min(a, b):" << Fixed::min( a, b ) << std::endl;
   return 0;
 }

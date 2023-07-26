@@ -37,7 +37,7 @@ Fixed::~Fixed() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Fixed &       Fixed::operator=(Fixed const & other) {
+Fixed &         Fixed::operator=(Fixed const & other) {
   std::cout << "Copy assignment operator called\n";
   if (this != &other ) {
     this->raw_bits = other.getRawBits();
@@ -45,10 +45,89 @@ Fixed &       Fixed::operator=(Fixed const & other) {
   return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const Fixed & other) {
+std::ostream &  operator<<(std::ostream &os, const Fixed & other) {
   os << other.toFloat();
   return os;
 }
+
+bool            Fixed::operator>(Fixed const & other) const {
+  return this->raw_bits > other.getRawBits();
+}
+
+bool            Fixed::operator<(Fixed const & other) const {
+  return this->raw_bits < other.getRawBits();
+}
+
+bool            Fixed::operator>=(Fixed const & other) const {
+  return this->raw_bits >= other.getRawBits();
+}
+
+bool            Fixed::operator<=(Fixed const & other) const {
+  return this->raw_bits <= other.getRawBits();
+}
+
+bool            Fixed::operator==(Fixed const & other) const {
+  return this->raw_bits == other.getRawBits();
+}
+
+bool            Fixed::operator!=(Fixed const & other) const {
+  return this->raw_bits != other.getRawBits();
+}
+
+Fixed           Fixed::operator+(Fixed const & other) const {
+  Fixed to_return;
+  to_return.setRawBits(this->getRawBits() + other.getRawBits());
+  return to_return;
+}
+
+Fixed           Fixed::operator-(Fixed const & other) const {
+  Fixed to_return;
+  to_return.setRawBits(this->getRawBits() - other.getRawBits());
+  return to_return;
+}
+
+Fixed           Fixed::operator*(Fixed const & other) const {
+  long long  a = this->getRawBits();
+  long long  b = other.getRawBits();
+  long long  c = (a * b) >> this->kNFractionalBits;
+  Fixed   to_return;
+  to_return.setRawBits(int(c));
+  return to_return;
+}
+
+Fixed           Fixed::operator/(Fixed const & other) const {
+  long long  a = this->getRawBits();
+  long long  b = other.getRawBits();
+  long long  c = (a << this->kNFractionalBits) / b;
+  //long long  c = (a / b) << this->kNFractionalBits;
+  Fixed   to_return;
+  to_return.setRawBits(int(c));
+  return to_return;
+}
+
+Fixed &         Fixed::operator++() {
+  this->raw_bits++;
+  return *this;
+}
+Fixed           Fixed::operator++(int) {
+  Fixed tmp(*this);
+  ++(*this);
+  return tmp;
+}
+
+
+Fixed &         Fixed::operator--() {
+  this->raw_bits--;
+  return *this;
+}
+Fixed           Fixed::operator--(int) {
+  Fixed tmp(*this);
+  --(*this);
+  return tmp;
+}
+
+    // Fixed &       operator--();
+    // Fixed         operator--(int);
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -65,6 +144,20 @@ float     Fixed::toFloat(void) const {
 
 int       Fixed::toInt(void) const {
   return this->raw_bits >> this->kNFractionalBits;
+}
+
+Fixed const &Fixed::max(const Fixed & a, const Fixed & b) {
+  return (a > b ? a : b);
+}
+
+Fixed const &Fixed::min(const Fixed & a, const Fixed & b) {
+  return (a < b ? a : b);
+}
+Fixed &Fixed::max(Fixed & a, Fixed & b) {
+  return (a > b ? a : b);
+}
+Fixed &Fixed::min(Fixed & a, Fixed & b) {
+  return (a < b ? a : b);
 }
 
 /*
