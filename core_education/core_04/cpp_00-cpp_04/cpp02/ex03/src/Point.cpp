@@ -16,6 +16,11 @@ Point::Point(const float first, const float second) {
   this->y = Fixed(second);
 }
 
+Point::Point(Fixed first, Fixed second) {
+  this->x = first;
+  this->y = second;
+}
+
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -39,10 +44,10 @@ Point &             Point::operator=(Point const & other)
   return *this;
 }
 
-std::ostream &      operator<<( std::ostream & o, Point const & i )
+std::ostream &      operator<<( std::ostream & os, Point const & i )
 {
-  //o << "Value = " << i.getValue();
-  return o;
+  os << '(' << i.getX() << ", " << i.getY() << ")\n";
+  return os;
 }
 
 
@@ -55,5 +60,12 @@ std::ostream &      operator<<( std::ostream & o, Point const & i )
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+Fixed const & Point::getX() const {
+  return this->x;
+}
+
+Fixed const & Point::getY() const {
+  return this->y;
+}
 
 /* ************************************************************************** */

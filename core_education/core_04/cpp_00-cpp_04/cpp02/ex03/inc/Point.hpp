@@ -13,10 +13,13 @@ class Point
 
     Point();
     Point(const float first, const float second);
+    Point(Fixed first, Fixed second);
     Point( Point const & src );
     ~Point();
 
     Point &   operator=( Point const & rhs );
+    Fixed const & getX() const;
+    Fixed const & getY() const;
 
   private:
     Fixed x;
@@ -24,6 +27,6 @@ class Point
 
 };
 
-std::ostream &      operator<<( std::ostream & o, Point const & i );
+std::ostream &      operator<<(std::ostream & os, Point const & i);
 
 #endif /* *********************************************************** POINT_H */

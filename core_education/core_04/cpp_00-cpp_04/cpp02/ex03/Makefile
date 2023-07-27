@@ -6,7 +6,7 @@ SRC			=	main.cpp Fixed.cpp Point.cpp bsp.cpp
 SRC_DIR	=	./src
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
-INC			=	Fixed.hpp Point.hpp
+INC			=	Fixed.hpp Point.hpp bsp.hpp
 INC_DIR	=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)
