@@ -5,6 +5,8 @@
 # include <string>
 # include <cmath>
 
+# define TO_PRINT true
+
 class Fixed
 {
 

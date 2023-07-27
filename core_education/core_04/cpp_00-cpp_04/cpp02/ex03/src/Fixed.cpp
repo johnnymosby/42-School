@@ -5,21 +5,25 @@
 */
 
 Fixed::Fixed(): raw_bits(0) {
-  //std::cout << "Default constructor called\n";
+  if (TO_PRINT == true)
+    std::cout << "Default constructor called\n";
 }
 
 Fixed::Fixed(const int val) {
-  //std::cout << "Int constructor called\n";
+  if (TO_PRINT == true)
+    std::cout << "Int constructor called\n";
   this->raw_bits = val << 8;
 }
 
 Fixed::Fixed(const float val) {
-  //std::cout << "Float constructor called\n";
+  if (TO_PRINT == true)
+    std::cout << "Float constructor called\n";
   this->raw_bits = roundf(val * (1 << this->kNFractionalBits));
 }
 
 Fixed::Fixed(const Fixed & src) {
-  //std::cout << "Copy constructor called\n";
+  if (TO_PRINT == true)
+    std::cout << "Copy constructor called\n";
   *this = src;
 }
 
@@ -29,7 +33,8 @@ Fixed::Fixed(const Fixed & src) {
 */
 
 Fixed::~Fixed() {
-  //std::cout << "Destructor called\n";
+  if (TO_PRINT == true)
+    std::cout << "Destructor called\n";
 }
 
 
@@ -38,7 +43,8 @@ Fixed::~Fixed() {
 */
 
 Fixed &         Fixed::operator=(Fixed const & other) {
-  //std::cout << "Copy assignment operator called\n";
+  if (TO_PRINT == true)
+    std::cout << "Copy assignment operator called\n";
   if (this != &other ) {
     this->raw_bits = other.getRawBits();
   }
@@ -125,15 +131,13 @@ Fixed           Fixed::operator--(int) {
   return tmp;
 }
 
-    // Fixed &       operator--();
-    // Fixed         operator--(int);
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
 void      Fixed::setRawBits(int const raw) {
-  //std::cout << "setRawBits member function called\n";
+  if (TO_PRINT == true)
+    std::cout << "setRawBits member function called\n";
   this->raw_bits = raw;
 }
 
@@ -164,7 +168,8 @@ Fixed &Fixed::min(Fixed & a, Fixed & b) {
 */
 
 int       Fixed::getRawBits(void) const {
-  //std::cout << "getRawBits member function called\n";
+  if (TO_PRINT == true)
+    std::cout << "getRawBits member function called\n";
   return this->raw_bits;
 }
 
