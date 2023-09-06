@@ -4,12 +4,16 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ClapTrap::ClapTrap() name("Bob") {
+ClapTrap::ClapTrap(): name("Bob"), hp(10), ep(10), ad(0) {}
+
+ClapTrap::ClapTrap(std::string name)
+{
+	*this = src;
 }
 
 ClapTrap::ClapTrap(const ClapTrap & src)
 {
-  *this = src;
+	*this = src;
 }
 
 
@@ -33,12 +37,6 @@ ClapTrap &        ClapTrap::operator=(ClapTrap const & rhs)
 		//this->_value = rhs.getValue();
 	//}
 	return *this;
-}
-
-std::ostream &      operator<<(std::ostream & os, ClapTrap const & i)
-{
-  //os << "Value = " << i.getValue();
-  return o;
 }
 
 
