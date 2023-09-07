@@ -15,6 +15,7 @@ class ClapTrap
 
 		ClapTrap();
 		ClapTrap(std::string name);
+		ClapTrap(std::string name, int hp, int ep, int ad);
 		ClapTrap(ClapTrap const & src);
 		~ClapTrap();
 
@@ -25,9 +26,9 @@ class ClapTrap
 		void	beRepaired(unsigned int amount);
 
 		std::string	getName(void) const;
-		int	ClapTrap::getHP(void) const;
-		int	ClapTrap::getEP(void) const;
-		int	ClapTrap::getAD(void) const;
+		int	getHP(void) const;
+		int	getEP(void) const;
+		int	getAD(void) const;
 
 	private:
 

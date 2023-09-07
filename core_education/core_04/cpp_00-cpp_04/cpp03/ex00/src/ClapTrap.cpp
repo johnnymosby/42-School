@@ -12,7 +12,7 @@ ClapTrap::ClapTrap(std::string name): name(name), hp(10), ep(10), ad(0) {
 	std::cout << "Constructor with 'string name' is called\n";
 }
 
-ClapTrap::ClapTrap(std::string name): name(name), hp(hp), ep(ep), ad(ad) {
+ClapTrap::ClapTrap(std::string name, int hp, int ep, int ad): name(name), hp(hp), ep(ep), ad(ad) {
 	std::cout << "Constructor with no default arguments is called\n";
 }
 
@@ -53,31 +53,35 @@ ClapTrap &		ClapTrap::operator=(ClapTrap const & other) {
 void	ClapTrap::attack(const std::string& target) {
 	if (this->ep > 0) {
 		std::cout << "ClapTrap " << this->name << " attacks "
-					<< target << ", causing " << this->ad << "points of damage!\n";
+					<< target << ", causing " << this->ad << " points of damage!\n";
 		this->ep -= 1;
 	}
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
+	int	damage = int(amount);
+
 	if (this->hp <= 0) {
 		std::cout << "ClapTrap " << this->name << " is already dead!\n";
-	} else if (this->hp > amount) {
+	} else if (this->hp > damage) {
 		std::cout << "ClapTrap " << this->name << " receives "
-					<< amount << "points of damage!\n";
-		this->hp -= amount;
+					<< amount << " points of damage!\n";
+		this->hp -= damage;
 	} else {
 		std::cout << "ClapTrap " << this->name << " receives "
-					<< amount << "points of damage!\n";
+					<< damage << " points of damage!\n";
 		this->hp = 0;
 	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
+	int	heal = int(amount);
+
 	if (this->ep > 0) {
 		std::cout << "ClapTrap " << this->name << " repairs "
-					<< amount << "points of health!\n";
+					<< heal << " points of health!\n";
 		this->ep -= 1;
-		this->hp += amount;
+		this->hp += heal;
 	}
 }
 

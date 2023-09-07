@@ -1,11 +1,11 @@
 #include "ClapTrap.hpp"
 
 int main(void) {
-	ClavTrap	bob();
-	ClavTrap	jim("Jim");
-	ClavTrap	chad("Chad", 100, 100, 100);
+	ClapTrap	default_one;
+	ClapTrap	jim("Jim");
+	ClapTrap	chad("Chad", 100, 100, 100);
 
-	bob.attack("Jim");
+	default_one.attack("Jim");
 	jim.takeDamage(10);
 	jim.beRepaired(10);
 
