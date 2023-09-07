@@ -9,8 +9,8 @@ Fixed::Fixed(): raw_bits(0) {
 }
 
 Fixed::Fixed(const Fixed & src) {
-  std::cout << "Copy constructor called\n";
-  *this = src;
+	std::cout << "Copy constructor called\n";
+	*this = src;
 }
 
 

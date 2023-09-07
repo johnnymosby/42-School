@@ -4,6 +4,10 @@
 # include <iostream>
 # include <string>
 
+// HP - Health Points
+// EP - Energy Points
+// AD - Attack Damage
+
 class ClapTrap
 {
 
@@ -21,14 +25,16 @@ class ClapTrap
 		void	beRepaired(unsigned int amount);
 
 		std::string	getName(void) const;
-
+		int	ClapTrap::getHP(void) const;
+		int	ClapTrap::getEP(void) const;
+		int	ClapTrap::getAD(void) const;
 
 	private:
 
 		std::string	name;
-		int			hp;				// health points
-		int			ep;				// energy points
-		int			ad;				// attack damage
+		int			hp;
+		int			ep;
+		int			ad;
 };
 
 #endif /* ******************************************************** CLAPTRAP_H */
