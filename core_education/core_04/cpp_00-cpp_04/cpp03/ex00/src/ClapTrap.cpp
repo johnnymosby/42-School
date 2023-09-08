@@ -53,7 +53,11 @@ ClapTrap &		ClapTrap::operator=(ClapTrap const & other) {
 */
 
 void	ClapTrap::attack(const std::string& target) {
-	if (this->ep > 0) {
+	if (this->hp <= 0) {
+		std::cout << "ClapTrap "
+					<< BOLDMAGENTA << this->name << RESET
+					<< BLACK << " is dead!\n" << RESET;
+	} else if (this->ep > 0) {
 		std::cout << "ClapTrap "
 					<< BOLDMAGENTA << this->name << RESET
 					<< RED << " attacks " << RESET

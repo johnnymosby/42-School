@@ -56,7 +56,7 @@ void	ClapTrap::attack(const std::string& target) {
 	if (this->hp <= 0) {
 		std::cout << "ClapTrap "
 					<< BOLDMAGENTA << this->name << RESET
-					<< BLACK << " is dead!\n" << RESET;
+					<< BLACK << " is already dead!\n" << RESET;
 	} else if (this->ep > 0) {
 		std::cout << "ClapTrap "
 					<< BOLDMAGENTA << this->name << RESET
