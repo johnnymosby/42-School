@@ -12,6 +12,9 @@ int main(void) {
 	jim.takeDamage(-5);
 	jim.beRepaired(15);
 
+	jim.takeDamage(-5);
+	jim.beRepaired(15);
+
 	chad.takeDamage(100);
 	chad.beRepaired(100);
 

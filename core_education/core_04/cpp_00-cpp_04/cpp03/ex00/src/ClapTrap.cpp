@@ -9,11 +9,13 @@ ClapTrap::ClapTrap(): name("Bob"), hp(10), ep(10), ad(0) {
 }
 
 ClapTrap::ClapTrap(std::string name): name(name), hp(10), ep(10), ad(0) {
-	std::cout << "Constructor with 'string name' is called\n";
+	std::cout << "Constructor with 'string name' is called ["
+				<< name << ", " << hp << " HP, " << ep << " EP, " << ad << " AD]\n";
 }
 
 ClapTrap::ClapTrap(std::string name, int hp, int ep, int ad): name(name), hp(hp), ep(ep), ad(ad) {
-	std::cout << "Constructor with no default arguments is called\n";
+	std::cout << "Constructor with no default arguments is called ["
+				<< name << ", " << hp << " HP, " << ep << " EP, " << ad << " AD]\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap & src)
@@ -52,8 +54,9 @@ ClapTrap &		ClapTrap::operator=(ClapTrap const & other) {
 
 void	ClapTrap::attack(const std::string& target) {
 	if (this->ep > 0) {
-		std::cout << "ClapTrap " << this->name << " attacks "
-					<< target << ", causing " << this->ad << " points of damage!\n";
+		std::cout << ORANGE << "ClapTrap " << this->name << " attacks "
+					<< target << ", causing " << this->ad << " points of damage!\n"
+					<< RESET;
 		this->ep -= 1;
 	}
 }
@@ -61,27 +64,35 @@ void	ClapTrap::attack(const std::string& target) {
 void	ClapTrap::takeDamage(unsigned int amount) {
 	int	damage = int(amount);
 
-	if (this->hp <= 0) {
-		std::cout << "ClapTrap " << this->name << " is already dead!\n";
+	if (damage < 0) {
+		std::cout << RED << "ClapTrap " << this->name << " receives "
+					<< damage << "no damage! [" << this->hp << " HP]\n" << RESET;
+	} else if (this->hp <= 0) {
+		std::cout << RED << "ClapTrap " << this->name << " is already dead!\n" << RESET;
 	} else if (this->hp > damage) {
-		std::cout << "ClapTrap " << this->name << " receives "
-					<< amount << " points of damage!\n";
 		this->hp -= damage;
+		std::cout << RED << "ClapTrap " << this->name << " receives "
+					<< damage << " points of damage! [" << this->hp << " HP]\n" << RESET;
 	} else {
-		std::cout << "ClapTrap " << this->name << " receives "
-					<< damage << " points of damage!\n";
 		this->hp = 0;
+		std::cout << RED << "ClapTrap " << this->name << " receives "
+					<< damage << " points of damage! [" << this->hp << " HP]\n" << RESET;
 	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
 	int	heal = int(amount);
 
-	if (this->ep > 0) {
-		std::cout << "ClapTrap " << this->name << " repairs "
-					<< heal << " points of health!\n";
-		this->ep -= 1;
+	if (heal < 0) {
+		std::cout << GREEN << "ClapTrap " << this->name << " repairs "
+					<< heal << "no health! [" << this->hp << " HP, " << this->ep
+					<< " EP]\n" << RESET;
+	} else if (this->ep > 0) {
 		this->hp += heal;
+		this->ep -= 1;
+		std::cout << GREEN << "ClapTrap " << this->name << " repairs "
+					<< heal << " points of health! [" << this->hp << " HP, " << this->ep
+					<< " EP]\n" << RESET;
 	}
 }
 

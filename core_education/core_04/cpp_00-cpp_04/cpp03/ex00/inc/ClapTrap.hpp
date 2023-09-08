@@ -8,6 +8,11 @@
 // EP - Energy Points
 // AD - Attack Damage
 
+const std::string RED = "\033[1;31m";
+const std::string GREEN = "\033[1;32m";
+const std::string ORANGE = "\033[1;33m";
+const std::string RESET = "\033[0m";
+
 class ClapTrap
 {
 
