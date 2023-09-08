@@ -60,9 +60,10 @@ void	ScavTrap::guardGate(void) {
 
 void	ScavTrap::attack(const std::string& target) {
 	if (this->ep > 0) {
-		std::cout << ORANGE << "ScavTrap " << this->name << " attacks "
-					<< target << ", causing " << this->ad << " points of damage!\n"
-					<< RESET;
+		std::cout << "ScavTrap "
+					<< BOLDCYAN << this->name << RESET
+					<< RED << " attacks " << RESET
+					<< target << ", causing " << this->ad << " points of damage!\n";
 		this->ep -= 1;
 	}
 }

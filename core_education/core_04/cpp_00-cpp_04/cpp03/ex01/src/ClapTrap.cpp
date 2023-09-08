@@ -54,9 +54,10 @@ ClapTrap &		ClapTrap::operator=(ClapTrap const & other) {
 
 void	ClapTrap::attack(const std::string& target) {
 	if (this->ep > 0) {
-		std::cout << ORANGE << "ClapTrap " << this->name << " attacks "
-					<< target << ", causing " << this->ad << " points of damage!\n"
-					<< RESET;
+		std::cout << "ClapTrap "
+					<< BOLDMAGENTA << this->name << RESET
+					<< RED << " attacks " << RESET
+					<< target << ", causing " << this->ad << " points of damage!\n";
 		this->ep -= 1;
 	}
 }
@@ -65,18 +66,28 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	int	damage = int(amount);
 
 	if (damage < 0) {
-		std::cout << RED << "ClapTrap " << this->name << " receives "
-					<< damage << "no damage! [" << this->hp << " HP]\n" << RESET;
+		std::cout << "ClapTrap "
+					<< BOLDMAGENTA << this->name << RESET
+					<< RED << " receives " << RESET
+					<< "no damage! [" << this->hp << " HP]\n";
 	} else if (this->hp <= 0) {
-		std::cout << RED << "ClapTrap " << this->name << " is already dead!\n" << RESET;
+		std::cout << "ClapTrap "
+					<< BOLDMAGENTA << this->name << RESET
+					<< BLACK << " is already dead!\n" << RESET;
 	} else if (this->hp > damage) {
 		this->hp -= damage;
-		std::cout << RED << "ClapTrap " << this->name << " receives "
-					<< damage << " points of damage! [" << this->hp << " HP]\n" << RESET;
+		std::cout << "ClapTrap "
+					<< BOLDMAGENTA << this->name << RESET
+					<< RED << " receives " << RESET
+					<< damage << " points of damage! [" << this->hp << " HP]\n";
 	} else {
 		this->hp = 0;
-		std::cout << RED << "ClapTrap " << this->name << " receives "
-					<< damage << " points of damage! [" << this->hp << " HP]\n" << RESET;
+		std::cout << "ClapTrap "
+					<< BOLDMAGENTA << this->name << RESET
+					<< RED  << " receives " << RESET
+					<< damage << " points of damage and "
+					<< RED << "dies!" << RESET
+					<< " [" << this->hp << " HP]\n";
 	}
 }
 
@@ -84,18 +95,22 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	int	heal = int(amount);
 
 	if (this->hp <= 0) {
-		std::cout << "ClapTrap " << this->name << RED << " is already dead!\n" << RESET
-					<< "ClapTrap " << this->name << " repairs no health\n";
+		std::cout << "ClapTrap " << BOLDMAGENTA << this->name << RESET
+					<< BLACK << " is already dead!\n" << RESET
+					<< "ClapTrap " << BOLDMAGENTA << this->name
+					<< GREEN << " repairs" << RESET << " no health\n";
 	} else if (heal < 0) {
-		std::cout << GREEN << "ClapTrap " << this->name << " repairs "
-					<< heal << "no health! [" << this->hp << " HP, " << this->ep
-					<< " EP]\n" << RESET;
+		std::cout << "ClapTrap " << BOLDMAGENTA << this->name << RESET
+					<< GREEN << " repairs " << RESET
+					<< heal << "no health! [" << this->hp << " HP, "
+					<< this->ep << " EP]\n";
 	} else if (this->ep > 0) {
 		this->hp += heal;
 		this->ep -= 1;
-		std::cout << GREEN << "ClapTrap " << this->name << " repairs "
-					<< heal << " points of health! [" << this->hp << " HP, " << this->ep
-					<< " EP]\n" << RESET;
+		std::cout << "ClapTrap " << BOLDMAGENTA << this->name << RESET
+					<< GREEN << " repairs " << RESET
+					<< heal << " points of health! [" << this->hp << " HP, "
+					<< this->ep << " EP]\n";
 	}
 }
 
