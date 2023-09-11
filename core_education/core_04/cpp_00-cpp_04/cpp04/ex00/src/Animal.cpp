@@ -5,11 +5,16 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Animal::Animal(): type("Animal") {}
+Animal::Animal(): type("Animal") {
+	std::cout << "Default constructor is called [Animal]\n";
+}
 
-Animal::Animal(std::string type): type(type) {}
+Animal::Animal(std::string const & type): type(type) {
+	std::cout << "'string type' constructor is called [Animal]\n";
+}
 
 Animal::Animal(Animal const & src) {
+	std::cout << "Copy constructor is called [Animal]\n";
 	*this = src;
 }
 
@@ -19,7 +24,7 @@ Animal::Animal(Animal const & src) {
 
 
 Animal::~Animal() {
-	std::cout << "Destructor for " << YELLOW << type << RESET << " is called\n";
+	std::cout << "Destructor for " << BOLDYELLOW << type << RESET << " is called [Animal]\n";
 }
 
 /*
@@ -31,13 +36,16 @@ Animal::~Animal() {
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void virtual	Animal::makeSound() {
+	std::cout << BOLDYELLOW << type << RESET << " makes generic animal sound\n";
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	virtual	Animal::getType() {
-
+std::string	Animal::getType() {
+	return type;
 }
 
 /* ************************************************************************** */

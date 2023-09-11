@@ -1,6 +1,6 @@
 NAME		=	polymorphism
 CXX			=	c++
-FLAGS		=	-Wall -Wextra -Werror -std=c++98
+FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRC			=	main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp WrongDog.cpp
 SRC_DIR		=	./src
@@ -10,6 +10,7 @@ INC			=	Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp WrongDog.hpp
 INC_DIR		=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)
+DEPS	=	$(SRC:.cpp=.d)
 
 all:		$(NAME)
 
@@ -28,3 +29,4 @@ fclean:		clean
 re:			fclean all
 
 .PHONY: all clean fclean re
+-include $(DEPS)
