@@ -9,12 +9,12 @@ class Cat: public Animal
 		Cat();
 		Cat(std::string const & type);
 		Cat(Cat const & src);
-		~Cat();
+		virtual ~Cat();
 
 		Cat & operator=(Cat const & other);
 
-		void		makeSound();
-		std::string	getType();
+		void		makeSound() const;
+		std::string	getType() const;
 };
 
 

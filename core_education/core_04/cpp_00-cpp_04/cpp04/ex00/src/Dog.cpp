@@ -5,11 +5,11 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Dog::Dog(): type("Dog") {
+Dog::Dog(): Animal("Dog") {
 	std::cout << "Default constructor is called [Dog]\n";
 }
 
-Dog::Dog(std::string const & type): type(type) {
+Dog::Dog(std::string const & type): Animal(type) {
 	std::cout << "'string type' constructor is called [Dog]\n";
 }
 
@@ -24,27 +24,34 @@ Dog::Dog(Dog const & src) {
 
 
 Dog::~Dog() {
-	std::cout << "Destructor for " << BOLDYELLOW << type << RESET << " is called [Dog]\n";
+	std::cout << "Destructor for " << BOLDBLUE << type << RESET << " is called [Dog]\n";
 }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+Dog & Dog::operator=(Dog const & other) {
+	std::cout << "Copy assignment operator is called [Dog]\n";
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Dog::makeSound() {
-	std::cout << BOLDYELLOW << type << RESET << " barks\n";
+void Dog::makeSound() const {
+	std::cout << BOLDBLUE << type << RESET << " barks\n";
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	Dog::getType() {
+std::string	Dog::getType() const {
 	return type;
 }
 

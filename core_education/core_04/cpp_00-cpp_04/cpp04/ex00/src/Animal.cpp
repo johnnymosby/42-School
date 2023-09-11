@@ -24,27 +24,34 @@ Animal::Animal(Animal const & src) {
 
 
 Animal::~Animal() {
-	std::cout << "Destructor for " << BOLDYELLOW << type << RESET << " is called [Animal]\n";
+	std::cout << "Destructor for " << BOLDGREEN << type << RESET << " is called [Animal]\n";
 }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+Animal & Animal::operator=(Animal const & other) {
+	std::cout << "Copy assignment operator is called [Animal]\n";
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void virtual	Animal::makeSound() {
-	std::cout << BOLDYELLOW << type << RESET << " makes generic animal sound\n";
+void Animal::makeSound() const {
+	std::cout << BOLDGREEN<< type << RESET << " makes generic animal sound\n";
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	Animal::getType() {
+std::string Animal::getType() const {
 	return type;
 }
 

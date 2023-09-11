@@ -4,6 +4,9 @@
 # include <string>
 # include <iostream>
 
+# ifndef COLORS_MACROS
+#  define COLORS_MACROS
+
 # define RESET			"\033[0m"
 # define BLACK			"\033[30m"
 # define RED			"\033[31m"
@@ -23,17 +26,19 @@
 # define BOLDCYAN		"\033[1m\033[36m"
 # define BOLDWHITE		"\033[1m\033[37m"
 
+# endif
+
 class Animal {
 	public:
 		Animal();
 		Animal(std::string const & type);
 		Animal(Animal const & src);
-		~Animal();
+		virtual ~Animal();
 
 		Animal & operator=(Animal const & other);
 
-		std::string	virtual	getType();
-		void virtual		makeSound();
+		std::string	virtual	getType() const;
+		void virtual		makeSound() const;
 
 	protected:
 		std::string	type;

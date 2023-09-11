@@ -9,12 +9,12 @@ class Dog: public Animal
 		Dog();
 		Dog(std::string const & type);
 		Dog(Dog const & src);
-		~Dog();
+		virtual ~Dog();
 
 		Dog & operator=(Dog const & other);
 
-		void		makeSound();
-		std::string	getType();
+		void		makeSound() const;
+		std::string	getType() const;
 };
 
 

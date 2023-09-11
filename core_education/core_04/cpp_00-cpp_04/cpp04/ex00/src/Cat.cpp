@@ -5,11 +5,11 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat(): type("Cat") {
+Cat::Cat(): Animal("Cat") {
 	std::cout << "Default constructor is called [Cat]\n";
 }
 
-Cat::Cat(std::string const & type): type(type) {
+Cat::Cat(std::string const & type): Animal(type) {
 	std::cout << "'string type' constructor is called [Cat]\n";
 }
 
@@ -31,12 +31,19 @@ Cat::~Cat() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+Cat & Cat::operator=(Cat const & other) {
+	std::cout << "Copy assignment operator is called [Cat]\n";
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Cat::makeSound() {
+void Cat::makeSound() const {
 	std::cout << BOLDYELLOW << type << RESET << " meows\n";
 }
 
@@ -44,7 +51,7 @@ void Cat::makeSound() {
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	Cat::getType() {
+std::string	Cat::getType() const {
 	return type;
 }
 

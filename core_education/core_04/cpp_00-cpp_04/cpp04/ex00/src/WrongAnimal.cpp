@@ -31,12 +31,19 @@ WrongAnimal::~WrongAnimal() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+WrongAnimal & WrongAnimal::operator=(WrongAnimal const & other) {
+	std::cout << "Copy assignment operator is called [WrongAnimal]\n";
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void virtual	WrongAnimal::makeSound() {
+void WrongAnimal::makeSound() const {
 	std::cout << BOLDYELLOW << type << RESET << " makes generic wronganimal sound\n";
 }
 
@@ -44,7 +51,7 @@ void virtual	WrongAnimal::makeSound() {
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	WrongAnimal::getType() {
+std::string	WrongAnimal::getType() const {
 	return type;
 }
 

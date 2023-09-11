@@ -5,11 +5,11 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-WrongCat::WrongCat(): type("WrongCat") {
+WrongCat::WrongCat(): WrongAnimal("WrongCat") {
 	std::cout << "Default constructor is called [WrongCat]\n";
 }
 
-WrongCat::WrongCat(std::string const & type): type(type) {
+WrongCat::WrongCat(std::string const & type): WrongAnimal(type) {
 	std::cout << "'string type' constructor is called [WrongCat]\n";
 }
 
@@ -31,12 +31,19 @@ WrongCat::~WrongCat() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
+WrongCat & WrongCat::operator=(WrongCat const & other) {
+	std::cout << "Copy assignment operator is called [WrongCat]\n";
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void WrongCat::makeSound() {
+void WrongCat::makeSound() const {
 	std::cout << BOLDYELLOW << type << RESET << " meows wrongly\n";
 }
 
@@ -44,7 +51,7 @@ void WrongCat::makeSound() {
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	WrongCat::getType() {
+std::string	WrongCat::getType() const {
 	return type;
 }
 

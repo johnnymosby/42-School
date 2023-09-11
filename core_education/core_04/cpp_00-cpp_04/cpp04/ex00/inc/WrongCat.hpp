@@ -1,9 +1,9 @@
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
 
-class WrongCat
+class WrongCat: public WrongAnimal
 {
 	public:
 		WrongCat();
@@ -13,9 +13,9 @@ class WrongCat
 
 		WrongCat & operator=(WrongCat const & other);
 
-		void		makeSound();
-		std::string	getType();
+		void		makeSound() const;
+		std::string	getType() const;
 };
 
 
-#endif /* ******************************************************** CAT_HPP */
+#endif /* ******************************************************** WRONGCAT_HPP */
