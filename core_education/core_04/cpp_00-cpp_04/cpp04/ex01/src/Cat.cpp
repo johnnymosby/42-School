@@ -13,8 +13,9 @@ Cat::Cat(std::string const & type): Animal(type), brain(new Brain()) {
 	std::cout << "'string type' constructor is called [Cat]\n";
 }
 
-Cat::Cat(Cat const & src) {
+Cat::Cat(Cat const & src): Animal(src) {
 	std::cout << "Copy constructor is called [Cat]\n";
+	brain = NULL;
 	*this = src;
 }
 
@@ -22,8 +23,9 @@ Cat::Cat(Cat const & src) {
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
+
 Cat::~Cat() {
-	std::cout << "Destructor for " << BOLDYELLOW << type << RESET << " is called [Cat]\n";
+	std::cout << "Destructor for " << BOLDBLUE << type << RESET << " is called [Cat]\n";
 	delete brain;
 }
 
@@ -31,15 +33,13 @@ Cat::~Cat() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat & Cat::operator=(Cat const & other) {
-	std::cout << "Copy assignment operator is called [Cat]\n";
-
-	if (this != &other ) {
-		type = other.type;
+Cat & Cat::operator=(const Cat &other)
+{
+	std::cout << "Assignment Operator Cat Called" << std::endl;
+	type = other.getType();
+	if (this->brain)
 		delete brain;
-		brain = new Brain(*other.brain);
-	}
-
+	this->brain = new Brain(*other.brain);
 	return *this;
 }
 
@@ -48,7 +48,7 @@ Cat & Cat::operator=(Cat const & other) {
 */
 
 void Cat::makeSound() const {
-	std::cout << BOLDYELLOW << type << RESET << " meows\n";
+	std::cout << BOLDBLUE << type << RESET << " meows\n";
 }
 
 /*
