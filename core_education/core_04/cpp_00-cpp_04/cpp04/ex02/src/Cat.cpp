@@ -32,7 +32,7 @@ Cat::~Cat() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat & Cat::operator=(const Cat &other)
+Cat & Cat::operator=(Cat const & other)
 {
 	std::cout << "Copy assignment operator is called [Cat]\n";
 	type = other.getType();

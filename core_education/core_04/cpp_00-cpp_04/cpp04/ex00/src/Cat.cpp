@@ -33,9 +33,7 @@ Cat::~Cat() {
 
 Cat & Cat::operator=(Cat const & other) {
 	std::cout << "Copy assignment operator is called [Cat]\n";
-	if (this != &other ) {
-		*this = other;
-	}
+	type = other.getType();
 	return *this;
 }
 

@@ -33,7 +33,7 @@ Dog::~Dog() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Dog & Dog::operator=(const Dog &other)
+Dog & Dog::operator=(Dog const & other)
 {
 	std::cout << "Copy assignment operator is called [Dog]\n";
 	type = other.getType();

@@ -33,9 +33,7 @@ Animal::~Animal() {
 
 Animal & Animal::operator=(Animal const & other) {
 	std::cout << "Copy assignment operator is called [Animal]\n";
-	if (this != &other ) {
-		type = other.getType();
-	}
+	type = other.getType();
 	return *this;
 }
 

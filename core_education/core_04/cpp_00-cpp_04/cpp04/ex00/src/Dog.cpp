@@ -33,9 +33,7 @@ Dog::~Dog() {
 
 Dog & Dog::operator=(Dog const & other) {
 	std::cout << "Copy assignment operator is called [Dog]\n";
-	if (this != &other ) {
-		*this = other;
-	}
+	type = other.getType();
 	return *this;
 }
 
