@@ -25,7 +25,7 @@ Cat::Cat(Cat const & src): Animal(src) {
 
 
 Cat::~Cat() {
-	std::cout << "Destructor for " << BOLDBLUE << type << RESET << " is called [Cat]\n";
+	std::cout << "Destructor for " << BOLDYELLOW << type << RESET << " is called [Cat]\n";
 	delete brain;
 }
 
@@ -35,7 +35,7 @@ Cat::~Cat() {
 
 Cat & Cat::operator=(const Cat &other)
 {
-	std::cout << "Assignment Operator Cat Called" << std::endl;
+	std::cout << "Copy assignment operator is called [Cat]\n";
 	type = other.getType();
 	if (this->brain)
 		delete brain;
@@ -48,7 +48,7 @@ Cat & Cat::operator=(const Cat &other)
 */
 
 void Cat::makeSound() const {
-	std::cout << BOLDBLUE << type << RESET << " meows\n";
+	std::cout << BOLDYELLOW << type << RESET << " meows\n";
 }
 
 /*

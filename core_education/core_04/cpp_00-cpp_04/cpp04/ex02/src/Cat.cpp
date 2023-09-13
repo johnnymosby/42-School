@@ -13,8 +13,9 @@ Cat::Cat(std::string const & type): AbstractAnimal(type), brain(new Brain()) {
 	std::cout << "'string type' constructor is called [Cat]\n";
 }
 
-Cat::Cat(Cat const & src) {
+Cat::Cat(Cat const & src): AbstractAnimal(src) {
 	std::cout << "Copy constructor is called [Cat]\n";
+	brain = NULL;
 	*this = src;
 }
 
@@ -31,15 +32,13 @@ Cat::~Cat() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat & Cat::operator=(Cat const & other) {
+Cat & Cat::operator=(const Cat &other)
+{
 	std::cout << "Copy assignment operator is called [Cat]\n";
-
-	if (this != &other ) {
-		type = other.type;
+	type = other.getType();
+	if (this->brain)
 		delete brain;
-		brain = new Brain(*other.brain);
-	}
-
+	this->brain = new Brain(*other.brain);
 	return *this;
 }
 

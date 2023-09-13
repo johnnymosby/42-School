@@ -35,7 +35,7 @@ Dog::~Dog() {
 
 Dog & Dog::operator=(const Dog &other)
 {
-	std::cout << "Assignment Operator Dog Called" << std::endl;
+	std::cout << "Copy assignment operator is called [Dog]\n";
 	type = other.getType();
 	if (this->brain)
 		delete brain;
