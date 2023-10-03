@@ -40,8 +40,9 @@ Bureaucrat::~Bureaucrat() {}
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-std::ostream	operator<<(std::ostream &os, const Bureaucrat & other) {
-	os << other.getName() << ", bureaucrat grade " << other.getGrade() << ".\n";
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat & other) {
+	os << other.getName() << ", bureaucrat grade " << other.getGrade() << "\n";
+	return os;
 }
 
 /*
@@ -73,7 +74,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	"The grade to set is too low\n";
+	return "The grade to set is too low\n";
 }
 
 /*
