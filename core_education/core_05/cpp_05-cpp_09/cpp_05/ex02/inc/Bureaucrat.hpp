@@ -15,7 +15,10 @@ class	Bureaucrat {
 		Bureaucrat(std::string name);
 		Bureaucrat(unsigned int grade);
 		Bureaucrat(std::string name, unsigned int grade);
+		Bureaucrat(const Bureaucrat &copy);
 		~Bureaucrat();
+
+		Bureaucrat &operator=(const Bureaucrat &assign);
 
 		std::string		getName (void) const;
 		unsigned int	getGrade (void) const;
@@ -23,7 +26,8 @@ class	Bureaucrat {
 		void			incrementGrade(void);
 		void			decrementGrade(void);
 
-		void			signForm(AForm &document);
+		void			signForm(AForm &form);
+		void			executeForm(AForm const & form);
 
 	private:
 		const std::string			name;

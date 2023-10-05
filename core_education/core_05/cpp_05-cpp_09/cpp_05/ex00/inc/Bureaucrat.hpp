@@ -14,7 +14,10 @@ class	Bureaucrat {
 		Bureaucrat(std::string name);
 		Bureaucrat(unsigned int grade);
 		Bureaucrat(std::string name, unsigned int grade);
+		Bureaucrat(const Bureaucrat &copy);
 		~Bureaucrat();
+
+		Bureaucrat &operator=(const Bureaucrat &assign);
 
 		std::string		getName (void) const;
 		unsigned int	getGrade (void) const;

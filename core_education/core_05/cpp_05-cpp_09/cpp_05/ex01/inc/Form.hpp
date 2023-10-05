@@ -12,7 +12,10 @@ class	Form {
 	public:
 		Form();
 		Form(std::string name);
+		Form(Form &copy);
 		~Form();
+
+		Form &operator=(const Form &assign);
 
 		std::string		getName (void) const;
 		unsigned int	getGradeToSign (void) const;

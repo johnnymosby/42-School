@@ -30,6 +30,10 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade): name(name) {
 	this->grade = grade;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
+	*this = copy;
+}
+
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -44,6 +48,13 @@ std::ostream	&operator<<(std::ostream &os, const Bureaucrat & other) {
 	os << other.getName() << ", bureaucrat grade " << other.getGrade() << "\n";
 	return os;
 }
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+};
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -65,14 +76,24 @@ void	Bureaucrat::decrementGrade(void) {
 	this->grade++;
 }
 
-void	Bureaucrat::signForm(AForm &document) {
+void	Bureaucrat::signForm(AForm &form) {
 	try {
-		document.beSigned(*this);
-		std::cout << this->name << " signed " << document.getName();
+		form.beSigned(*this);
+		std::cout << this->name << " signed " << form.getName();
 	}
 	catch (std::exception &e) {
 		std::cout << this->name << " (" << this->grade << ") couldn't sign "
-					<< document << " because " << e.what();
+					<< form << " because " << e.what();
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form) {
+	try {
+		form.execute(*this);
+		std::cout << this->name << " executed " << form.getName() << "\n";
+	}
+	catch (std::exception &e) {
+		std::cout << this->name << " failed to execute " << form.getName() << " because " << e.what();
 	}
 }
 

@@ -1,14 +1,18 @@
-NAME		=	maggots
+NAME		=	ex02
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 SRC			=	main.cpp Bureaucrat.cpp AForm.cpp \
-					ShrubberyCreationForm.cpp
+					ShrubberyCreationForm.cpp \
+					RobotomyRequestForm.cpp \
+					PresidentialPardonForm.cpp
 SRC_DIR		=	./src
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
 INC			=	Bureaucrat.hpp AForm.hpp definitions.hpp \
-					ShrubberyCreationForm.hpp
+					ShrubberyCreationForm.hpp \
+					RobotomyRequestForm.hpp \
+					PresidentialPardonForm.hpp
 INC_DIR		=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)

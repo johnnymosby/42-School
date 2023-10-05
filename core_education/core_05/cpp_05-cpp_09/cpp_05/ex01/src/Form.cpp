@@ -9,6 +9,11 @@ Form::Form(): name("default_form"), if_signed(false), grade_to_sign(GRADE_TO_SIG
 
 Form::Form(std::string name): name(name), if_signed(false), grade_to_sign(GRADE_TO_SIGN), grade_to_execute(GRADE_TO_EXECUTE) {};
 
+
+Form::Form(Form &copy): grade_to_sign(copy.grade_to_sign), grade_to_execute(copy.grade_to_execute) {
+	*this = copy;
+};
+
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -26,6 +31,13 @@ std::ostream	&operator<<(std::ostream &os, const Form & other) {
 	os << "if_signed: " << other.getIfSigned() << ") ";
 	return os;
 }
+
+Form &Form::operator=(const Form &other) {
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+};
 
 /*
 ** --------------------------------- METHODS ----------------------------------

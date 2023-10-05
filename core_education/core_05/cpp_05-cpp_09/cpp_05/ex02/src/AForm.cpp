@@ -22,6 +22,12 @@ AForm::AForm(std::string name, unsigned int grade_to_sign, unsigned int grade_to
 	this->grade_to_execute = grade_to_execute;
 };
 
+AForm::AForm(const AForm &copy) {
+	setGradeToSign(copy.getGradeToSign());
+	setGradeToExecute(copy.getGradeToExecute());
+	setIfSigned(copy.getIfSigned());
+}
+
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -61,7 +67,7 @@ void AForm::execute(Bureaucrat const & executor) const {
 	else if (if_signed == false) {
 		throw (AForm::NotSignedException());
 	}
-	_execute(executor);
+	_execute();
 }
 
 /*

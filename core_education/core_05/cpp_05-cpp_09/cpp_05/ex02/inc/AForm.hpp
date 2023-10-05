@@ -29,7 +29,7 @@ class	AForm {
 
 		void			beSigned(const Bureaucrat &signer);
 		void			execute(Bureaucrat const & executor) const;
-		void virtual	_execute(Bureaucrat const & executor) const = 0;
+		void virtual	_execute(void) const = 0;
 
 	private:
 		const std::string			name;

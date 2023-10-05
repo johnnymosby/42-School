@@ -30,6 +30,10 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade): name(name) {
 	this->grade = grade;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
+	*this = copy;
+}
+
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -44,6 +48,13 @@ std::ostream	&operator<<(std::ostream &os, const Bureaucrat & other) {
 	os << other.getName() << ", bureaucrat grade " << other.getGrade() << "\n";
 	return os;
 }
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
+	if (this != &other ) {
+		*this = other;
+	}
+	return *this;
+};
 
 /*
 ** --------------------------------- METHODS ----------------------------------
