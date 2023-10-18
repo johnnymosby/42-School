@@ -1,6 +1,6 @@
 NAME		=	ex02
 CXX			=	c++
-FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
+FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
 SRC			=	main.cpp Bureaucrat.cpp AForm.cpp \
 					ShrubberyCreationForm.cpp \

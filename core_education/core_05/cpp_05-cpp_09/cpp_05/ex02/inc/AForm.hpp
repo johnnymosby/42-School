@@ -2,6 +2,7 @@
 # define AFORM_HPP
 
 #include <iostream>
+#include <cstdlib>
 #include "definitions.hpp"
 #include "Bureaucrat.hpp"
 

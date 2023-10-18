@@ -38,7 +38,8 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 
 void	ShrubberyCreationForm::_execute(void) const {
 	std::ifstream	infile("./data/ascii_tree.txt");
-	std::ofstream	outfile(this->target + "_shrubbery");
+	std::ofstream	outfile((this->target + "_shrubbery").c_str());
+
 
 	std::string line;
 

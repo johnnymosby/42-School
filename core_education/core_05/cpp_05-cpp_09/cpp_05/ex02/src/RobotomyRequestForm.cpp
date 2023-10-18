@@ -41,9 +41,9 @@ void	RobotomyRequestForm::_execute(void) const {
 	srand((unsigned) time(NULL));
 	unsigned int is_robotimized = rand() % 2;
 	if (is_robotimized) {
-		std::cout << RESET << BOLDGREEN << this->target << "was successfuly robotimized!\n" << RESET;
+		std::cout << RESET << BOLDGREEN << this->target << " was successfuly robotimized!\n" << RESET;
 	} else {
-		std::cout << BOLDRED << this->target << "failed to be robotimized!\n" << RESET;
+		std::cout << BOLDRED << this->target << " failed to be robotimized!\n" << RESET;
 	}
 }
 

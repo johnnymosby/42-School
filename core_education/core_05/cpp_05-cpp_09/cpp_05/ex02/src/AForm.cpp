@@ -17,7 +17,7 @@ AForm::AForm(std::string name, unsigned int grade_to_sign, unsigned int grade_to
 	else if (grade_to_sign > min_grade || grade_to_execute > min_grade) {
 		throw (AForm::GradeTooLowException());
 	}
-
+	this->if_signed = false;
 	this->grade_to_sign = grade_to_sign;
 	this->grade_to_execute = grade_to_execute;
 };
