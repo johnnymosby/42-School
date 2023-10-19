@@ -1,14 +1,14 @@
-#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("Pardon", 145, 137), target("default_criminal") {};
-PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Pardon", 145, 137), target(target) {};
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &copy) {
-		*this = copy;
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrub", 145, 137) {};
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrub", 145, 137), target(target) {};
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &copy) {
+	*this = copy;
 };
 
 
@@ -16,13 +16,13 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &copy) {
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::~PresidentialPardonForm() {};
+ShrubberyCreationForm::~ShrubberyCreationForm() {};
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonForm const & other) {
+ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & other) {
 	if (this != &other ) {
 		this->setGradeToExecute(other.getGradeToExecute());
 		this->setGradeToSign(other.getGradeToSign());
@@ -36,8 +36,17 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonFor
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	PresidentialPardonForm::_execute(void) const {
-	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox!\n";
+void	ShrubberyCreationForm::_execute(void) const {
+	std::ifstream	infile("./data/ascii_tree.txt");
+	std::ofstream	outfile((this->target + "_shrubbery").c_str());
+
+
+	std::string line;
+
+	while (getline(infile, line))
+		outfile << line << "\n";
+	outfile.close();
+	infile.close();
 }
 
 /*
@@ -50,11 +59,11 @@ void	PresidentialPardonForm::_execute(void) const {
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-void	PresidentialPardonForm::setTarget(std::string target) {
+void	ShrubberyCreationForm::setTarget(std::string target) {
 	this->target = target;
 }
 
-std::string	PresidentialPardonForm::getTarget(void) const {
+std::string	ShrubberyCreationForm::getTarget(void) const {
 	return target;
 }
 

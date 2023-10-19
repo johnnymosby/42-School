@@ -1,18 +1,20 @@
-NAME		=	ex02
+NAME		=	ex03
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP -g
 
 SRC			=	main.cpp Bureaucrat.cpp AForm.cpp \
 					ShrubberyCreationForm.cpp \
 					RobotomyRequestForm.cpp \
-					PresidentialPardonForm.cpp
+					PresidentialPardonForm.cpp \
+					Intern.cpp
 SRC_DIR		=	./src
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
 INC			=	Bureaucrat.hpp AForm.hpp definitions.hpp \
 					ShrubberyCreationForm.hpp \
 					RobotomyRequestForm.hpp \
-					PresidentialPardonForm.hpp
+					PresidentialPardonForm.hpp \
+					Intern.hpp
 INC_DIR		=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)

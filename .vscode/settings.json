@@ -87,5 +87,6 @@
 		"shrubberycreationform.hpp": "c",
 		"aform.hpp": "c",
 		"bureaucrat.hpp": "c"
-	}
+	},
+	"cph.general.saveLocation": ""
 }

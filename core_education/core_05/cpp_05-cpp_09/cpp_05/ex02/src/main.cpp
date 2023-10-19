@@ -75,7 +75,7 @@ int	main(void)
 	}
 
 	{
-		std::cout << BOLDBLUE << "test " << n << ": RobotomyRequestForm signed\n" << RESET;
+		std::cout << BOLDBLUE << "test " << n << ": RobotomyRequestForm signed with 50 percent chance\n" << RESET;
 		try
 		{
 			Bureaucrat bur("Bobby", 20);
@@ -129,7 +129,7 @@ int	main(void)
 		try
 		{
 			Bureaucrat bur("President", 20);
-			ShrubberyCreationForm form1("Pardon");
+			PresidentialPardonForm form1("Pardon");
 			form1.beSigned(bur);
 			form1.execute(bur);
 			std::cout << form1 << std::endl;
