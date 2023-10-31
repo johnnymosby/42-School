@@ -1,4 +1,4 @@
-NAME		=	bureaucrat
+NAME		=	convert
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
@@ -6,7 +6,7 @@ SRC			=	main.cpp ScalarConverter.cpp
 SRC_DIR		=	./src
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
-INC			=	ScalarConverter.hpp
+INC			=	definitions.hpp ScalarConverter.hpp
 INC_DIR		=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)
