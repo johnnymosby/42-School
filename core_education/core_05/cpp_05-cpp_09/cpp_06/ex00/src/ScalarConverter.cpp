@@ -4,7 +4,9 @@ ScalarConverter::ScalarConverter() {}
 ScalarConverter::ScalarConverter(ScalarConverter const &copy) {*this = copy;}
 ScalarConverter::~ScalarConverter() {}
 ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other) {
-	if (this != &other) *this = other;
+	if (this != &other) {
+		*this = other;
+	}
 	return *this;
 }
 

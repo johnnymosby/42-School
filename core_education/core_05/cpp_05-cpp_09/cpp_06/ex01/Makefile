@@ -1,12 +1,12 @@
-NAME		=	convert
+NAME		=	serialize
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC			=	main.cpp ScalarConverter.cpp
+SRC			=	Serializer.cpp main.cpp
 SRC_DIR		=	./src
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
-INC			=	definitions.h ScalarConverter.hpp
+INC			=	Serializer.hpp definitions.h Data.h
 INC_DIR		=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)
