@@ -1,12 +1,12 @@
-NAME		=	serialize
+NAME		=	identify
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC			=	Serializer.cpp main.cpp
+SRC			=	main.cpp
 SRC_DIR		=	./src
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC))
 
-INC			=	Serializer.hpp Data.h
+INC			=	FourClasses.hpp definitions.h Data.h
 INC_DIR		=	./inc
 
 OBJ		=	$(SRC:.cpp=.o)

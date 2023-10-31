@@ -10,5 +10,5 @@ int	main() {
 				<< "original struct ptr:		" << &data << '\n'
 				<< "raw value of ptr:		" << raw_value << '\n'
 				<< "raw value of ptr in hex:	" << std::hex << raw_value << '\n'
-				<< "deserialized ptr:		" << second_ptr << '\n';
+				<< "deserialized ptr:		" << second_ptr << "\n\n";
 }
