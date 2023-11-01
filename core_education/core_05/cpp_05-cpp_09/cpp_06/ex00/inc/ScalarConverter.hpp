@@ -3,14 +3,14 @@
 
 # include <iostream>
 # include <sstream>
-# include "definitions.hpp"
+# include "definitions.h"
 # include <iomanip>
 
 class ScalarConverter
 {
 	private:
 		static bool isCharacter(const std::string &input);
-		static bool isDisplayable(const std::string &input);
+		static bool isDisplayable(char c);
 		static void printCharacter(const std::string &input);
 
 		static bool isSpecialNumericValue(const std::string &input);

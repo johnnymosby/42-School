@@ -66,12 +66,12 @@ void ScalarConverter::printCharacter(const std::string &input) {
 	double num;
 
 	std::cout << "char: ";
-	if (isDisplayable(input) == false) {
+	if (isDisplayable(input[0]) == false) {
 		std::cout << "Non displayable";
 	} else {
 		std::cout << input[0];
 	}
-	std::cout << "\n";
+	std::cout << '\n';
 
 	if (isdigit(input[0])) {
 		num = input[0] - '0';
@@ -98,8 +98,12 @@ void ScalarConverter::printNumber(const std::string &input) {
 	if (input_stream.fail() || !input_stream.eof()) {
 		printImpossible();
 	} else {
-		std::cout << "char: impossible\n"
-					<< "int: " << static_cast<int>(num) << '\n'
+		if (isDisplayable(static_cast<char>(num))) {
+			std::cout << "char: " << static_cast<char>(num) << '\n';
+		} else {
+			std::cout << "char: Non displayable\n";
+		}
+		std::cout << "int: " << static_cast<int>(num) << '\n'
 					<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(num) << "f\n"
 					<< "double: " << std::fixed << std::setprecision(1) << num << '\n';
 	}
@@ -109,6 +113,6 @@ bool ScalarConverter::isCharacter(const std::string &input) {
 	return (input.length() < 2);
 }
 
-bool ScalarConverter::isDisplayable(const std::string &input) {
-	return std::isprint(input[0]) && !std::isdigit(input[0]);
+bool ScalarConverter::isDisplayable(char c) {
+	return std::isprint(c) && !std::isdigit(c);
 }

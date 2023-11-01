@@ -1,5 +1,5 @@
-#ifndef DEFINITIONS_HPP
-# define DEFINITIONS_HPP
+#ifndef DEFINITIONS_H
+# define DEFINITIONS_H
 
 # define RESET			"\033[0m"
 # define BLACK			"\033[30m"
