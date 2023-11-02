@@ -1,12 +1,12 @@
 #include "Iter.hpp"
 
 class Awesome {
-   public:
-	Awesome(void) : _n(42) { return; }
-	int get(void) const { return this->_n; }
+	public:
+		Awesome(void) : _n(42) { return; }
+		int get(void) const { return this->_n; }
 
-   private:
-	int _n;
+	private:
+		int _n;
 };
 
 std::ostream& operator<<(std::ostream& o, Awesome const& rhs) {
