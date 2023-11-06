@@ -88,7 +88,8 @@
 		"aform.hpp": "c",
 		"bureaucrat.hpp": "c",
 		"forward_list": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"set": "cpp"
 	},
 	"cph.general.saveLocation": ""
 }
