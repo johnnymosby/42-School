@@ -86,7 +86,9 @@
 		"presidentialpardonform.hpp": "c",
 		"shrubberycreationform.hpp": "c",
 		"aform.hpp": "c",
-		"bureaucrat.hpp": "c"
+		"bureaucrat.hpp": "c",
+		"forward_list": "cpp",
+		"list": "cpp"
 	},
 	"cph.general.saveLocation": ""
 }

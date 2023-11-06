@@ -1,10 +1,10 @@
-NAME		=	bin_ex00
+NAME		=	bin_ex01
 CXX			=	c++
 FLAGS		=	-Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-SRC			=	main.cpp
+SRC			=	main.cpp Span.cpp
 
-INC			=	easyfind.hpp
+INC			=	Span.hpp
 
 OBJ		=	$(SRC:.cpp=.o)
 DEPS	=	$(SRC:.cpp=.d)
