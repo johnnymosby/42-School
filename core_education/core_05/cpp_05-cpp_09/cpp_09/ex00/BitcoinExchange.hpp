@@ -10,31 +10,26 @@
 # include <cctype>
 # include <algorithm>
 # include <iterator>
+# include <iomanip>
 
 const double EPSILON = 1e-9;
 const std::string RED = "\033[31m";
 const std::string RESET = "\033[0m";
-
-typedef struct s_entry
-{
-	std::string	date;
-	char		pipe;
-	double		value;
-}	t_entry;
 
 class BitcoinExchange
 {
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
-		void exchange(char const * input_file);
-		void initialise(char const *pathname);
+		void processFile(char const * input_file);
+		void initialise(char const *input_pathname);
 
 	private:
-		bool parseEntry(std::string data, t_entry &entry);
+		bool isValidEntry(std::string data, std::string &date, double &value);
 		bool isValidDate(std::string date);
 		bool isValidLine(std::string &line, std::string &date, double &value);
 		bool lineHasOnlyOneComma(std::string const &line);
+		void exchange(const std::string & date, double value);
 
 		std::map<std::string, double> database;
 		bool isInitialised;

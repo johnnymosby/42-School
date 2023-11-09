@@ -33,29 +33,65 @@ void BitcoinExchange::initialise(char const *pathname) {
 	file.close();
 }
 
-void BitcoinExchange::exchange(char const * input_file) {
+void BitcoinExchange::processFile(char const * input_pathname) {
 	if (isInitialised == false) {
 		std::cout << "Error: BitcoinExchange was not initialised\n";
 		return ;
 	}
 
-
-	t_entry entry;
-	if (parseEntry(data, entry) == false) {
-		std::cerr << "Error!\n";
+	if (database.begin() == database.end()) {
+		std::cout << "Error: database is empty\n";
 		return ;
+	}
+
+	std::ifstream file_input(input_pathname);
+	if (!file_input.is_open()) {
+		std::cout << "Error: could not open file\n";
+		return ;
+	}
+
+	std::string line;
+	std::string date;
+	double value;
+	std::cout << std::setprecision(1);
+	while (getline(file_input, line)) {
+		if (!file_input.eof()) {
+			if (!isValidEntry(line, date, value))
+				continue ;
+			exchange(date, value);
+		}
 	}
 }
 
-bool BitcoinExchange::parseEntry(std::string data, t_entry &entry) {
+void BitcoinExchange::exchange(const std::string & date, double value) {
+	std::map<std::string, double>::const_iterator iter;
+	iter = database.find(date);
+	if (iter != database.end()) {
+		std::cout << iter->first << " => "
+					<< value << " = " << iter->second * value << "\n";
+	} else {
+		iter = database.lower_bound(date);
+		if (iter != database.end()) {
+			std::cout << iter->first << " => "
+						<< value << " = " << iter->second * value << "\n";
+		} else {
+			std::cout << database.begin()->first << " => "
+						<< value << " = " << database.begin()->second * value << "\n";
+		}
+	}
+}
+
+bool BitcoinExchange::isValidEntry(std::string data, std::string &date, double &value) {
 	std::istringstream estream(data);
-	estream >> entry.date >> entry.pipe >> entry.value;
+	char pipe;
+
+	estream >> date >> pipe >> value;
 	if (estream.fail() || !estream.eof()
-		|| (entry.value < 0 || entry.value > 1000)
-		|| (fabs(entry.value) < EPSILON || fabs(entry.value - 1000) < EPSILON))
+		|| (value < 0 || value > 1000)
+		|| (fabs(value) < EPSILON || fabs(value - 1000) < EPSILON))
 		return false;
 
-	if (isValidDate(entry.date) == false)
+	if (isValidDate(date) == false)
 		return false;
 	return true;
 }
