@@ -11,6 +11,7 @@
 # include <algorithm>
 # include <iterator>
 # include <iomanip>
+# include <limits>
 
 const double EPSILON = 1e-9;
 const std::string RED = "\033[31m";
@@ -30,6 +31,7 @@ class BitcoinExchange
 		bool isValidLine(std::string &line, std::string &date, double &value);
 		bool lineHasOnlyOneComma(std::string const &line);
 		void exchange(const std::string & date, double value);
+		std::string formatDouble(double n);
 
 		std::map<std::string, double> database;
 		bool isInitialised;
