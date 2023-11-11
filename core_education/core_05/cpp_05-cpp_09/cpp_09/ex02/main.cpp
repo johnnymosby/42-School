@@ -2,7 +2,7 @@
 
 static bool stringHasOnlyDigits(char const *arg) {
 	while (*arg != '\0') {
-		if (!isdigit(*arg))
+		if (isdigit(*arg) == false)
 			return false;
 		arg++;
 	}
@@ -21,7 +21,7 @@ static bool inputHasOnlyDigits(char const * const *argv) {
 static bool fillVector(std::vector<int> &vec, char const * const *argv) {
 	while (*argv != NULL) {
 		try {
-			vec.push_back(std::stoi(*argv));
+			vec.push_back(std::atoi(*argv));
 		} catch (std::exception &e) {
 			std::cerr << "Error: " << e.what() << ": " << *argv << "\n";
 			return false;
@@ -37,6 +37,7 @@ static bool hasDuplicates(std::vector<int> const &vec) {
 }
 
 static int parseInput(int argc, char const * const *argv, std::vector<int> &vec) {
+	argv++;
 	if (argc == 1) {
 		std::cerr << "Error: no input\n";
 		return 1;
@@ -54,8 +55,23 @@ static int parseInput(int argc, char const * const *argv, std::vector<int> &vec)
 	else return 0;
 }
 
+static void printResponse(std::vector<int> vec_old, std::vector<int> vec_new) {
+	std::cout << "Before: ";
+	for (u_long i = 0; i < vec_old.size(); i++)
+		std::cout << vec_old[i] << " ";
+	std::cout << "\n";
+	std::cout << "After:  ";
+	for (u_long i = 0; i < vec_new.size(); i++)
+		std::cout << vec_new[i] << " ";
+	std::cout << "\n";
+}
+
 int main(int argc, char **argv) {
-	std::vector<int> vec;
-	if (parseInput(argc, argv, vec) == 1)
+	std::vector<int> vec_old;
+	if (parseInput(argc, argv, vec_old) == 1)
 		return 1;
+	std::vector<int> vec_new = vec_old;
+	sort(vec_new);
+	printResponse(vec_old, vec_new);
+	return 0;
 }
