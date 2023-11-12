@@ -1,5 +1,40 @@
 #include "PmergeMe.hpp"
 
+const int INDEX_BIGGEST_TYPE_INT_JACOBSTHAL_NUMBER = 33;
+
+const std::vector<int>& getJacobsthalNumbers() {
+	static std::vector<int> jacobsthalNumbers;
+
+	if (jacobsthalNumbers.empty()) {
+		jacobsthalNumbers.push_back(0);
+		jacobsthalNumbers.push_back(1);
+
+		for (int i = 2; i < INDEX_BIGGEST_TYPE_INT_JACOBSTHAL_NUMBER; i++) {
+			jacobsthalNumbers.push_back(jacobsthalNumbers[i - 1] + 2 * jacobsthalNumbers[i - 2]);
+		}
+	}
+
+	return jacobsthalNumbers;
+}
+
+int binary_search(std::vector <int> const &vec, int target) {
+	int low = 0;
+	int high = vec.size() - 1;
+
+	while (low <= high) {
+		int mid = low + (high - low) / 2;
+
+		if (vec[mid] == target) {
+			return mid;
+		} else if (vec[mid] < target) {
+			low = mid + 1;
+		} else {
+			high = mid - 1;
+		}
+	}
+	return low;
+}
+
 void sort(std::vector<int> &vec_orig) {
 	if (vec_orig.size() <= 1)
 		return ;
@@ -8,7 +43,7 @@ void sort(std::vector<int> &vec_orig) {
 	std::vector<int>::iterator end = vec_orig.end();
 	std::vector<int>::iterator middle = vec_orig.size() / 2 + begin;
 	std::vector<int> left(begin, middle), right;
-	int leftover;
+	int leftover = 0;
 	if (vec_orig.size() % 2 != 0) {
 		end--;
 		leftover = *(end);
@@ -29,13 +64,24 @@ void sort(std::vector<int> &vec_orig) {
 		}
 	}
 	std::vector<int> result = right;
-	for (u_long i = 0; i < left.size(); i++) {
-		std::vector<int>::iterator index_insert = std::lower_bound(result.begin(), result.end(), left[i]);
-		result.insert(index_insert, left[i]);
+	if (leftover != 0) {
+		left.push_back(leftover);
 	}
-	if (vec_orig.size() % 2 != 0) {
-		std::vector<int>::iterator index_insert = std::lower_bound(result.begin(), result.end(), leftover);
-		result.insert(index_insert, leftover);
+	result.insert(result.begin(), left[0]);
+	if (left.begin() + 1 != left.end())
+		result.insert(result.begin() + binary_search(result, left[1]), left[1]);
+	std::vector<int> const & jacobsthal_numbers = getJacobsthalNumbers();
+	int index;
+	for (int i = 2; i <= binary_search(jacobsthal_numbers, left.size() - 1); i++) {
+		if ((static_cast<int>(left.size()) - 1) < jacobsthal_numbers[i]) {
+			index = static_cast<int>(left.size()) - 1;
+		} else {
+			index = jacobsthal_numbers[i];
+		}
+		while (index != jacobsthal_numbers[i - 1]) {
+			result.insert(result.begin() + binary_search(result, left[index]), left[index]);
+			index--;
+		}
 	}
 	vec_orig = result;
 }

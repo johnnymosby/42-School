@@ -51,8 +51,12 @@ static int parseInput(int argc, char const * const *argv, std::vector<int> &vec)
 	} else if (hasDuplicates(vec)) {
 		std::cerr << "Error: duplicates in the input\n";
 		return 1;
-	}
-	else return 0;
+	} else if (std::find(vec.begin(), vec.end(), 0) != vec.end()) {
+		std::cerr << "Error: 0 in the input\n";
+		return 1;
+	} 
+	else
+		return 0;
 }
 
 static void printResponse(std::vector<int> vec_old, std::vector<int> vec_new) {
