@@ -70,12 +70,18 @@ static void printResponse(std::vector<int> vec_old, std::vector<int> vec_new) {
 	std::cout << "\n";
 }
 
+
 int main(int argc, char **argv) {
 	std::vector<int> vec_old;
 	if (parseInput(argc, argv, vec_old) == 1)
 		return 1;
 	std::vector<int> vec_new = vec_old;
+	clock_t start_vec = clock();
 	sort(vec_new);
+	clock_t end_vec = clock();
+	std::cout << std::fixed << std::setprecision(5);
 	printResponse(vec_old, vec_new);
+	double time_vec = (double)(end_vec - start_vec) / CLOCKS_PER_SEC;
+	std::cout << "Vector of size " << vec_old.size() << ": " << time_vec << " us\n";
 	return 0;
 }
