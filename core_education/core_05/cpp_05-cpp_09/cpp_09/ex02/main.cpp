@@ -72,16 +72,24 @@ static void printResponse(std::vector<int> vec_old, std::vector<int> vec_new) {
 
 
 int main(int argc, char **argv) {
+	clock_t start_vec;
+	clock_t end_vec;
 	std::vector<int> vec_old;
 	if (parseInput(argc, argv, vec_old) == 1)
 		return 1;
 	std::vector<int> vec_new = vec_old;
-	clock_t start_vec = clock();
+	start_vec = clock();
 	sort(vec_new);
-	clock_t end_vec = clock();
+	end_vec = clock();
 	std::cout << std::fixed << std::setprecision(5);
 	printResponse(vec_old, vec_new);
 	double time_vec = (double)(end_vec - start_vec) / CLOCKS_PER_SEC;
 	std::cout << "Vector of size " << vec_old.size() << ": " << time_vec << " us\n";
+	std::deque<int> deque(vec_old.begin(), vec_old.end());
+	start_vec = clock();
+	sort(deque);
+	end_vec = clock();
+	time_vec = (double)(end_vec - start_vec) / CLOCKS_PER_SEC;
+	std::cout << "Deque of size " << deque.size() << ":  " << time_vec << " us\n";
 	return 0;
 }
