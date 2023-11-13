@@ -72,24 +72,35 @@ static void printResponse(std::vector<int> vec_old, std::vector<int> vec_new) {
 
 
 int main(int argc, char **argv) {
-	clock_t start_vec;
-	clock_t end_vec;
+	clock_t beginning, end, parsing_start;
+	double vec_time, deque_time, vec_parsing, deque_parsing;
+
+	std::cout << std::fixed << std::setprecision(5);
+
+	parsing_start = clock();
 	std::vector<int> vec_old;
 	if (parseInput(argc, argv, vec_old) == 1)
 		return 1;
 	std::vector<int> vec_new = vec_old;
-	start_vec = clock();
+
+	beginning = clock();
 	sort(vec_new);
-	end_vec = clock();
-	std::cout << std::fixed << std::setprecision(5);
+	end = clock();
+
 	printResponse(vec_old, vec_new);
-	double time_vec = (double)(end_vec - start_vec) / CLOCKS_PER_SEC;
-	std::cout << "Vector of size " << vec_old.size() << ": " << time_vec << " us\n";
+	vec_parsing = difftime(beginning, parsing_start);
+	vec_time = difftime(end, beginning);
+
+	parsing_start = clock();
 	std::deque<int> deque(vec_old.begin(), vec_old.end());
-	start_vec = clock();
+	beginning = clock();
 	sort(deque);
-	end_vec = clock();
-	time_vec = (double)(end_vec - start_vec) / CLOCKS_PER_SEC;
-	std::cout << "Deque of size " << deque.size() << ":  " << time_vec << " us\n";
+	end = clock();
+	deque_time = difftime(end, beginning);
+	deque_parsing = difftime(beginning, parsing_start);
+	std::cout << "Vector of size " << vec_old.size() << ": " << vec_time << " us\n";
+	std::cout << "Deque of size " << deque.size() << ":  " << deque_time << " us\n";
+	std::cout << "Vector of size " << vec_old.size() << ": " << vec_time + vec_parsing << " us (time with data management)\n";
+	std::cout << "Deque of size " << deque.size() << ":  " << deque_parsing + deque_time << " us (time with data management)\n";
 	return 0;
 }
