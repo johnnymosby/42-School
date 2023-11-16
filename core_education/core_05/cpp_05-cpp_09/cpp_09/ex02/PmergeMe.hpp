@@ -69,23 +69,22 @@ void sort(T &vec_orig) {
 		left.push_back(leftover);
 	}
 	result.insert(result.begin(), left[0]);
-	if (left.begin() + 1 != left.end())
-		result.insert(result.begin() + binary_search(result, left[1]), left[1]);
 	std::vector<int> const & jacobsthal_numbers = getJacobsthalNumbers();
 	int index;
-	for (int i = 2; i <= binary_search(jacobsthal_numbers, left.size() - 1); i++) {
+	T search_range;
+	for (int i = 1; i <= binary_search(jacobsthal_numbers, left.size() - 1); i++) {
 		if ((static_cast<int>(left.size()) - 1) < jacobsthal_numbers[i]) {
 			index = static_cast<int>(left.size()) - 1;
 		} else {
 			index = jacobsthal_numbers[i];
 		}
 		while (index != jacobsthal_numbers[i - 1]) {
+			search_range = T(result.begin(), std::find(result.begin(), result.end(), right[index]) + 1);
 			result.insert(result.begin() + binary_search(result, left[index]), left[index]);
 			index--;
 		}
 	}
 	vec_orig = result;
 }
-
 
 #endif

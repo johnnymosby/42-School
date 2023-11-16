@@ -87,7 +87,6 @@ int main(int argc, char **argv) {
 	sort(vec_new);
 	end = clock();
 
-	printResponse(vec_old, vec_new);
 	vec_parsing = difftime(beginning, parsing_start);
 	vec_time = difftime(end, beginning);
 
@@ -98,6 +97,7 @@ int main(int argc, char **argv) {
 	end = clock();
 	deque_time = difftime(end, beginning);
 	deque_parsing = difftime(beginning, parsing_start);
+	printResponse(vec_old, vec_new);
 	std::cout << "Vector of size " << vec_old.size() << ": " << vec_time << " us\n";
 	std::cout << "Deque of size " << deque.size() << ":  " << deque_time << " us\n";
 	std::cout << "Vector of size " << vec_old.size() << ": " << vec_time + vec_parsing << " us (time with data management)\n";
